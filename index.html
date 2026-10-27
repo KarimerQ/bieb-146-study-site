@@ -159,7 +159,17 @@
   .dbsnp .maf{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:13.5px;line-height:1.65}
   .dbsnp .flank{color:#2f5aa8}
   .dbsnp-head{font-size:11px;font-weight:900;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:2px}
+  /* ---- generated coverage cartoon (exam practice): reads stacked over a genome line ---- */
+  .covfig{margin:12px 0;background:var(--surface2);border:1px solid var(--line);border-radius:16px;padding:10px}
+  .covfig svg{width:100%;height:auto;display:block}
+  .covcap{font-size:12.5px;font-weight:800;color:var(--muted);padding:6px 4px 0}
 
+  /* ---- per-category resets: small, quiet, with an in-page confirm step ---- */
+  .resetbtn{font-size:12.5px;padding:8px 11px}
+  .confirmbox{position:fixed;inset:0;background:rgba(24,20,36,.55);z-index:210;display:none;align-items:center;justify-content:center;padding:16px}
+  .confirmbox.open{display:flex}
+  .confirmcard{background:var(--surface);color:var(--ink);border:1px solid var(--line);border-radius:18px;padding:18px;max-width:420px;width:100%;box-shadow:var(--shadow)}
+  .confirmcard p{margin:0 0 14px;font-weight:800;font-size:16px;line-height:1.45}
   /* ---- lecture selector ---- */
   .sec-title{font-size:19px;margin:0 0 10px;letter-spacing:-.01em}
   .lecgrid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
@@ -222,6 +232,11 @@
       <li><span>Coverage counting</span><span class="mastery" id="skillState-coverage">Not started</span></li>
       <li><span>Terms &amp; main facts</span><span class="mastery" id="skillState-terms">Not started</span></li>
     </ul>
+    <div class="controls" style="margin-top:14px">
+      <button class="btn ghost resetbtn" id="resetSkillsTop">Reset skill mastery</button>
+      <button class="btn ghost resetbtn" id="resetEverything">Reset everything for this lecture</button>
+    </div>
+    <p class="muted" style="margin:8px 0 0">Every category can be reset on its own, too — the reset button lives inside Flashcards, Poll Quiz, Math Drills and Exam Practice. Resetting asks first, then puts that category back to zero / Not started so you can start again.</p>
   </section>
 
   <nav class="tabs" role="tablist" aria-label="Study modes">
@@ -268,7 +283,7 @@
       <p class="muted" id="filterNote" style="margin-bottom:0"></p>
       <div class="controls" style="margin-top:12px">
         <button class="btn ghost" id="reviewHard">Review “Still learning” only</button>
-        <button class="btn ghost" id="resetProgress">Reset marks</button>
+        <button class="btn ghost resetbtn" id="resetProgress">Reset marks — back to Not started</button>
       </div>
     </div>
   </section>
@@ -284,6 +299,7 @@
       <div class="controls" style="margin-top:14px">
         <button class="btn primary" id="checkQuiz">Check my answers</button>
         <button class="btn" id="resetQuiz">Try again</button>
+        <button class="btn ghost resetbtn" id="resetQuizScores">Reset scores — back to none</button>
       </div>
       <p class="muted" id="quizFeedback"></p>
     </div>
@@ -317,6 +333,9 @@
         </div>
         <div class="steps" id="drillSteps"></div>
       </div>
+      <div class="controls" style="margin-top:14px">
+        <button class="btn ghost resetbtn" id="resetMathMastery">Reset skill mastery — back to Not started</button>
+      </div>
       <h3 style="margin-top:20px">Reference visual — the lecture slide every MAF question copies</h3>
       <p class="muted" style="margin-top:0">This is the dbSNP teaching slide for <b>rs1442</b>. The annotations point at the SNP ID, the alleles (G&gt;C), the locus, and the gene name (TGFBI). The MAF list is where every number question comes from: find the <b>(1000Genomes)</b> row — <b>C = 0.3177 / 1591</b>. Frequency before the slash, count after it.</p>
       <figure class="slidefig" style="margin:0 0 6px">
@@ -334,7 +353,7 @@
       <div>
           <div class="steplabel">Step 3 &middot; Check</div>
           <h2 style="margin-bottom:2px">Exam Practice — the lecture's questions, new numbers</h2>
-          <p class="muted" style="margin:0">Same question shapes as the polls, fresh numbers each time. <b>Codon questions include the codon chart</b> — open it right under the question. <b>Every MAF question shows its dbSNP card in the exact format of the lecture slide</b> — always use the <b>1000Genomes</b> row. Stuck? Tap <b>Hint</b> for one step at a time; the full worked solution appears after you answer.</p>
+          <p class="muted" style="margin:0">The polls, remixed: questions rotate through <b>every poll family</b> — codon classification, coverage, the dbSNP major-allele question, frequency &harr; count conversions, and three-allele MAF — shuffled so you never get a long run of one kind, with fresh numbers and drawings each time. <b>Codon questions include the codon chart</b>, and their right answers rotate too (missense, synonymous, nonsense, noncoding). <b>Coverage questions come with a fresh cartoon drawing</b> — count the reads stacked over the marked position. <b>Every MAF question shows its dbSNP card in the exact format of the lecture slide</b> — and each question names <b>which study’s row</b> to read (1000Genomes, gnomAD, TOPMed, PAGE Study, Vietnamese, HapMap, ALFA…), so find that row first, then do the math. Stuck? Tap <b>Hint</b> for one step at a time; the full worked solution appears after you answer.</p>
         </div>
       </div>
       <div class="scorebanner" style="margin-top:14px"><span>🏆 Score: <b id="examScore">0 / 0</b></span><span id="examMeta">Streak: 0 • Best streak: 0</span></div>
@@ -352,6 +371,7 @@
         <button class="btn sun" id="examHint">💡 Hint</button>
         <button class="btn" id="examStepsBtn">Show full solution</button>
         <button class="btn primary" id="examNext" style="display:none">Next question →</button>
+        <button class="btn ghost resetbtn" id="resetExam">Reset scores &amp; mastery — back to zero</button>
       </div>
       <p class="muted" style="margin-bottom:0">Tip: for frequency answers you can type the decimal (0.30) or the percent (30) — both count.</p>
     </div>
@@ -379,6 +399,15 @@
   <footer>BIEB 146 • Lecture 8 — Oct 20, 2026 • Genome diversity in space</footer>
 </div>
 <div class="lightbox" id="lightbox" role="dialog" aria-label="Slide zoom"><button class="lb-close" id="lbClose">✕ Close</button><img id="lbImg" alt="Slide, enlarged"></div>
+<div class="confirmbox" id="confirmBox" role="dialog" aria-modal="true" aria-labelledby="confirmMsg">
+  <div class="confirmcard">
+    <p id="confirmMsg">Reset?</p>
+    <div class="controls" style="justify-content:flex-end">
+      <button class="btn ghost" id="confirmCancel">Cancel</button>
+      <button class="btn coral" id="confirmYes">Reset</button>
+    </div>
+  </div>
+</div>
 <div class="toast" id="toast">Saved ✓</div>
 
 <script>
@@ -534,6 +563,32 @@
       el.textContent= lv==='proficient' ? 'Proficient' : (lv==='familiar' ? 'Familiar' : 'Not started');
     });
   }
+  // ---------- resets: every category can go back to zero / Not started, scoped to the selected lecture ----------
+  function scopeName(){ return activeLecture==='all' ? 'All Lectures' : 'Lecture 8'; }
+  var pendingConfirm=null;
+  function askConfirm(msg, fn){
+    var box=document.getElementById('confirmBox'), m=document.getElementById('confirmMsg');
+    if(!box||!m){ return; }
+    m.textContent=msg; pendingConfirm=fn; box.classList.add('open');
+  }
+  function closeConfirm(){ var box=document.getElementById('confirmBox'); if(box) box.classList.remove('open'); pendingConfirm=null; }
+  function clearFlashMarks(){
+    if(activeLecture==='all'){ marks={}; }
+    else { FLASH.forEach(function(c){ if(c.lecture===activeLecture) delete marks[c.id]; }); }
+    saveJSON(FKEY, marks); hardOnly=false; idx=0; renderCard(); updateProgress(); renderSkills();
+  }
+  function clearQuizScores(){
+    quizStore={best:null,last:null,attempts:0}; saveJSON(QKEY, quizStore);
+    chosen=currentPolls().map(function(){return null;}); checked=false;
+    var qs=document.getElementById('quizScore'); if(qs) qs.textContent='0 / '+currentPolls().length;
+    var qf=document.getElementById('quizFeedback'); if(qf) qf.textContent='';
+    renderQuiz(); updateProgress();
+  }
+  function clearSkillMastery(){ skillStore={}; saveJSON(SKKEY, skillStore); renderSkills(); }
+  function clearExamScores(){
+    examStore={bestStreak:0,totC:0,totA:0,sessScore:0,sessAnswered:0,sessStreak:0}; saveJSON(EKEY, examStore);
+    exam.score=0; exam.answeredCount=0; exam.streak=0; updateExamBanner();
+  }
   // ---------- gentle sound effects, generated with WebAudio (no audio files) ----------
   var SFXKEY='bieb146_github_sfx_v1';
   var sfxPref=loadJSON(SFXKEY, {on:true});
@@ -645,7 +700,7 @@
   function mark(kind){ var list=currentList(); var card=FLASH[list[idx]]; marks[card.id]=kind; saveJSON(FKEY, marks); showToast(kind==='know'?'Marked: Know it ✓ — saved':'Marked: Still learning ↻ — saved'); idx++; renderCard(); }
   document.getElementById('knowBtn').onclick=function(){ mark('know'); };
   document.getElementById('learnBtn').onclick=function(){ mark('learn'); };
-  document.getElementById('resetProgress').onclick=function(){ marks={}; saveJSON(FKEY, marks); hardOnly=false; idx=0; renderCard(); showToast('Marks cleared'); };
+  document.getElementById('resetProgress').onclick=function(){ askConfirm('Reset your flashcard marks for '+scopeName()+'? Every card will go back to Not started.', function(){ clearFlashMarks(); showToast('Flashcard marks reset — Not started'); }); };
   document.getElementById('reviewHard').onclick=function(){ var any=FLASH.some(function(c){return marks[c.id]==='learn'}); if(!any){showToast('No “Still learning” cards yet — mark a few first'); return;} hardOnly=true; idx=0; switchTab('flashPanel'); renderCard(); document.getElementById('flashPanel').scrollIntoView({behavior:'smooth'}); };
 
   function updateProgress(){
@@ -707,11 +762,13 @@
 
   // ---------- generated dbSNP entry, rendered like the lecture slide ----------
   var STUDY_POOL=[
-    {name:'Estonian', tot:300},{name:'PAGE_STUDY', tot:6220},{name:'NorthernSweden', tot:51},
-    {name:'GnomAD', tot:2728},{name:'TOPMED', tot:11265},{name:'GnomAD_exomes', tot:23148},
+    {name:'Estonian', tot:300},{name:'PAGE Study', tot:6220},{name:'NorthernSweden', tot:51},
+    {name:'gnomAD', tot:2728},{name:'TOPMed', tot:11265},{name:'gnomAD exomes', tot:23148},
     {name:'ExAC', tot:11340},{name:'ALSPAC', tot:411},{name:'TWINSUK', tot:400},{name:'Vietnamese', tot:78},
-    {name:'GoESP', tot:4321},{name:'1000Genomes', tot:5008}
+    {name:'GoESP', tot:4321},{name:'HapMap', tot:360},{name:'ALFA', tot:100000},{name:'1000Genomes', tot:5008}
   ];
+  // exam dbSNP questions name a study row at random — not always 1000Genomes
+  function pickRow(db){ return db.rows[Math.floor(Math.random()*db.rows.length)]; }
   var GENES=['LPL','TGFBI','APOE','HBB','CFTR','BRCA1','TP53','EGFR','MTHFR','FTO'];
   function makeDbSNP(minorFreq){
     var pair=pickA([['C','G'],['G','C'],['A','T'],['T','A'],['A','G'],['C','T'],['G','A'],['T','C']]);
@@ -772,78 +829,163 @@
   function genMajor(){
     var minor=ri(4,45)/100;
     var db=makeDbSNP(minor);
-    var majorPct=Math.round((1-db.kg.freq)*10000)/100;
-    return { kind:'Same shape as Poll Q3 • Read the dbSNP card', skill:'maf', type:'num', mode:'pct', suffix:'%', answer:(1-db.kg.freq)*100, tol:0.6, answerText:majorPct+'%', visual:dbSNPHtml(db),
-      q:'Using ONLY the 1000Genomes row of this dbSNP entry, what is the frequency of the MAJOR allele (in %)?',
-      steps:['Find the (1000Genomes) row in the MAF list: '+db.minor+' = '+f4(db.kg.freq)+' / '+db.kg.count.toLocaleString()+'. Ignore every other study — the question only asks for 1000Genomes.',
-        'Alleles are '+db.major+' > '+db.minor+', so '+db.major+' is major and '+db.minor+' is minor. The row gives the MINOR allele: '+db.minor+' = '+f4(db.kg.freq)+' = '+(Math.round(db.kg.freq*10000)/100)+'%.',
-        'Major = 100% − '+(Math.round(db.kg.freq*10000)/100)+'% = '+majorPct+'%.',
-        'Answer: the major allele '+db.major+' has frequency '+majorPct+'%. (Picking '+(Math.round(db.kg.freq*10000)/100)+'% is the Poll 3 trap — that’s the minor allele.)'] };
+    var r=pickRow(db);
+    var majorPct=Math.round((1-r.freq)*10000)/100;
+    var minorPct=Math.round(r.freq*10000)/100;
+    return { kind:'Same shape as Poll Q3 • Read the row the question names', skill:'maf', type:'num', mode:'pct', suffix:'%', answer:(1-r.freq)*100, tol:0.6, answerText:majorPct+'%', visual:dbSNPHtml(db),
+      q:'Using ONLY the ('+r.study+') row of this dbSNP entry, what is the frequency of the MAJOR allele (in %)?',
+      steps:['The question names one study: ('+r.study+'). Find that row in the MAF list: '+db.minor+' = '+f4(r.freq)+' / '+r.count.toLocaleString()+'. Every other row is a different study’s sample, with its own frequency — ignore them for this question.',
+        'Alleles are '+db.major+' > '+db.minor+', so '+db.major+' is major and '+db.minor+' is minor. The row gives the MINOR allele: '+db.minor+' = '+f4(r.freq)+' = '+minorPct+'%.',
+        'Major = 100% − '+minorPct+'% = '+majorPct+'%.',
+        'Answer: in the '+r.study+' sample, the major allele '+db.major+' has frequency '+majorPct+'%. (Picking '+minorPct+'% is the Poll 3 trap — that’s the minor allele.)'] };
   }
   function genDbCount(){
     var freq=ri(6,44)/100;
     var db=makeDbSNP(freq);
-    return { kind:'Worked example (rs1442) • Read the count off the card', skill:'maf', type:'num', mode:'count', answer:db.kg.count, tol:1, answerText:db.kg.count.toLocaleString()+' times', visual:dbSNPHtml(db),
-      q:'On this dbSNP entry, how many times was the minor allele '+db.minor+' observed in the 1000Genomes dataset?',
+    var r=pickRow(db);
+    return { kind:'Worked example (rs1442) • Read the count off the named row', skill:'maf', type:'num', mode:'count', answer:r.count, tol:1, answerText:r.count.toLocaleString()+' times', visual:dbSNPHtml(db),
+      q:'On this dbSNP entry, how many times was the minor allele '+db.minor+' observed in the '+r.study+' dataset?',
       steps:['MAF rows are written frequency / count — just like the rs1442 slide (C = 0.3177 / 1591).',
-        'Find the (1000Genomes) row: '+db.minor+' = '+f4(db.kg.freq)+' / '+db.kg.count.toLocaleString()+'.',
-        'The number after the slash is the count. Answer: '+db.kg.count.toLocaleString()+' times.',
-        'Cross-check with the standard move: '+f4(db.kg.freq)+' × ~5,000 alleles ≈ '+db.kg.count.toLocaleString()+'.'] };
+        'Find the ('+r.study+') row: '+db.minor+' = '+f4(r.freq)+' / '+r.count.toLocaleString()+'.',
+        'The number after the slash is the count. Answer: '+r.count.toLocaleString()+' times.',
+        'Cross-check with the standard move: '+f4(r.freq)+' × '+r.tot.toLocaleString()+' alleles in that dataset ≈ '+r.count.toLocaleString()+'.'] };
   }
   function genCount(){
     var people=pickA([500,1000,1500,2000,2500,3000,4000,5000]);
-    var freq=ri(5,45)/100; var db=makeDbSNP(freq); var total=people*2; var count=Math.round(db.kg.freq*total);
-    return { kind:'Frequency \u2192 count \u2022 Read the frequency off the dbSNP card', skill:'freq', type:'num', mode:'count', answer:count, tol:1, answerText:count.toLocaleString()+' times',
+    var freq=ri(5,45)/100; var db=makeDbSNP(freq); var r=pickRow(db); var total=people*2; var count=Math.round(r.freq*total);
+    return { kind:'Frequency \u2192 count \u2022 Read the frequency off the named row', skill:'freq', type:'num', mode:'count', answer:count, tol:1, answerText:count.toLocaleString()+' times',
       visual:dbSNPHtml(db),
-      q:'The dbSNP entry below gives the minor allele '+db.minor+' frequency on its 1000Genomes row. In a NEW sample of '+people.toLocaleString()+' people, how many times would you expect to observe '+db.minor+'?',
-      steps:['Find the (1000Genomes) row in the MAF list: '+db.minor+' = '+f4(db.kg.freq)+' / '+db.kg.count.toLocaleString()+'. That frequency is what carries over to the new sample.',
+      q:'The dbSNP entry below gives the minor allele '+db.minor+' frequency on its ('+r.study+') row. In a NEW sample of '+people.toLocaleString()+' people, how many times would you expect to observe '+db.minor+'?',
+      steps:['Find the ('+r.study+') row in the MAF list: '+db.minor+' = '+f4(r.freq)+' / '+r.count.toLocaleString()+'. That frequency is what carries over to the new sample — the other rows belong to other studies.',
         'Every person is diploid, so alleles total = '+people.toLocaleString()+' \u00d7 2 = '+total.toLocaleString()+'.',
-        'Expected count = '+f4(db.kg.freq)+' \u00d7 '+total.toLocaleString()+' = '+count.toLocaleString()+'.',
+        'Expected count = '+f4(r.freq)+' \u00d7 '+total.toLocaleString()+' = '+count.toLocaleString()+'.',
         'Answer: about '+count.toLocaleString()+' times.'] };
   }
   function genFreq(){
-    var freq=ri(5,45)/100; var db=makeDbSNP(freq);
-    return { kind:'Count \u2192 frequency \u2022 Read the count off the dbSNP card', skill:'freq', type:'num', mode:'freq', answer:db.kg.count/5008, tol:0.011, answerText:f2(db.kg.count/5008)+' ('+Math.round(db.kg.count/5008*100)+'%)',
+    var freq=ri(5,45)/100; var db=makeDbSNP(freq); var r=pickRow(db); var f=r.count/r.tot;
+    return { kind:'Count \u2192 frequency \u2022 Read the count off the named row', skill:'freq', type:'num', mode:'freq', answer:f, tol:0.011, answerText:f2(f)+' ('+Math.round(f*100)+'%)',
       visual:dbSNPHtml(db),
-      q:'On the dbSNP entry below, the minor allele '+db.minor+' was observed '+db.kg.count.toLocaleString()+' times in 1000Genomes (5,008 alleles from 2,504 people). What is its frequency? Type the decimal or the %.',
-      steps:['MAF rows are frequency / count. The (1000Genomes) row reads '+db.minor+' = '+f4(db.kg.freq)+' / '+db.kg.count.toLocaleString()+' \u2014 the count is '+db.kg.count.toLocaleString()+'.',
-        '1000Genomes sampled 2,504 people \u00d7 2 = 5,008 alleles.',
-        'Frequency = '+db.kg.count.toLocaleString()+' \u00f7 5,008 = '+f2(db.kg.count/5008)+'.',
-        'Answer: frequency = '+f2(db.kg.count/5008)+' ('+Math.round(db.kg.count/5008*100)+'%).'] };
+      q:'On the dbSNP entry below, the minor allele '+db.minor+' was observed '+r.count.toLocaleString()+' times in the '+r.study+' dataset ('+r.tot.toLocaleString()+' alleles total). What is its frequency there? Type the decimal or the %.',
+      steps:['MAF rows are frequency / count. The ('+r.study+') row reads '+db.minor+' = '+f4(r.freq)+' / '+r.count.toLocaleString()+' — the count is '+r.count.toLocaleString()+', out of '+r.tot.toLocaleString()+' alleles in that dataset.',
+        'Frequency = count ÷ total alleles.',
+        'Frequency = '+r.count.toLocaleString()+' ÷ '+r.tot.toLocaleString()+' = '+f2(f)+'.',
+        'Answer: frequency = '+f2(f)+' ('+Math.round(f*100)+'%).'] };
   }
-  var CODONS=[
-    {from:'AGU',to:'AGG',a1:'Serine',a2:'Arginine',cls:1},
-    {from:'AAA',to:'AAG',a1:'Lysine',a2:'Lysine',cls:0},
-    {from:'CAA',to:'UAA',a1:'Glutamine',a2:'a stop codon',cls:2},
-    {from:'UUU',to:'UUC',a1:'Phenylalanine',a2:'Phenylalanine',cls:0},
-    {from:'GGU',to:'GAU',a1:'Glycine',a2:'Aspartate',cls:1},
-    {from:'UGG',to:'UGA',a1:'Tryptophan',a2:'a stop codon',cls:2}
+  // ---------- codon family: the correct answer rotates through the poll's whole classification set ----------
+  // ("silent" stays on the option list as the trap — per the lecture, synonymous/noncoding changes are NOT automatically silent)
+  var CODON_VARIANTS={
+    missense:[
+      {from:'AGU',to:'AGG',a1:'Serine',a2:'Arginine'},
+      {from:'GGU',to:'GAU',a1:'Glycine',a2:'Aspartate'},
+      {from:'UUU',to:'CUU',a1:'Phenylalanine',a2:'Leucine'},
+      {from:'CAU',to:'UAU',a1:'Histidine',a2:'Tyrosine'}
+    ],
+    synonymous:[
+      {from:'AAA',to:'AAG',a1:'Lysine'},
+      {from:'UUU',to:'UUC',a1:'Phenylalanine'},
+      {from:'CUU',to:'CUC',a1:'Leucine'},
+      {from:'GGU',to:'GGC',a1:'Glycine'},
+      {from:'AGU',to:'AGC',a1:'Serine'}
+    ],
+    nonsense:[
+      {from:'CAA',to:'UAA',a1:'Glutamine'},
+      {from:'CAG',to:'UAG',a1:'Glutamine'},
+      {from:'UGG',to:'UGA',a1:'Tryptophan'},
+      {from:'UAU',to:'UAA',a1:'Tyrosine'}
+    ]
+  };
+  var NONCODING_VARIANTS=[
+    { q:'A SNP is found in the stretch of DNA between two genes. That stretch is never copied into mRNA and contains no codons. What type of SNP is this?',
+      rows:[['Location:','Between two genes'],['In a codon?','No — this DNA is never transcribed'],['Amino acid changed?','None — there is no codon here']],
+      mid:'Here it never reaches a codon at all: the DNA sits between genes and is never transcribed.',
+      why:'It never lands in a codon — the SNP is outside every coding sequence, so it cannot change an amino acid: noncoding. (Trap check: don’t call it “silent” — the lecture’s point is that noncoding changes aren’t automatically silent; they can still affect how a nearby gene is used.)' },
+    { q:'A SNP sits in a gene’s promoter — the control stretch just before the gene where transcription starts. The promoter is never translated into protein. What type of SNP is this?',
+      rows:[['Location:','Promoter, just before the gene'],['In a codon?','No — promoters are control DNA'],['Amino acid changed?','None — but it can change how much the gene is expressed']],
+      mid:'Here the SNP sits in the promoter — control DNA that is never translated, so it is in no codon.',
+      why:'Promoters are control DNA, not coding DNA — no codon, no amino acid change: noncoding. This is exactly the lecture’s “silent” trap: it is noncoding, yet it can still change how much protein gets made.' },
+    { q:'A SNP is found deep inside an intron. Introns are cut out of the mRNA and thrown away before the mRNA is translated. What type of SNP is this?',
+      rows:[['Location:','Deep inside an intron'],['In a codon?','No — introns are spliced out before translation'],['Amino acid changed?','None']],
+      mid:'Here the SNP sits in an intron, which is cut out and discarded before translation — it never reaches a codon.',
+      why:'The intron never survives into the translated mRNA, so this SNP is in no codon and changes no amino acid: noncoding.' }
   ];
-  var CLASSES=['Synonymous','Missense','Nonsense'];
+  var codonBag=[];
+  function nextCodonClass(){
+    if(!codonBag.length) codonBag=shuffleArr(['missense','synonymous','nonsense','noncoding']);
+    return codonBag.shift();
+  }
   function genCodon(){
-    var c=pickA(CODONS);
-    var opts=shuffleArr(CLASSES.slice());
+    var cls=nextCodonClass();
+    var opts=shuffleArr(['synonymous','missense','nonsense','silent','noncoding']);
+    if(cls==='noncoding'){
+      var v=pickA(NONCODING_VARIANTS);
+      return { kind:'Same shape as Poll Q1 • Where the SNP sits', skill:'codon', type:'mc', opts:opts, answerIdx:opts.indexOf('noncoding'), why:v.why, answerText:'noncoding',
+        visual:dataCardHtml('Given data — where this SNP sits', v.rows),
+        q:v.q,
+        steps:['First question for any SNP: does it land inside a coding sequence — in a codon?', v.mid, 'No codon means no amino acid can change: noncoding. (And “silent” is the trap — the lecture stresses that noncoding changes can still affect promoters and expression.)'] };
+    }
+    var c=pickA(CODON_VARIANTS[cls]);
     var why;
-    if(c.cls===0) why=c.from+' and '+c.to+' both code for '+c.a1+' — the amino acid does not change, so it is synonymous.';
-    else if(c.cls===1) why=c.from+' codes for '+c.a1+', but '+c.to+' codes for '+c.a2+' — a different amino acid (and no stop), so it is missense.';
-    else why=c.from+' codes for '+c.a1+', but '+c.to+' is a stop codon — the protein ends early, so it is nonsense.';
-    return { kind:'Same shape as Poll Q1 • Codon change', skill:'codon', type:'mc', opts:opts, answerIdx:opts.indexOf(CLASSES[c.cls]), why:why, answerText:CLASSES[c.cls], visual:codonHTML(),
+    if(cls==='synonymous') why=c.from+' and '+c.to+' both code for '+c.a1+' — the codon changes but the amino acid does not, so it is synonymous. (Not “silent” — the lecture’s warning is that synonymous changes can still affect tRNA speed and protein folding, so synonymous is the precise call.)';
+    else if(cls==='missense') why=c.from+' codes for '+c.a1+', but '+c.to+' codes for '+c.a2+' — a different amino acid, and no stop codon, so it is missense.';
+    else why=c.from+' codes for '+c.a1+', but '+c.to+' is a stop codon — translation ends early, so it is nonsense.';
+    return { kind:'Same shape as Poll Q1 • Codon change', skill:'codon', type:'mc', opts:opts, answerIdx:opts.indexOf(cls), why:why, answerText:cls, visual:codonHTML(),
       q:'An mRNA codon changes '+c.from+' → '+c.to+'. What type of SNP is this?',
-      steps:['Use the codon chart: find the first letter on the left, the second on top, the third on the right.', why, 'Reminder: synonymous = same amino acid • missense = different amino acid • nonsense = premature stop.'] };
+      steps:['Use the codon chart: find the first letter on the left, the second on top, the third on the right.',
+        c.from+' codes for '+c.a1+'; '+c.to+(cls==='nonsense'?' is a stop codon.':' codes for '+(cls==='synonymous'?c.a1:c.a2)+'.'),
+        'Now classify: same amino acid = synonymous • different amino acid = missense • stop = nonsense.'] };
+  }
+  // ---------- coverage family: a fresh cartoon each time, like the lecture's "blue guy" slide ----------
+  // Reads sit in 3 lanes over a genome line; exactly D lanes have a read crossing the marked position,
+  // so the stack at the marked position is D deep (never more than 3, just like the lecture cartoon).
+  function coverageFigure(D){
+    var lanes=[16,44,72];
+    var order=shuffleArr([0,1,2]);
+    var covering={}; order.slice(0,D).forEach(function(l){ covering[l]=true; });
+    var mx=ri(100,220);
+    var rects='';
+    function rect(x,w,y){ return '<rect x="'+x+'" y="'+y+'" width="'+w+'" height="20" rx="7" fill="#8fc1e3" stroke="#4a7dbb" stroke-width="1.5"/>'; }
+    function leftRead(y){ var w=ri(34,64); return rect(ri(14, mx-10-w), w, y); }
+    function rightRead(y){ var w=ri(34,64); return rect(ri(mx+10, 306-w), w, y); }
+    for(var l=0;l<3;l++){
+      var y=lanes[l];
+      if(covering[l]){
+        var a=mx-ri(16,46), b=mx+ri(16,46);
+        var ca=Math.max(14,a), cb=Math.min(306,b);
+        rects+=rect(ca, cb-ca, y);
+        if(Math.random()<0.5){ // an extra read in this lane, clear of the marked position
+          if(ca-8-14>44){ var w1=ri(26, Math.min(52, ca-8-14)); rects+=rect(ri(14, ca-8-w1), w1, y); }
+          else if(306-(cb+8)>44){ var w2=ri(26, Math.min(52, 306-(cb+8))); rects+=rect(ri(cb+8, 306-w2), w2, y); }
+        }
+      } else {
+        rects+= (Math.random()<0.5 ? leftRead(y) : rightRead(y));
+        if(Math.random()<0.4) rects+= (Math.random()<0.5 ? leftRead(y) : rightRead(y));
+      }
+    }
+    var ticks='';
+    for(var tx=14; tx<=306; tx+=24){ ticks+='<line x1="'+tx+'" y1="104" x2="'+tx+'" y2="110" stroke="#8a8496" stroke-width="2"/>'; }
+    var svg='<svg viewBox="0 0 320 124" role="img" aria-label="Drawing like the lecture cartoon: blue reads stacked in three rows over a genome line. A dashed line marks one position, where '+D+' read'+(D===1?' is':'s are')+' stacked over it.">'
+      + '<polygon points="'+(mx-5)+',2 '+(mx+5)+',2 '+mx+',9" fill="#d96a4b"/>'
+      + '<line x1="'+mx+'" y1="10" x2="'+mx+'" y2="100" stroke="#d96a4b" stroke-width="2" stroke-dasharray="5 4"/>'
+      + rects
+      + '<line x1="14" y1="104" x2="306" y2="104" stroke="#8a8496" stroke-width="3"/>'
+      + ticks
+      + '<text x="'+mx+'" y="120" text-anchor="middle" font-size="10.5" font-weight="700" fill="#5C566B">marked position</text>'
+      + '</svg>';
+    return '<div class="covfig">'+svg+'<div class="covcap">Exam drawing — blue reads stacked over a genome line, like the lecture cartoon. Count the reads stacked over the dashed line.</div></div>';
   }
   function genCoverage(){
-    var n=ri(6,10), counts=[], sum=0;
-    for(var i=0;i<n;i++){ var c=ri(1,4); counts.push(c); sum+=c; }
-    var avg=sum/n;
-    return { kind:'Same shape as Poll Q2 • Coverage', skill:'coverage', type:'num', mode:'plain', answer:avg, tol:0.06, answerText:f2(avg)+' reads per position',
-      visual:dataCardHtml('Given data — reads covering each position, left to right', [
-        ['Positions:', n],
-        ['Reads per position:', counts.join(', ')]
-      ]),
-      q:'Reads from a resequenced individual are aligned to a reference. Counting the reads that cover each position gives: '+counts.join(', ')+'. What is the average coverage?',
-      steps:['Add up the reads at every position: '+counts.join(' + ')+' = '+sum+'.',
-        'Count the positions: '+n+'.',
-        'Average coverage = '+sum+' ÷ '+n+' = '+f2(avg)+' reads per position.'] };
+    var D=pickA([1,2,3,2,3]);
+    var opts = D===1 ? ['0–1','2–3','4–6','10'] : ['0–1','1–3','4–6','10'];
+    var correct = D===1 ? '0–1' : '1–3';
+    var shuffled=shuffleArr(opts.slice());
+    return { kind:'Same shape as Poll Q2 • Coverage cartoon', skill:'coverage', type:'mc', opts:shuffled, answerIdx:shuffled.indexOf(correct), answerText:correct,
+      visual:coverageFigure(D),
+      q:'Reads from a resequenced individual are stacked over a genome, like the lecture cartoon. The dashed line marks one position. What is the approximate coverage at the marked position?',
+      why:'Count the blue reads stacked over the dashed line: '+D+' deep. Coverage at a position is just how many reads cover it — and in these cartoons the reads stack at most 3 deep, so a position’s coverage can only be 1, 2, or 3. The range that contains that maximum overlap ('+D+') is '+correct+'.',
+      steps:['Find the dashed line — that marks the one position being asked about.',
+        'Count the blue reads stacked over that exact position: '+D+' read'+(D===1?'':'s')+' deep.',
+        'The reads stack at most 3 deep in the cartoon, so coverage at any position can only be 1, 2, or 3 — never 4–6 or 10.',
+        'Pick the range that contains the maximum overlap at the marked position: '+D+' falls in '+correct+'. Answer: '+correct+'.'] };
   }
   function genThree(){
     var m=0,s=0,t=0,tries=0;
@@ -899,9 +1041,24 @@
     var ok=Math.abs(normVal(v, exam.q.mode)-exam.q.answer)<=exam.q.tol;
     finishExam(ok, 'Answer: '+exam.q.answerText+'.'+(ok?'':' The steps are below — run the next one and watch for the same move.'));
   }
+  // ---------- exam rotation: a shuffled bag holding every poll family, dealt one by one ----------
+  // Every bag of 5 contains each family exactly once, so any 10 questions touch every family at
+  // least once and the same family never lands twice in a row. Inside a family, sub-shapes alternate.
+  var examBag=[], examLastFam='', convFlip=false, dbFlip=false;
+  function nextExamGen(){
+    if(!examBag.length){
+      examBag=shuffleArr(['codon','coverage','dbsnp','conv','three']);
+      if(examBag[0]===examLastFam && examBag.length>1){ var t=examBag[0]; examBag[0]=examBag[1]; examBag[1]=t; }
+    }
+    var fam=examBag.shift(); examLastFam=fam;
+    if(fam==='codon') return genCodon();
+    if(fam==='coverage') return genCoverage();
+    if(fam==='three') return genThree();
+    if(fam==='dbsnp'){ dbFlip=!dbFlip; return dbFlip?genMajor():genDbCount(); }
+    convFlip=!convFlip; return convFlip?genCount():genFreq();
+  }
   function newExamQ(){
-    var gens=[genMajor,genDbCount,genMajor,genCount,genFreq,genCodon,genCoverage,genThree];
-    exam.q=pickA(gens)(); exam.answered=false;
+    exam.q=nextExamGen(); exam.answered=false;
     document.getElementById('examKind').textContent=exam.q.kind;
     document.getElementById('examQ').textContent=exam.q.q;
     var vis=document.getElementById('examVisual'); vis.innerHTML=exam.q.visual||'';
@@ -910,7 +1067,7 @@
     if(exam.q.type==='mc'){
       var opts=document.createElement('div'); opts.className='opts';
       exam.q.opts.forEach(function(o,oi){
-        var b=document.createElement('button'); b.className='opt'; b.textContent=('ABC'[oi])+'. '+o;
+        var b=document.createElement('button'); b.className='opt'; b.textContent=('ABCDE'[oi])+'. '+o;
         b.onclick=(function(n){ return function(){ pickExam(n); }; })(oi);
         opts.appendChild(b);
       });
@@ -1017,9 +1174,26 @@
   document.getElementById('quickNext').onclick=function(){ var list=currentNumbers(); if(!list.length) return; quickIdx=(quickIdx+1)%list.length; quickRevealed=false; renderQuick(); };
   document.getElementById('quickReveal').onclick=function(){ quickRevealed=true; renderQuick(); };
 
+  // ---------- reset wiring: confirm dialog + one reset per category ----------
+  var cYes=document.getElementById('confirmYes'), cCancel=document.getElementById('confirmCancel'), cBox=document.getElementById('confirmBox');
+  if(cYes) cYes.onclick=function(){ var fn=pendingConfirm; closeConfirm(); if(fn) fn(); };
+  if(cCancel) cCancel.onclick=function(){ closeConfirm(); };
+  if(cBox) cBox.addEventListener('click', function(e){ if(e.target===cBox) closeConfirm(); });
+  var rQuizBtn=document.getElementById('resetQuizScores');
+  if(rQuizBtn) rQuizBtn.onclick=function(){ askConfirm('Reset your Poll Quiz scores for '+scopeName()+'? Your best score will go back to none.', function(){ clearQuizScores(); showToast('Poll Quiz scores reset — back to none'); }); };
+  var rMathBtn=document.getElementById('resetMathMastery');
+  if(rMathBtn) rMathBtn.onclick=function(){ askConfirm('Reset your skill mastery for '+scopeName()+'? Every skill will go back to Not started.', function(){ clearSkillMastery(); newDrill(); showToast('Skill mastery reset — Not started'); }); };
+  var rExamBtn=document.getElementById('resetExam');
+  if(rExamBtn) rExamBtn.onclick=function(){ askConfirm('Reset your Exam Practice scores for '+scopeName()+'? Score, streak and best go back to zero, and every skill goes back to Not started.', function(){ clearExamScores(); clearSkillMastery(); newExamQ(); showToast('Exam Practice reset — back to zero'); }); };
+  var rSkillsTopBtn=document.getElementById('resetSkillsTop');
+  if(rSkillsTopBtn) rSkillsTopBtn.onclick=function(){ askConfirm('Reset your skill mastery for '+scopeName()+'? Every skill will go back to Not started.', function(){ clearSkillMastery(); showToast('Skill mastery reset — Not started'); }); };
+  var rAllBtn=document.getElementById('resetEverything');
+  if(rAllBtn) rAllBtn.onclick=function(){ askConfirm('Reset everything for '+scopeName()+'? Flashcards, Poll Quiz scores, skill mastery and Exam Practice will all go back to zero / Not started.', function(){ clearFlashMarks(); clearQuizScores(); clearSkillMastery(); clearExamScores(); newExamQ(); showToast('Everything reset for '+scopeName()+' — back to zero'); }); };
+
   // init
   setLecture('lec8'); renderCard(); renderQuiz(); newDrill(); newExamQ(); updateProgress(); renderSkills();
 })();
 </script>
 </body>
 </html>
+Displaying bieb-146-study-site-github-pages-version.html.
