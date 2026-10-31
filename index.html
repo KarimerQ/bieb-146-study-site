@@ -202,6 +202,7 @@
   .obj b.q{display:block;font-size:16px;line-height:1.5}
   .obj .a{margin-top:8px;font-size:14.5px;color:var(--muted);font-weight:600;line-height:1.65}
   .obj .a b{color:var(--ink)}
+  .obj .anslabel{display:block;font-size:11.5px;font-weight:900;letter-spacing:.09em;text-transform:uppercase;color:var(--teal-dark);margin-bottom:3px}
   .objsub{margin-top:14px;border-top:1px dashed var(--line);padding-top:14px}
   .objsub b.q{font-size:15px}
   .objsub .a{font-size:14px}
@@ -231,8 +232,9 @@
   .label{font-size:11px;font-weight:900;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
   /* dark footer band */
   .footerband{margin-top:44px;background:var(--navy);color:#E8ECF7;border-radius:18px 18px 0 0;padding:26px 24px 30px;text-align:center}
-  .footerband .sprites{display:flex;justify-content:center;align-items:flex-end;gap:26px;margin-bottom:14px}
-  .footerband .sprites canvas{width:52px;height:auto;image-rendering:pixelated;image-rendering:crisp-edges}
+  .footerband .sprites{display:flex;justify-content:center;align-items:flex-end;gap:28px;margin-bottom:12px}
+  .footerband .sprites svg{width:58px;height:auto;display:block}
+  @media(max-width:480px){ .footerband .sprites{gap:20px} .footerband .sprites svg{width:48px} }
   .footerband p{margin:0;font-size:14px;font-weight:600;color:#C7CEE6}
 </style>
 </head>
@@ -415,8 +417,7 @@
   <section class="panel" id="objectivesPanel">
     <div class="card">
       <div class="steplabel">Learning Objectives • <span id="objectivesLectureLabel">Lecture 11 — Thu Oct 29, 2026</span></div>
-      <h2>Learning objectives — each one stated, then answered</h2>
-      <p class="muted" style="margin-top:0" id="objectivesIntro">The lecture’s “By the end of the lecture you should be able to…” aims, stated in full and answered underneath each one, so coverage can be checked at a glance.</p>
+      <h2>Learning Objectives</h2>
       <div id="objectivesAnnounce"></div>
       <ol class="objlist" id="objectivesList"></ol>
     </div>
@@ -561,11 +562,50 @@
   </div>
   <footer class="footerband">
     <div class="sprites" aria-hidden="true">
-      <canvas data-sprite="sprout"></canvas>
-      <canvas data-sprite="dupe"></canvas>
-      <canvas data-sprite="star"></canvas>
+      <svg viewBox="0 0 100 100" role="presentation" aria-hidden="true">
+        <ellipse cx="50" cy="94" rx="26" ry="4" fill="#ffffff" opacity=".12"/>
+        <path d="M50 62 C50 50 50 42 50 30" fill="none" stroke="#3CB371" stroke-width="5" stroke-linecap="round"/>
+        <path d="M50 40 C36 38 25 30 23 16 C37 16 49 23 50 40 Z" fill="#4CC38A"/>
+        <path d="M50 36 C64 34 75 26 77 12 C63 12 51 19 50 36 Z" fill="#7ED957"/>
+        <path d="M29 60 H71 L65 90 Q64 95 59 95 H41 Q36 95 35 90 Z" fill="#E8835A"/>
+        <rect x="27" y="56" width="46" height="9" rx="4.5" fill="#D96F45"/>
+        <circle cx="43" cy="74" r="2.6" fill="#2B2B3A"/>
+        <circle cx="57" cy="74" r="2.6" fill="#2B2B3A"/>
+        <path d="M44 81 Q50 86 56 81" fill="none" stroke="#2B2B3A" stroke-width="2.4" stroke-linecap="round"/>
+        <circle cx="36" cy="80" r="3.4" fill="#F4A7A0" opacity=".7"/>
+        <circle cx="64" cy="80" r="3.4" fill="#F4A7A0" opacity=".7"/>
+      </svg>
+      <svg viewBox="0 0 100 100" role="presentation" aria-hidden="true">
+        <ellipse cx="50" cy="94" rx="28" ry="4" fill="#ffffff" opacity=".12"/>
+        <path d="M26 30 L20 16 Q28 20 33 24 Z" fill="#7C8DB5"/>
+        <path d="M74 30 L80 16 Q72 20 67 24 Z" fill="#7C8DB5"/>
+        <ellipse cx="50" cy="56" rx="32" ry="34" fill="#8B9BD8"/>
+        <ellipse cx="50" cy="66" rx="20" ry="20" fill="#FFF3C4"/>
+        <path d="M20 52 Q12 58 18 70 Q24 62 25 54 Z" fill="#7C8DB5"/>
+        <path d="M80 52 Q88 58 82 70 Q76 62 75 54 Z" fill="#7C8DB5"/>
+        <circle cx="38" cy="46" r="11" fill="#ffffff"/>
+        <circle cx="62" cy="46" r="11" fill="#ffffff"/>
+        <circle cx="38" cy="46" r="9.5" fill="none" stroke="#10162F" stroke-width="2.4"/>
+        <circle cx="62" cy="46" r="9.5" fill="none" stroke="#10162F" stroke-width="2.4"/>
+        <path d="M47.5 46 H52.5" stroke="#10162F" stroke-width="2.4" stroke-linecap="round"/>
+        <circle cx="38" cy="47" r="3.4" fill="#10162F"/>
+        <circle cx="62" cy="47" r="3.4" fill="#10162F"/>
+        <path d="M46 56 L54 56 L50 62 Z" fill="#F2A65A"/>
+        <path d="M44 68 Q50 72 56 68" fill="none" stroke="#10162F" stroke-width="2.2" stroke-linecap="round"/>
+        <path d="M42 90 L38 96 M50 91 L50 97 M58 90 L62 96" stroke="#F2A65A" stroke-width="3" stroke-linecap="round"/>
+      </svg>
+      <svg viewBox="0 0 100 100" role="presentation" aria-hidden="true">
+        <ellipse cx="50" cy="94" rx="26" ry="4" fill="#ffffff" opacity=".12"/>
+        <path d="M50 8 L61 36 L91 37 L67 56 L76 85 L50 68 L24 85 L33 56 L9 37 L39 36 Z" fill="#FFC72C"/>
+        <circle cx="42" cy="50" r="3" fill="#10162F"/>
+        <circle cx="58" cy="50" r="3" fill="#10162F"/>
+        <path d="M43 58 Q50 64 57 58" fill="none" stroke="#10162F" stroke-width="2.6" stroke-linecap="round"/>
+        <circle cx="35" cy="56" r="3.6" fill="#F4A7A0" opacity=".8"/>
+        <circle cx="65" cy="56" r="3.6" fill="#F4A7A0" opacity=".8"/>
+        <path d="M18 62 Q10 66 12 72 M82 62 Q90 66 88 72" fill="none" stroke="#10162F" stroke-width="2.4" stroke-linecap="round"/>
+      </svg>
     </div>
-    <p>BIEB 146 study site — built from Kari’s lecture slides and transcripts.</p>
+    <p>BIEB 146 · Genome Diversity in Space</p>
   </footer>
 </div>
 <div class="lightbox" id="lightbox" role="dialog" aria-label="Slide zoom"><button class="lb-close" id="lbClose">✕ Close</button><img id="lbImg" alt="Slide, enlarged"></div>
@@ -1987,7 +2027,7 @@
   }
   renderExamples();
 
-  // ---------- learning objectives: Lecture 11, each stated in full and answered ----------
+  // ---------- learning objectives ----------
   var OBJECTIVES8=[{"q": "describe the scope of diversity within the human population", "a": "Any two people are about <b>99.9% identical</b>; they differ at roughly <b>3 million</b> genome positions. Hundreds of millions of SNP positions are known (about 660 million at the time of the lecture, over a billion in dbSNP now), so about <b>22% of genome positions are polymorphic</b> — but most polymorphisms are lopsided (for example 95% A / 5% T), so two random people usually carry the same allele anyway. Of the small variable fraction, about <b>85% is old variation shared globally</b>, and only about <b>15% is region-associated</b>."}, {"q": "describe the source of diversity within the human population", "a": "<b>Mutation</b> is the original source (point mutations, insertions, deletions, and structural changes), shuffled by <b>recombination</b>. The diversity in today’s populations comes from four sources: <b>(1)</b> variation already present in the original African population, which is the vast majority; <b>(2)</b> random subsampling and founder effects as small groups migrated out and did not carry every allele; <b>(3)</b> new mutations arising in the semi-separated regional populations; and <b>(4)</b> interbreeding with other hominins such as Neanderthals and Denisovans, which moved alleles between populations (admixture and introgression)."}, {"q": "contrast Mendelian & multifactorial traits", "a": "<b>Mendelian traits</b> are controlled by a single gene with high, often complete, penetrance — if you have the genotype, you get the phenotype — like <b>sickle cell disease and cystic fibrosis</b>; this is the rare way traits work. <b>Multifactorial traits</b> come from many genes (polygenic) plus environment and lifestyle, each allele nudging risk only slightly (low penetrance), like <b>BMI and heart disease</b>; most traits are multifactorial, which is why the course uses statistics (GWAS) to link alleles to them."}];
   var OBJECTIVES27=[{"q": "Contrast Mendelian & multifactorial traits", "a": "Same contrast as Lecture 8: Mendelian = one gene, high penetrance, sickle cell and cystic fibrosis. Multifactorial = many genes plus environment, each variant contributing a little (low penetrance), like BMI and heart disease — and those small contributions are what this lecture’s statistics measure."}, {"q": "Calculate if a SNP is associated with a phenotype", "a": "Build the counts: how many people with each allele have the disease and how many do not. Compute each allele’s odds = (with disease) ÷ (without disease) — never divide by the total. Then the odds ratio = odds for the allele the question asks about ÷ odds for the other allele. <b>OR = 1</b> means no association; <b>OR &gt; 1</b> means risk factor; <b>OR &lt; 1</b> means protective. Lecture example: allele C 1 with / 50 without vs allele A 20 with / 80 without gives OR = 0.02 ÷ 0.25 = <b>0.08</b>, so C is protective. The p-value then tells you whether the association is likely real or chance."}, {"q": "Apply odds ratio to actual change in risk", "a": "Multiply the baseline risk by the odds ratio. Lecture example: baseline risk <b>10%</b> and OR <b>2.25</b> gives 10% × 2.25 = <b>22.5%</b> actual risk for carriers. It also works as a reality check the other way: an average lifetime risk of 2% with an OR of 1.9 becomes <b>3.8%</b> — “twice as likely” is not the same as “likely.”"}, {"q": "Explain difference between odds ratio and p-value", "a": "The <b>odds ratio</b> measures the size and direction of an allele’s effect: how much it multiplies the odds of the phenotype. The <b>p-value</b> measures the strength of the evidence: the probability that a result at least this far from “no effect” would show up by chance in a sample of this size. A big effect can still have a weak p-value in a small sample, and a tiny effect can have a very small p-value in a huge one. Because a GWAS tests millions of SNPs at once, the significance bar is corrected (<b>Bonferroni: 0.05 ÷ number of tests</b>), which is why Manhattan plots use −log<sub>10</sub>(p) heights."}, {"q": "Explain how researchers get data for GWAS (SNP chips)", "a": "By <b>genotyping, not sequencing</b>. A SNP chip is a glass slide patterned with patches of probe DNA, each patch complementary to the sequence around one preselected SNP (chips directly measure roughly <b>600,000</b> of the ~600 million known SNPs). A person’s DNA is fragmented, fluorescently labeled, and washed over the chip; DNA binds tightest to its perfect complement, so the brightest patch reveals the allele — with a twist: the bright patch is labeled with the probe’s allele, so the person’s allele is the complement (a bright A-probe patch means <b>homozygous T</b>). Homozygous = one patch bright; heterozygous = both patches moderate."}];
   var OBJECTIVES29=[
@@ -2003,8 +2043,14 @@
   var OBJECTIVES_ANNOUNCE='Worksheet 5 is due <b>Fri Oct 30, 9 PM</b>. The quiz opens <b>Sun Nov 1 at noon</b> and closes <b>Mon Nov 2, 9 PM</b> — it covers this week <b>plus Lecture 8</b> (week 4, not on Midterm 1), and includes <b>one question from the ~10-minute Keolu Fox YouTube video</b> shown in class, so watch it before starting the quiz. Midterm 1 scores were expected Fri Oct 30 evening.';
   function renderObjectives(){
     var list=document.getElementById('objectivesList'); if(!list) return;
-    var label=document.getElementById('objectivesLectureLabel'), intro=document.getElementById('objectivesIntro'), ann=document.getElementById('objectivesAnnounce');
-    var introText='These are the professor\u2019s own \u201cBy the end of today you should be able to:\u201d list from each deck\u2019s opening slide, stated in full and answered underneath each one, so coverage can be checked at a glance.';
+    var label=document.getElementById('objectivesLectureLabel'), ann=document.getElementById('objectivesAnnounce');
+    function answerDiv(html){
+      var a=document.createElement('div'); a.className='a';
+      var lab=document.createElement('span'); lab.className='anslabel'; lab.textContent='Answer:';
+      a.appendChild(lab);
+      var body=document.createElement('span'); body.innerHTML=html; a.appendChild(body);
+      return a;
+    }
     function addGroup(heading, items, groupIntro){
       var g=document.createElement('div'); g.className='objgroup';
       var h=document.createElement('h3'); h.textContent=heading; g.appendChild(h);
@@ -2013,11 +2059,11 @@
       items.forEach(function(o, i){
         var li=document.createElement('li'); li.className='obj';
         var b=document.createElement('b'); b.className='q'; b.textContent=(i+1)+'. '+o.q; li.appendChild(b);
-        var a=document.createElement('div'); a.className='a'; a.innerHTML=o.a; li.appendChild(a);
+        li.appendChild(answerDiv(o.a));
         if(o.subs){ o.subs.forEach(function(s, si){
           var sub=document.createElement('div'); sub.className='objsub';
           var sb=document.createElement('b'); sb.className='q'; sb.textContent=(i+1)+String.fromCharCode(97+si)+'. '+s.q; sub.appendChild(sb);
-          var sa=document.createElement('div'); sa.className='a'; sa.innerHTML=s.a; sub.appendChild(sa);
+          sub.appendChild(answerDiv(s.a));
           li.appendChild(sub);
         }); }
         ol.appendChild(li);
@@ -2027,13 +2073,11 @@
     list.innerHTML='';
     if(ann) ann.innerHTML='';
     if(label) label.textContent = activeLecture==='all' ? 'All Lectures' : lecLabel(activeLecture);
-    if(intro) intro.textContent = introText;
     if(activeLecture==='lec8'){
       addGroup('Lecture 8 — Tuesday, October 20, 2026', OBJECTIVES8);
     } else if(activeLecture==='lec27'){
       addGroup('Tuesday, October 27, 2026 — GWAS & Odds Ratios', OBJECTIVES27);
     } else if(activeLecture==='lec29'){
-      if(intro) intro.textContent='The lecture\u2019s \u201cBy the end of the next lecture you should be able to:\u2026\u201d aims, stated exactly as on the slide and answered underneath each one, so coverage can be checked at a glance. There are three aims; the third carries three sub-aims. The lecture\u2019s central question, as the professor put it: ancestry matters for making GWAS and imputation less biased and more relevant for people of all ancestry groups \u2014 AND there is no biological evidence for race. Both are true; this lecture unpacks how.';
       if(ann) ann.innerHTML='<div class="announce">📣 '+OBJECTIVES_ANNOUNCE+'</div>';
       addGroup('Lecture 11 — Thursday, October 29, 2026', OBJECTIVES29);
     } else {
