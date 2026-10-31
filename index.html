@@ -215,6 +215,15 @@
   details.codonchart img{width:100%;max-width:520px;height:auto;display:block;margin:10px auto 6px;background:#fff;border-radius:10px;cursor:zoom-in}
   .codoncap{font-size:13px;font-weight:700;color:var(--muted);text-align:center;padding-bottom:4px}
   @media(max-width:640px){ .tabs{flex-wrap:wrap;overflow-x:visible;border-radius:20px} .tab{flex:1 1 30%;white-space:normal} }
+  /* ---- assigned video (Lecture 11): Keolu Fox TED talk ---- */
+  .video-meta{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:12px 0}
+  .videobeats{margin:10px 0 0 20px;padding:0;display:grid;gap:10px}
+  .videobeats li{font-size:14.5px;line-height:1.6;color:var(--muted);font-weight:600}
+  .videobeats li b{color:var(--ink)}
+  .video-flip .flash{min-height:330px}
+  .video-flip .face .term{font-size:20px;line-height:1.35}
+  .video-flip .face .def{font-size:16.5px}
+  @media(max-width:640px){ .video-flip .flash{min-height:380px} }
   /* ---- learning objectives & worksheets ---- */
   .objlist{list-style:none;margin:12px 0 0;padding:0;display:grid;gap:10px}
   .obj{border:1px solid var(--line);border-radius:16px;padding:13px 14px;background:var(--surface2)}
@@ -295,6 +304,7 @@
     <button class="tab" role="tab" aria-selected="false" data-panel="quizPanel">✏️ Poll Quiz</button>
     <button class="tab" role="tab" aria-selected="false" data-panel="examPanel">🎯 Exam Practice</button>
     <button class="tab" role="tab" aria-selected="false" data-panel="objectivesPanel">📋 Learning Objectives</button>
+    <button class="tab" role="tab" aria-selected="false" data-panel="videoPanel">🎬 Assigned Video</button>
     <button class="tab" role="tab" aria-selected="false" data-panel="worksheetsPanel">📝 Worksheets</button>
   </nav>
 
@@ -446,6 +456,86 @@
       <p class="muted" style="margin-top:0" id="objectivesIntro">The lecture’s “By the end of the lecture you should be able to…” aims, stated in full and answered underneath each one, so coverage can be checked at a glance.</p>
       <div id="objectivesAnnounce"></div>
       <ol class="objlist" id="objectivesList"></ol>
+    </div>
+  </section>
+
+  <!-- ASSIGNED VIDEO -->
+  <section class="panel" id="videoPanel">
+    <div class="card">
+      <div id="videoContent">
+        <div class="steplabel">Assigned video • Lecture 11, Thu Oct 29, 2026</div>
+        <h2>Assigned Video: “Why genetic research must be more diverse”</h2>
+        <p class="muted" style="margin-top:0">Keolu Fox, professor in UCSD’s Department of Anthropology and a Native Hawaiian (Kānaka Maoli) geneticist. TED2016. Runtime 6 minutes 49 seconds.</p>
+        <div class="video-meta">
+          <a class="btn primary" href="https://www.ted.com/talks/keolu_fox_why_genetic_research_must_be_more_diverse" target="_blank" rel="noopener">▶ Watch the talk on TED</a>
+          <span class="pill">6 min 49 sec • TED2016</span>
+          <span class="pill">Also on YouTube, TED channel</span>
+        </div>
+        <div class="announce">📣 One question on this week’s quiz comes from this video. The quiz opens Sun Nov 1 at noon and closes Mon Nov 2 at 9 PM, so watch the talk before you start it.</div>
+
+        <h3 style="margin-top:20px">Part 1: The talk in short</h3>
+        <ol class="videobeats">
+          <li><b>Kalaupapa and Father Damien.</b> Fox opens with Kalaupapa, the Hawaiian leper colony, and Father Damien, the Belgian missionary who lived there and died of leprosy. As a kid, Fox wondered why Kānaka Maoli (Native Hawaiians) seemed so susceptible to leprosy (“mai Pake”), and that question led him to genetics.</li>
+          <li><b>The promise.</b> The $2.7 billion Human Genome Project promised predictive, preventive medicine based on each person’s genome, but that requires sequencing a diverse cohort capturing the full spectrum of human variation.</li>
+          <li><b>The bias.</b> 96% of genome studies linking variation to disease used only people of European ancestry; 4% covered everyone else; far less than 1% covered Indigenous communities. 95% of clinical trials were European-only too. This matters because people metabolize drugs differently based on genetic variation.</li>
+          <li><b>Why the distrust.</b> In 1989, Arizona State University researchers took blood samples from the Havasupai tribe to study type 2 diabetes, then without consent used them to study schizophrenia and inbreeding and to challenge the tribe’s origin story. The tribe sued and won a $700,000 settlement; ASU was banned from the reservation; the Navajo Nation and other tribes imposed moratoriums on genetic research.</li>
+          <li><b>The stakes.</b> Hawaii has the longest average life expectancy of any US state, yet Native Hawaiians die about a decade earlier than non-Native Hawaiians, with high rates of type 2 diabetes and obesity, plus cardiovascular disease and cancer. If genomics stays Eurocentric, health disparities widen.</li>
+          <li><b>The solution: “indigenize” sequencing.</b> A pocket-sized nanopore sequencer, about 1/10,000 the size of traditional refrigerator-sized lab sequencers, lets communities sequence anywhere, on their own terms, as citizen scientists.</li>
+          <li><b>IndiGenomics.</b> His initiative: science for the people, by the people. It starts with tribal consultation to educate communities about the potential uses and misuses of genetic information, and aims toward an institute that runs its own research and trains the next generation of Indigenous scientists.</li>
+          <li><b>The closing principle.</b> Indigenous people must be partners in research, not subjects of it; outside researchers must immerse themselves in Indigenous culture “or die trying.”</li>
+        </ol>
+
+        <h3 style="margin-top:20px">Part 2: Key terms</h3>
+        <div class="numgrid">
+          <div class="numcard"><strong>Kalaupapa</strong><p>The Hawaiian peninsula community where people with leprosy (Hansen’s disease) were exiled; where Father Damien worked and died.</p></div>
+          <div class="numcard"><strong>Kānaka Maoli</strong><p>Native Hawaiians, the Indigenous people of Hawaii.</p></div>
+          <div class="numcard"><strong>Mai Pake</strong><p>The Hawaiian term for leprosy Fox heard growing up.</p></div>
+          <div class="numcard"><strong>Havasupai case</strong><p>1989 ASU study: tribal blood samples collected for diabetes research were reused without consent for schizophrenia, inbreeding, and origin-story studies; led to a lawsuit, a $700,000 settlement, and research bans.</p></div>
+          <div class="numcard"><strong>Research moratorium</strong><p>A tribe’s formal ban or pausing of research; the Navajo Nation and others imposed genetic-research moratoriums after the Havasupai case.</p></div>
+          <div class="numcard"><strong>Secondary use (of samples)</strong><p>Using collected samples for studies beyond the original consented purpose; the ethical breach at the heart of the Havasupai case.</p></div>
+          <div class="numcard"><strong>Nanopore sequencer</strong><p>A pocket-sized portable DNA sequencer, about 1/10,000 the size of a traditional lab sequencer; Fox’s tool for democratizing sequencing.</p></div>
+          <div class="numcard"><strong>IndiGenomics</strong><p>Fox’s initiative to make genomics serve Indigenous communities: consultation, education about uses and misuses of genetic data, Indigenous-led research and training.</p></div>
+          <div class="numcard"><strong>Tribal consultation</strong><p>Engaging tribal communities as decision-making partners before and during research, including explaining potential uses and misuses of their genetic information.</p></div>
+        </div>
+
+        <h3 style="margin-top:20px">Part 3: Flashcards for the video</h3>
+        <p class="muted" style="margin-top:0">Tap the card to flip it, just like the lecture flashcards. These 8 cards cover only this video.</p>
+        <div class="flipwrap video-flip">
+          <div class="flash" id="videoFlash" tabindex="0" role="button" aria-label="Video flashcard, tap to flip">
+            <div class="face front">
+              <span class="statusdot" id="videoFrontStatus">Video card</span>
+              <div class="label">Question • Keolu Fox TED talk</div>
+              <div class="term" id="videoTerm"></div>
+              <div class="hint">Tap to flip → answer</div>
+            </div>
+            <div class="face back">
+              <span class="statusdot" id="videoBackStatus">Video card</span>
+              <div class="label">Answer</div>
+              <div class="def" id="videoDef"></div>
+              <div class="hint">Tap to flip back</div>
+            </div>
+          </div>
+        </div>
+        <div class="controls">
+          <button class="btn" id="videoPrev">← Prev</button>
+          <button class="btn" id="videoShuffle">🔀 Shuffle</button>
+          <button class="btn primary" id="videoNext">Next →</button>
+          <span class="counter" id="videoCounter"></span>
+        </div>
+
+        <h3 style="margin-top:20px">Part 4: Practice questions for the video</h3>
+        <p class="muted" style="margin-top:0">Pick an answer. The correct answer is marked and the explanation appears right away, like the Poll Quiz.</p>
+        <div class="scorebanner"><span>🎯 Video practice: <b id="videoScore">0 / 6 answered</b></span><span id="videoScoreNote">Tap an answer to check it</span></div>
+        <div id="videoQuiz"></div>
+        <div class="controls" style="margin-top:14px">
+          <button class="btn" id="videoRetry">Try again</button>
+        </div>
+      </div>
+      <div id="videoEmpty" style="display:none">
+        <div class="steplabel">Assigned video</div>
+        <h2>No assigned video for this lecture yet</h2>
+        <p class="muted" style="margin-bottom:0">The assigned video was added for <b>Lecture 11, Thu Oct 29, 2026</b>. Switch to that lecture (or All Lectures) to see the talk, its key terms, flashcards, and practice questions.</p>
+      </div>
     </div>
   </section>
 
@@ -904,7 +994,7 @@
     var qs=document.getElementById('quizScore'); if(qs) qs.textContent='0 / '+currentPolls().length;
     var qf=document.getElementById('quizFeedback'); if(qf) qf.textContent='';
     quickIdx=0; quickRevealed=false;
-    renderNumbers(); renderQuick(); renderExamples(); renderChrome(); renderObjectives();
+    renderNumbers(); renderQuick(); renderExamples(); renderChrome(); renderObjectives(); renderVideo();
   }
   function refreshScope(){ renderCard(); renderQuiz(); newDrill(); newExamQ(); updateProgress(); renderSkills(); }
   document.getElementById('lecBtn8').addEventListener('click', function(){ setLecture('lec8'); refreshScope(); showToast('Lecture 8 — Oct 20, 2026'); document.querySelector('.tabs').scrollIntoView({behavior:'smooth'}); });
@@ -1862,6 +1952,73 @@
       list.appendChild(li);
     }
   }
+
+  // ---------- assigned video: Keolu Fox TED talk, Lecture 11 only ----------
+  var VIDEO_CARDS=[
+    {q:'What percentage of genome studies had used only people of European ancestry?', a:'96%. Everyone else shared 4%, and Indigenous communities got far less than 1%.'},
+    {q:'Why is the European bias in genome studies dangerous for medicine?', a:'People metabolize and respond to drugs differently based on genetic variation, so findings and doses tuned to one ancestry may not work for others.'},
+    {q:'What happened in the Havasupai case (1989)?', a:'ASU researchers collected tribal blood for type 2 diabetes research, then used it without consent for schizophrenia and inbreeding studies and to challenge the tribe\u2019s origin story.'},
+    {q:'What came out of the Havasupai lawsuit?', a:'A $700,000 settlement for the tribe, ASU banned from the reservation, and other tribes (including the Navajo Nation) imposing moratoriums on genetic research.'},
+    {q:'What health gap does Fox cite for Native Hawaiians?', a:'Hawaii has the longest average life expectancy of any US state, yet Native Hawaiians die about a decade earlier than non-Native Hawaiians, with high rates of type 2 diabetes and obesity.'},
+    {q:'What technology does Fox propose to democratize sequencing?', a:'A pocket-sized nanopore sequencer, about 1/10,000 the size of a traditional refrigerator-sized lab sequencer, usable anywhere.'},
+    {q:'What is IndiGenomics?', a:'Fox\u2019s initiative for Indigenous-led genomics: tribal consultation first, education about uses and misuses of genetic information, and training Indigenous scientists.'},
+    {q:'What is Fox\u2019s closing principle for researchers?', a:'Indigenous people must be partners in research, not subjects of it; researchers must immerse themselves in Indigenous culture, \u201cor die trying.\u201d'}
+  ];
+  var VIDEO_QS=[
+    {q:'According to Fox, what share of genome studies had focused exclusively on people of European ancestry?', opts:['50%','75%','96%','99%'], answer:2, explain:'Everyone else shared 4%, and Indigenous communities were under 1%.'},
+    {q:'The Havasupai tribe\u2019s samples were originally collected to study which condition?', opts:['Schizophrenia','Type 2 diabetes','Leprosy','Cardiovascular disease'], answer:1, explain:'The unconsented secondary uses were schizophrenia, inbreeding, and origin-story research.'},
+    {q:'Which outcome followed the Havasupai lawsuit?', opts:['ASU\u2019s funding doubled','The tribe won a $700,000 settlement and ASU was banned from the reservation','The tribe joined the study','Genetic research expanded on the reservation'], answer:1, explain:'Other tribes, including the Navajo Nation, then imposed moratoriums on genetic research.'},
+    {q:'Why does Fox say drug response makes GWAS diversity urgent?', opts:['Drugs are cheaper for Europeans','People metabolize drugs differently based on genetic variation','Clinical trials are too slow','Sequencing is expensive'], answer:1, explain:'Findings and doses tuned to one ancestry may not work for people with different genetic variation.'},
+    {q:'What does the pocket-sized nanopore sequencer let communities do?', opts:['Sequence DNA only in large hospitals','Sequence anywhere, on their own terms, as citizen scientists','Replace clinical trials','Store samples indefinitely'], answer:1, explain:'It is about 1/10,000 the size of a traditional refrigerator-sized lab sequencer.'},
+    {q:'What is the first step of IndiGenomics?', opts:['Building a sequencing lab','Publishing a GWAS','Tribal consultation that explains the potential uses and misuses of genetic information','Hiring outside researchers'], answer:2, explain:'Consultation comes first, before research, so communities decide as partners.'}
+  ];
+  var videoOrder=VIDEO_CARDS.map(function(_,i){return i;}), videoIdx=0, videoFlipped=false, videoChosen=VIDEO_QS.map(function(){return null;});
+  function renderVideoCard(){
+    var card=VIDEO_CARDS[videoOrder[videoIdx]];
+    var t=document.getElementById('videoTerm'), d=document.getElementById('videoDef'), c=document.getElementById('videoCounter');
+    if(t) t.textContent=card.q; if(d) d.textContent=card.a;
+    if(c) c.textContent=(videoIdx+1)+' / '+VIDEO_CARDS.length;
+    var f=document.getElementById('videoFlash'); if(f){ f.classList.remove('flipped'); videoFlipped=false; }
+  }
+  function renderVideoQuiz(){
+    var wrap=document.getElementById('videoQuiz'); if(!wrap) return;
+    wrap.innerHTML='';
+    var answered=0, correct=0;
+    VIDEO_QS.forEach(function(p, qi){
+      if(videoChosen[qi]!==null){ answered++; if(videoChosen[qi]===p.answer) correct++; }
+      var box=document.createElement('div'); box.className='qbox';
+      var q=document.createElement('p'); q.className='q'; q.textContent='Q'+(qi+1)+'. '+p.q; box.appendChild(q);
+      var opts=document.createElement('div'); opts.className='opts';
+      p.opts.forEach(function(opt, oi){
+        var b=document.createElement('button'); b.className='opt'; b.textContent=('ABCD'[oi])+'. '+opt;
+        if(videoChosen[qi]!==null){ b.disabled=true; if(oi===p.answer) b.classList.add('correct'); else if(videoChosen[qi]===oi) b.classList.add('wrong'); }
+        b.onclick=function(){ if(videoChosen[qi]!==null) return; videoChosen[qi]=oi; renderVideoQuiz(); };
+        opts.appendChild(b);
+      });
+      box.appendChild(opts);
+      var ex=document.createElement('div'); ex.className='explain'+(videoChosen[qi]!==null?' show':'');
+      ex.innerHTML='<b>Why:</b> '+p.explain; box.appendChild(ex);
+      wrap.appendChild(box);
+    });
+    var sc=document.getElementById('videoScore'); if(sc) sc.textContent=answered+' / '+VIDEO_QS.length+' answered • '+correct+' correct';
+    var note=document.getElementById('videoScoreNote'); if(note) note.textContent= answered===VIDEO_QS.length ? (correct===VIDEO_QS.length ? 'Perfect. That is quiz-ready.' : 'Review the explanations above, then try again.') : 'Tap an answer to check it';
+  }
+  function renderVideo(){
+    var inScopeVideo=(activeLecture==='lec29'||activeLecture==='all');
+    var content=document.getElementById('videoContent'), empty=document.getElementById('videoEmpty');
+    if(content) content.style.display=inScopeVideo?'':'none';
+    if(empty) empty.style.display=inScopeVideo?'none':'';
+    if(inScopeVideo){ renderVideoCard(); renderVideoQuiz(); }
+  }
+  (function(){
+    var vf=document.getElementById('videoFlash');
+    function flipVideo(){ videoFlipped=!videoFlipped; if(vf) vf.classList.toggle('flipped', videoFlipped); }
+    if(vf){ vf.addEventListener('click', flipVideo); vf.addEventListener('keydown', function(e){ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); flipVideo(); } }); }
+    var pv=document.getElementById('videoPrev'); if(pv) pv.onclick=function(){ videoIdx=(videoIdx-1+videoOrder.length)%videoOrder.length; renderVideoCard(); };
+    var nx=document.getElementById('videoNext'); if(nx) nx.onclick=function(){ videoIdx=(videoIdx+1)%videoOrder.length; renderVideoCard(); };
+    var sh=document.getElementById('videoShuffle'); if(sh) sh.onclick=function(){ for(var i=videoOrder.length-1;i>0;i--){ var j=Math.floor(Math.random()*(i+1)); var t=videoOrder[i]; videoOrder[i]=videoOrder[j]; videoOrder[j]=t; } videoIdx=0; renderVideoCard(); showToast('Video cards shuffled'); };
+    var rt=document.getElementById('videoRetry'); if(rt) rt.onclick=function(){ videoChosen=VIDEO_QS.map(function(){return null;}); renderVideoQuiz(); showToast('Video practice reset'); };
+  })();
 
   // ---------- worksheets: Worksheet 5, worked in full, plus its 25 practice problems ----------
   var WORKSHEETS=[
