@@ -3,316 +3,280 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="color-scheme" content="light dark">
-<meta name="description" content="BIEB 146 study site — lectures organized by date (Lecture 8, Oct 20, 2026; Lecture 10, Tue Oct 27, 2026; Lecture 11, Thu Oct 29, 2026). Each lecture is organized by skill: learn with flashcards and Main Facts, practice with math drills (hints and worked solutions), then check yourself with the poll quiz and exam practice. Plus learning objectives, worksheets, and an All Lectures cumulative review.">
+<meta name="color-scheme" content="light">
+<meta name="description" content="BIEB 146 — Genome Diversity in Space. Study each lecture step by step: learning objectives, main facts, flashcards, math drills, the poll quiz, and exam practice.">
 <link rel="icon" href="data:,">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&display=swap" rel="stylesheet">
-<title>BIEB 146 Study Site — Lectures Oct 20, Oct 27 &amp; Oct 29, 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz,wght@6..12,400;6..12,600;6..12,700;6..12,800;6..12,900&display=swap" rel="stylesheet">
+<title>BIEB 146 — Genome Diversity in Space</title>
 <style>
   :root{
-    --bg:#faf7f2; --surface:#ffffff; --surface2:#f6f1ea; --ink:#2E2A33; --muted:#5C566B; --line:#ece6dd;
-    --teal:#7fb8a6; --teal-dark:#5a9a86; --coral:#e8a598; --sun:#e9c88a; --violet:#b8a9d9; --pink:#e8b4c8; --green:#7fb069;
-    --radius:24px; --shadow:0 6px 20px rgba(58,53,72,.06), 0 1px 4px rgba(58,53,72,.04);
-    --font-display:"Baloo 2","Arial Rounded MT Bold",ui-rounded,system-ui,sans-serif;
-  }
-  @media (prefers-color-scheme: dark){
-    :root{ --bg:#1e1c26; --surface:#2a2836; --surface2:#332f42; --ink:#F4F1FA; --muted:#CFC9DC; --line:#403c52; --shadow:0 6px 20px rgba(0,0,0,.25); }
+    --bg:#FDF6E9; --surface:#ffffff; --surface2:#FBF1DC; --ink:#10162F; --muted:#4A5578; --line:#E9DFC6;
+    --teal:#14BF96; --teal-dark:#0C8A6C; --teal-soft:#E2F6EF; --yellow:#FFC72C; --yellow-soft:#FFF3C4;
+    --navy:#10162F; --radius:16px; --shadow:0 2px 10px rgba(16,22,47,.06), 0 1px 3px rgba(16,22,47,.04);
+    --font:"Nunito Sans","Avenir Next","Segoe UI",system-ui,-apple-system,Roboto,"Helvetica Neue",Arial,sans-serif;
   }
   *{box-sizing:border-box}
   html{scroll-behavior:smooth}
-  body{margin:0;font-family:ui-rounded,"SF Pro Rounded",system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;background:var(--bg);color:var(--ink);line-height:1.55;-webkit-tap-highlight-color:transparent}
-  @keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-16px)}}
+  body{margin:0;font-family:var(--font);background:var(--bg);color:var(--ink);line-height:1.6;-webkit-tap-highlight-color:transparent}
+  h1,h2,h3{font-family:var(--font);font-weight:800;letter-spacing:-.01em;line-height:1.2}
+  a{color:var(--teal-dark)}
   @media (prefers-reduced-motion: reduce){ *{scroll-behavior:auto} }
-  .wrap{position:relative;z-index:1;max-width:980px;margin:0 auto;padding:18px 16px 42px}
-  .hero{background:var(--surface);color:var(--ink);border:1px solid var(--line);border-radius:24px;padding:20px;box-shadow:var(--shadow)}
-  
-  .hero h1{margin:2px 0 4px;font-size:32px;line-height:1.02;letter-spacing:-.015em;font-weight:800}
-  .hero p{margin:0;max-width:620px;color:var(--muted);font-size:15.5px;font-weight:600}
-  .pills{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
-  .pill{background:var(--surface2);border:1px solid var(--line);padding:6px 10px;border-radius:999px;font-size:12.5px;font-weight:800;color:var(--ink)}
-  .pill.white{background:#2F6B57;color:#fff;border-color:#2F6B57;box-shadow:none}
-  @media(max-width:720px){.hero h1{font-size:30px}}
-  .card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:18px}
-  .card h2{margin:0 0 6px;font-size:19px;letter-spacing:-.01em}
-  .card h3{margin:0 0 6px;font-size:16px}
-  .muted{color:var(--muted);font-size:14px}
-  .tabs{position:sticky;top:10px;z-index:5;display:flex;flex-wrap:wrap;gap:8px;padding:6px;background:var(--surface);border:1px solid var(--line);border-radius:20px;box-shadow:var(--shadow);margin:16px 0 14px;scrollbar-width:none}
-  .tabs::-webkit-scrollbar{display:none}
-  .tab{flex:1 1 130px;white-space:nowrap;border:0;background:transparent;color:var(--muted);font:inherit;font-weight:900;font-size:14px;padding:10px 12px;border-radius:999px;cursor:pointer;transition:.18s}
-  .tab[aria-selected="true"]{background:#e9e3f5;color:#2E2A33;box-shadow:inset 0 0 0 1px var(--line)}
-  .tab:active{transform:scale(.97)}
-  .panel{display:none} .panel.active{display:block;animation:pop .28s ease}
-  @keyframes pop{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
-  .flipwrap{perspective:1200px;margin:14px 0}
-  .flash{position:relative;width:100%;min-height:290px;cursor:pointer;transform-style:preserve-3d;transition:transform .65s cubic-bezier(.2,.75,.25,1)}
+  .wrap{max-width:1180px;margin:0 auto;padding:28px 22px 0}
+  /* header + profile strip */
+  .topbar{display:flex;flex-wrap:wrap;gap:18px;align-items:flex-start;justify-content:space-between;padding:10px 2px 22px}
+  .topbar h1{margin:0;font-size:52px;font-weight:900;letter-spacing:-.03em;line-height:1}
+  .topbar .subtitle{margin:8px 0 0;font-size:21px;font-weight:700;color:var(--muted)}
+  .profile{display:flex;align-items:center;gap:12px;background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:8px 16px 8px 9px;box-shadow:var(--shadow)}
+  .profile .avatar{width:40px;height:40px;border-radius:50%;background:var(--yellow-soft);display:flex;align-items:center;justify-content:center;flex:0 0 auto}
+  .profile .avatar canvas{width:30px;height:auto}
+  .profile .who{line-height:1.25}
+  .profile .name{font-weight:900;font-size:16px}
+  .profile .streak{font-weight:800;font-size:13.5px;color:#7A5B00}
+  .profile .stepsdone{font-weight:700;font-size:13px;color:var(--muted)}
+  .profile .btn{padding:7px 12px;font-size:13px}
+  /* layout: sidebar + content */
+  .layout{display:grid;grid-template-columns:272px minmax(0,1fr);gap:28px;align-items:start}
+  @media(max-width:820px){ .layout{grid-template-columns:1fr;gap:18px} .topbar h1{font-size:42px} }
+  .sidebar{position:sticky;top:18px;background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:18px}
+  @media(max-width:820px){ .sidebar{position:static} }
+  .side-title{margin:0 0 12px;font-size:18px;font-weight:900}
+  .side-entry{display:block;width:100%;text-align:left;font:inherit;background:transparent;border:0;border-radius:12px;padding:12px 12px;cursor:pointer;color:var(--ink)}
+  .side-entry:hover{background:var(--surface2)}
+  .side-entry.selected{background:var(--yellow-soft);box-shadow:inset 3px 0 0 var(--yellow)}
+  .side-entry b{display:block;font-size:15.5px;line-height:1.3}
+  .side-entry .date{display:block;font-size:13px;font-weight:700;color:var(--muted);margin-top:1px}
+  .side-entry .note{display:block;font-size:12.5px;font-weight:700;color:var(--muted)}
+  .side-progress{margin:2px 12px 8px;font-size:12.5px;font-weight:700;color:var(--muted)}
+  .side-progress .track{height:6px;background:#EFE6CE;border-radius:999px;overflow:hidden;margin-top:5px}
+  .side-progress .track i{display:block;height:100%;background:var(--teal);border-radius:999px}
+  .side-sep{border:0;border-top:1px solid var(--line);margin:12px 0}
+  /* content */
+  .content{min-width:0}
+  .continue-card{display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between;background:var(--navy);color:#fff;border-radius:var(--radius);padding:18px 20px;box-shadow:var(--shadow);margin-bottom:20px}
+  .continue-card b{font-size:18px}
+  .continue-card p{margin:3px 0 0;font-size:14px;color:#C7CEE6;font-weight:600}
+  .continue-card .btn{background:var(--yellow);border-color:var(--yellow);color:var(--navy)}
+  .stepslist{list-style:none;margin:0 0 20px;padding:0;display:flex;flex-wrap:wrap;gap:8px}
+  .step-item{border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:8px 13px;font:inherit;font-weight:800;font-size:14px;cursor:pointer;color:var(--ink);display:inline-flex;gap:7px;align-items:center}
+  .step-item .n{width:22px;height:22px;border-radius:50%;background:var(--surface2);border:1px solid var(--line);display:inline-flex;align-items:center;justify-content:center;font-size:12.5px}
+  .step-item.current{background:var(--navy);color:#fff;border-color:var(--navy)}
+  .step-item.current .n{background:var(--yellow);border-color:var(--yellow);color:var(--navy)}
+  .step-item.done .n{background:var(--teal);border-color:var(--teal);color:#fff}
+  .step-item.done{color:var(--muted)}
+  .pathnav{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:22px 0 6px}
+  .pathnav .spacer{flex:1}
+  .pathnote{display:none;background:var(--teal-soft);border:1px solid #BFE9DA;color:#0B5B47;border-radius:14px;padding:13px 15px;font-weight:700;font-size:14.5px;margin:14px 0}
+  .pathnote.show{display:block}
+  .card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:26px}
+  .card h2{margin:0 0 8px;font-size:26px}
+  .card h3{margin:0 0 6px;font-size:18px}
+  .muted{color:var(--muted);font-size:14.5px}
+  .steplabel{font-size:12px;font-weight:900;letter-spacing:.1em;text-transform:uppercase;color:var(--teal-dark);margin-bottom:6px}
+  .panel{display:none} .panel.active{display:block}
+  .flipwrap{perspective:1200px;margin:18px 0}
+  .flash{position:relative;width:100%;min-height:290px;cursor:pointer;transform-style:preserve-3d;transition:transform .6s cubic-bezier(.2,.75,.25,1)}
   .flash.flipped{transform:rotateY(180deg)}
-  .face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:26px;padding:22px;display:flex;flex-direction:column;justify-content:center}
-  .face.front{background:linear-gradient(145deg,#ffffff,#eef6f1 60%,#fdf6ec);border:1.5px solid #d9e8de;color:var(--ink)}
-  @media(prefers-color-scheme:dark){.face.front{background:linear-gradient(140deg,#232040,#143b3a);color:#fff;border-color:#2dd4bf}}
-  .face.back{background:#EFEAF8;color:#2E2A33;transform:rotateY(180deg);border:1.5px solid #C9BCE4}
-  .face.back .label,.face.back .def,.face.back .hint{color:#2E2A33;opacity:1}
-  .face.back .label{opacity:.62}
-  .face.back .hint{opacity:.75}
-  .face.back .statusdot{background:#2E2A33;color:#fff}
-  .face .label{font-size:11px;font-weight:900;letter-spacing:.14em;text-transform:uppercase;opacity:.65}
-  .face .term{font-size:28px;font-weight:900;line-height:1.05;letter-spacing:-.02em;margin:8px 0}
-  .face .def{font-size:17px;line-height:1.55}
-  .face .hint{margin-top:14px;font-size:13px;font-weight:800;opacity:.7}
-  .statusdot{position:absolute;top:14px;right:14px;font-size:12px;font-weight:900;padding:6px 9px;border-radius:999px;background:rgba(255,255,255,.9);color:#111}
+  .face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:16px;padding:26px;display:flex;flex-direction:column;justify-content:center;border:1px solid var(--line)}
+  .face.front{background:#fff;color:var(--ink)}
+  .face.back{background:var(--teal-soft);color:var(--ink);transform:rotateY(180deg);border-color:#BFE9DA}
+  .face .label{font-size:11px;font-weight:900;letter-spacing:.13em;text-transform:uppercase;opacity:.6}
+  .face .term{font-size:29px;font-weight:900;line-height:1.1;margin:10px 0}
+  .face .def{font-size:17.5px;line-height:1.6}
+  .face .hint{margin-top:16px;font-size:13px;font-weight:800;opacity:.65}
+  .statusdot{position:absolute;top:14px;right:14px;font-size:12px;font-weight:900;padding:6px 10px;border-radius:999px;background:var(--surface2);color:var(--ink);border:1px solid var(--line)}
   .controls{display:flex;flex-wrap:wrap;gap:9px;align-items:center}
-  .btn{appearance:none;border:1px solid var(--line);background:var(--surface);color:var(--ink);font:inherit;font-weight:900;padding:11px 14px;border-radius:999px;cursor:pointer;box-shadow:0 2px 0 rgba(0,0,0,.05);transition:.15s;text-decoration:none;display:inline-flex;align-items:center;gap:7px;font-size:14px}
-  .btn:active{transform:scale(.96)} .btn.primary{background:#4a445e;color:#fff;border-color:#4a445e}
-  .btn.teal{background:#d9ece3;border-color:#c2ddd0;color:#2f5d4e} .btn.sun{background:#fdeec9;border-color:#f2ddab;color:#5c4a12}
-  .btn.coral{background:#fde8e2;border-color:#f2cdc2;color:#7a3a2e} .btn.ghost{box-shadow:none}
+  .btn{appearance:none;border:1px solid var(--line);background:var(--surface);color:var(--ink);font:inherit;font-weight:800;padding:11px 17px;border-radius:999px;cursor:pointer;box-shadow:0 1px 2px rgba(16,22,47,.06);transition:.15s;text-decoration:none;display:inline-flex;align-items:center;gap:7px;font-size:14.5px}
+  .btn:active{transform:scale(.97)} .btn.primary{background:var(--teal);color:#fff;border-color:var(--teal)}
+  .btn.primary:hover{background:var(--teal-dark);border-color:var(--teal-dark)}
+  .btn.teal{background:var(--teal-soft);border-color:#BFE9DA;color:#0B5B47} .btn.sun{background:var(--yellow-soft);border-color:#F2D98A;color:#6B5200}
+  .btn.coral{background:#FDECEA;border-color:#F5C9C2;color:#7A2E22} .btn.ghost{box-shadow:none}
   .btn:disabled{opacity:.45;cursor:not-allowed}
-  .counter{font-weight:900;color:var(--muted);font-size:13px;margin-left:auto}
-  .qbox{border:1px solid var(--line);border-radius:18px;padding:16px;margin:12px 0;background:var(--surface)}
-  .qbox p.q{font-weight:900;font-size:16.5px;margin:0 0 12px;line-height:1.4}
+  .counter{font-weight:800;color:var(--muted);font-size:13.5px;margin-left:auto}
+  .qbox{border:1px solid var(--line);border-radius:14px;padding:18px;margin:14px 0;background:var(--surface)}
+  .qbox p.q{font-weight:800;font-size:16.5px;margin:0 0 12px;line-height:1.45}
   .opts{display:grid;gap:8px}
-  .opt{width:100%;text-align:left;border:2px solid var(--line);background:var(--surface2);border-radius:14px;padding:12px 13px;font:inherit;font-weight:700;cursor:pointer;transition:.15s}
-  .opt:active{transform:scale(.99)} .opt.correct{border-color:var(--green);background:#dcfce7;color:#14532d}
-  .opt.wrong{border-color:var(--coral);background:#ffe4e6;color:#881337}
-  .opt:disabled{cursor:default;opacity:.92}
-  .explain{display:none;margin-top:12px;background:#ecfdf5;border:1px solid #a7f3d0;color:#064e3b;border-radius:14px;padding:12px;font-size:14.5px}
-  @media(prefers-color-scheme:dark){.explain{background:#0b2e24;color:#d1fae5;border-color:#065f46}.opt.correct{background:#14532d;color:#dcfce7}.opt.wrong{background:#4c0519;color:#ffe4e6}}
+  .opt{width:100%;text-align:left;border:2px solid var(--line);background:#fff;border-radius:12px;padding:12px 14px;font:inherit;font-weight:700;cursor:pointer;transition:.15s;color:var(--ink)}
+  .opt:active{transform:scale(.99)} .opt.correct{border-color:var(--teal);background:var(--teal-soft);color:#0B5B47}
+  .opt.wrong{border-color:#E26D5A;background:#FDECEA;color:#7A2E22}
+  .opt:disabled{cursor:default}
+  .explain{display:none;margin-top:12px;background:var(--teal-soft);border:1px solid #BFE9DA;color:#0B5B47;border-radius:12px;padding:12px 14px;font-size:14.5px}
   .explain.show{display:block}
-  .scorebanner{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;background:#f3f7f1;border:1px solid var(--line);color:var(--ink);border-radius:16px;padding:12px 14px;font-weight:700}
-  @media(prefers-color-scheme:dark){.scorebanner{color:#111}}
-  .drill{background:linear-gradient(135deg,#fdf6ec,#f6f1f8);border:1px solid var(--line);border-radius:20px;padding:18px;color:var(--ink)}
-  @media(prefers-color-scheme:dark){.drill{background:linear-gradient(135deg,#2a2118,#2d1b2a);color:#fff;border-color:#7c2d12}}
-  .drill .big{font-size:19px;font-weight:900;line-height:1.4}
-  .steps{display:none;margin-top:14px;background:var(--surface);color:var(--ink);border-radius:14px;padding:14px;border:1px solid var(--line)}
+  .scorebanner{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;background:var(--surface2);border:1px solid var(--line);color:var(--ink);border-radius:14px;padding:12px 15px;font-weight:700}
+  .drill{background:var(--surface2);border:1px solid var(--line);border-radius:16px;padding:20px;color:var(--ink)}
+  .drill .big{font-size:19px;font-weight:800;line-height:1.45}
+  .steps{display:none;margin-top:14px;background:var(--surface);color:var(--ink);border-radius:14px;padding:15px;border:1px solid var(--line)}
   .steps.show{display:block} .steps ol{margin:6px 0 0 18px;padding:0} .steps li{margin:6px 0}
-  .moves{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin:12px 0}
+  .moves{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:14px 0}
   @media(max-width:640px){.moves{grid-template-columns:1fr}}
-  .move{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:12px}
-  .move b{color:var(--teal-dark)} @media(prefers-color-scheme:dark){.move b{color:#5eead4}}
-  .move code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:13px;background:var(--surface2);padding:2px 5px;border-radius:6px}
-  details.example{border:1px solid var(--line);border-radius:16px;padding:12px 14px;margin:9px 0;background:var(--surface)}
-  details.example summary{font-weight:900;cursor:pointer}
-  .numgrid{display:block;border:1px solid var(--line);border-radius:18px;overflow:hidden;background:var(--surface)}
-  
-  .numcard{padding:14px 16px;color:var(--ink);border-bottom:1px solid var(--line);background:var(--surface)} .numcard:last-child{border-bottom:0}
+  .move{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:13px}
+  .move b{color:var(--teal-dark)}
+  .move code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:13px;background:var(--surface2);padding:2px 6px;border-radius:6px}
+  details.example{border:1px solid var(--line);border-radius:14px;padding:13px 15px;margin:10px 0;background:var(--surface)}
+  details.example summary{font-weight:800;cursor:pointer}
+  .numgrid{display:block;border:1px solid var(--line);border-radius:14px;overflow:hidden;background:var(--surface)}
+  .numcard{padding:18px 20px;color:var(--ink);border-bottom:1px solid var(--line);background:var(--surface)} .numcard:last-child{border-bottom:0}
   .numcard small{font-weight:800;letter-spacing:.05em;text-transform:uppercase;color:var(--muted);font-size:12px}
-  .numcard strong{display:block;font-size:20px;line-height:1.25;letter-spacing:-.01em;margin-top:2px}
-  .numcard p{margin:3px 0 0;font-size:14px;color:var(--muted);font-weight:600}
-  .numcard .interpret{margin-top:10px;padding:11px 12px;border-radius:12px;background:var(--surface2);border:1px solid var(--line);font-size:14px;line-height:1.55;color:var(--ink);font-weight:600}
+  .numcard strong{display:block;font-size:20px;line-height:1.3;margin-top:2px}
+  .numcard p{margin:4px 0 0;font-size:14.5px;color:var(--muted);font-weight:600}
+  .numcard .interpret{margin-top:12px;padding:12px 14px;border-radius:12px;background:var(--surface2);border:1px solid var(--line);font-size:14.5px;line-height:1.6;color:var(--ink);font-weight:600}
   .numcard .interpret b{font-weight:900}
-  /* ---- interpret the data: plain-language readings of the Lecture 11 numbers ---- */
-  .interp-sec{margin:0 0 14px;border:1.5px solid #2F6B57;border-radius:18px;padding:16px;background:#EAF4EE;color:#2E2A33}
-  @media (prefers-color-scheme: dark){ .interp-sec{background:#22483A;color:#F4F1FA} }
-  .interp-sec h3{margin:2px 0 4px;font-size:18px}
-  .interp-sec h4{margin:18px 0 4px;font-size:16px}
-  .interp-sec p{margin:4px 0 0;font-size:14.5px;line-height:1.6;font-weight:600}
-  .interp-sec .takeaway{margin-top:12px;padding:11px 12px;border-radius:12px;background:var(--surface);border:1px solid var(--line);color:var(--ink)}
+  .interp-sec{margin:0 0 16px;border:1px solid var(--line);border-radius:14px;padding:20px;background:var(--surface2);color:var(--ink)}
+  .interp-sec h3{margin:2px 0 4px;font-size:19px}
+  .interp-sec h4{margin:20px 0 4px;font-size:16.5px}
+  .interp-sec p{margin:5px 0 0;font-size:14.5px;line-height:1.65;font-weight:600}
+  .interp-sec .takeaway{margin-top:14px;padding:12px 14px;border-radius:12px;background:var(--surface);border:1px solid var(--line);color:var(--ink)}
   .splitbar{display:flex;height:22px;border-radius:999px;overflow:hidden;border:1px solid var(--line);margin:10px 0 6px}
   .splitbar i{display:block;height:100%}
-  .splitbar .a{background:#7fb8a6} .splitbar .b{background:#e8a598}
+  .splitbar .a{background:var(--teal)} .splitbar .b{background:var(--yellow)}
   .splitlab{display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap;font-size:13px;font-weight:800;color:var(--muted)}
-  .interp-sec .splitlab{color:#43524A}
-  @media (prefers-color-scheme: dark){ .interp-sec .splitlab{color:#DCE7DF} }
-  .fstscale{position:relative;height:14px;background:var(--surface2);border:1px solid var(--line);border-radius:999px;margin:12px 0 8px}
-  .fstscale .dot{position:absolute;top:50%;transform:translate(-50%,-50%);width:12px;height:12px;border-radius:50%;background:#2F6B57;border:2px solid #fff;box-shadow:0 0 0 1px var(--line)}
+  .fstscale{position:relative;height:14px;background:#fff;border:1px solid var(--line);border-radius:999px;margin:12px 0 8px}
+  .fstscale .dot{position:absolute;top:50%;transform:translate(-50%,-50%);width:12px;height:12px;border-radius:50%;background:var(--teal-dark);border:2px solid #fff;box-shadow:0 0 0 1px var(--line)}
   .fstlegend{font-size:13px;font-weight:800;color:var(--muted);margin:0}
-  .interp-sec .fstlegend{color:#43524A}
-  @media (prefers-color-scheme: dark){ .interp-sec .fstlegend{color:#DCE7DF} }
-  .ladrow{margin:10px 0}
+  .ladrow{margin:11px 0}
   .ladrow .ladlab{display:flex;justify-content:space-between;gap:10px;font-size:14px;font-weight:800}
-  .ladtrack{height:12px;border-radius:999px;background:var(--surface);border:1px solid var(--line);overflow:hidden;margin-top:4px}
-  .ladtrack i{display:block;height:100%;background:#7fb8a6}
-  .ladtrack i.coralbar{background:#e8a598}
-  .ladtrack i.violetbar{background:#b8a9d9}
-  
-  .quick{margin-top:14px;border:2px dashed var(--line);border-radius:18px;padding:16px;text-align:center}
+  .ladtrack{height:12px;border-radius:999px;background:#fff;border:1px solid var(--line);overflow:hidden;margin-top:5px}
+  .ladtrack i{display:block;height:100%;background:var(--teal)}
+  .ladtrack i.coralbar{background:#E26D5A}
+  .ladtrack i.violetbar{background:#8A7FC0}
+  .quick{margin-top:16px;border:2px dashed var(--line);border-radius:16px;padding:18px;text-align:center}
   .quick .answer{font-size:22px;font-weight:900;min-height:34px}
-  
-  footer{color:var(--muted);font-size:13px;text-align:center;padding:18px 6px 0}
-  .toast{position:fixed;left:50%;bottom:18px;transform:translateX(-50%) translateY(20px);background:#4a445e;color:#fff;padding:11px 14px;border-radius:999px;font-weight:800;font-size:14px;opacity:0;pointer-events:none;transition:.25s;z-index:50;box-shadow:var(--shadow);max-width:92vw;text-align:center}
+  .toast{position:fixed;left:50%;bottom:18px;transform:translateX(-50%) translateY(20px);background:var(--navy);color:#fff;padding:11px 16px;border-radius:999px;font-weight:800;font-size:14px;opacity:0;pointer-events:none;transition:.25s;z-index:50;box-shadow:var(--shadow);max-width:92vw;text-align:center}
   .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
-  .sprite{width:46px;height:auto;image-rendering:pixelated;image-rendering:crisp-edges;animation:bob 3.2s ease-in-out infinite;flex:0 0 auto}
-  .sprite.small{width:42px}
-  @keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
-  @media (prefers-reduced-motion: reduce){ .sprite{animation:none} }
-  .pixelbox{border:3px solid #57506e;border-radius:12px;box-shadow:5px 5px 0 rgba(87,80,110,.16)}
-  @media (prefers-color-scheme: dark){ .pixelbox{border-color:#9a92bd;box-shadow:5px 5px 0 rgba(0,0,0,.35)} }
+  .sprite{width:46px;height:auto;image-rendering:pixelated;image-rendering:crisp-edges;flex:0 0 auto}
+  .pixelbox{border:2px solid var(--navy);border-radius:12px}
   .numrow{display:flex;gap:8px;flex-wrap:wrap;align-items:stretch}
-  .numinput{flex:1;min-width:150px;padding:12px 13px;border:2px solid var(--line);border-radius:14px;background:var(--surface2);color:var(--ink);font:inherit;font-weight:800}
-  .numinput:focus{outline:3px solid #c9b8e8;outline-offset:1px}
-  .feedback{display:none;margin-top:12px;border-radius:14px;padding:12px 13px;font-size:15px;font-weight:700;border:1px solid transparent}
+  .numinput{flex:1;min-width:150px;padding:12px 14px;border:2px solid var(--line);border-radius:12px;background:#fff;color:var(--ink);font:inherit;font-weight:800}
+  .numinput:focus{outline:3px solid var(--yellow);outline-offset:1px}
+  .feedback{display:none;margin-top:12px;border-radius:12px;padding:12px 14px;font-size:15px;font-weight:700;border:1px solid transparent}
   .feedback.show{display:block}
-  .feedback.good{background:#dcfce7;color:#14532d;border-color:#86efac}
-  .feedback.bad{background:#ffe4e6;color:#881337;border-color:#fda4af}
-  @media (prefers-color-scheme: dark){ .feedback.good{background:#14532d;color:#dcfce7;border-color:#166534} .feedback.bad{background:#4c0519;color:#ffe4e6;border-color:#881337} }
-  /* ---- real slide images ---- */
-  .slidefig{margin:12px 0;background:#fff;border:1px solid var(--line);border-radius:16px;padding:10px}
+  .feedback.good{background:var(--teal-soft);color:#0B5B47;border-color:#BFE9DA}
+  .feedback.bad{background:#FDECEA;color:#7A2E22;border-color:#F5C9C2}
+  .slidefig{margin:14px 0;background:#fff;border:1px solid var(--line);border-radius:14px;padding:10px}
   .slideimg{width:100%;height:auto;display:block;border-radius:10px;background:#fff;cursor:zoom-in}
-  .slidecap{font-size:12.5px;font-weight:800;color:#6b6579;padding:8px 4px 2px;display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap}
-  .slidecap .zoom{color:#5a9a86}
-  .lightbox{position:fixed;inset:0;background:rgba(24,20,36,.92);z-index:200;display:none;align-items:center;justify-content:center;padding:14px;cursor:zoom-out}
+  .slidecap{font-size:12.5px;font-weight:800;color:var(--muted);padding:8px 4px 2px;display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap}
+  .slidecap .zoom{color:var(--teal-dark)}
+  .lightbox{position:fixed;inset:0;background:rgba(16,22,47,.92);z-index:200;display:none;align-items:center;justify-content:center;padding:14px;cursor:zoom-out}
   .lightbox.open{display:flex}
   .lightbox img{max-width:100%;max-height:92vh;border-radius:12px;background:#fff;box-shadow:0 20px 60px rgba(0,0,0,.5)}
   .lightbox .lb-close{position:absolute;top:14px;right:16px;background:#fff;color:#111;border:0;border-radius:999px;font:inherit;font-weight:900;padding:9px 14px;cursor:pointer}
-  .bar{height:10px;background:var(--line);border-radius:999px;overflow:hidden;display:flex;margin-top:12px}
+  .bar{height:10px;background:#EFE6CE;border-radius:999px;overflow:hidden;display:flex;margin-top:12px}
   .bar i{display:block;height:100%}
-  .bar .know{background:var(--teal)} .bar .learn{background:var(--sun)}
-  /* ---- Khan-style flow: learn -> practice -> check, mastery kept quiet per skill ---- */
-  .steplabel{font-size:11px;font-weight:900;letter-spacing:.12em;text-transform:uppercase;color:var(--teal-dark);margin-bottom:4px}
-  @media(prefers-color-scheme:dark){.steplabel{color:#5eead4}}
-  .flowcard{margin-top:14px}
-  .flowsteps{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0 4px}
-  .flowstep{flex:1 1 180px;background:var(--surface2);border:1px solid var(--line);border-radius:14px;padding:10px 12px;font-size:13.5px;font-weight:600;color:var(--muted)}
-  .flowstep b{display:block;color:var(--ink);font-size:14.5px}
-  .skilllist{list-style:none;margin:10px 0 0;padding:0}
-  .skilllist li{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:8px 2px;border-top:1px solid var(--line);font-weight:700;font-size:14.5px}
-  .mastery{flex:0 0 auto;font-size:11.5px;font-weight:900;letter-spacing:.05em;text-transform:uppercase;padding:5px 9px;border-radius:999px;background:var(--surface2);border:1px solid var(--line);color:var(--muted)}
-  .mastery.familiar{background:#fdeec9;border-color:#f2ddab;color:#5c4a12}
-  .mastery.proficient{background:#d9ece3;border-color:#2F6B57;color:#2F6B57}
-  @media(prefers-color-scheme:dark){.mastery.familiar{background:#3a2f10;color:#fdeec9;border-color:#8a6d1f}.mastery.proficient{background:#22483A;color:#A5D8BE;border-color:#2F6B57}}
-  .skillchips{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0 4px}
-  .hintbox{display:none;margin-top:12px;background:#fffbe8;border:1px solid #f2ddab;color:#5c4a12;border-radius:14px;padding:12px 14px;font-size:14.5px}
+  .bar .know{background:var(--teal)} .bar .learn{background:var(--yellow)}
+  .hintbox{display:none;margin-top:12px;background:#FFFBEB;border:1px solid #F2D98A;color:#6B5200;border-radius:12px;padding:12px 14px;font-size:14.5px}
   .hintbox.show{display:block}
   .hintbox ol{margin:6px 0 0 18px;padding:0}.hintbox li{margin:5px 0}
-  @media(prefers-color-scheme:dark){.hintbox{background:#2e2708;color:#fdeec9;border-color:#8a6d1f}}
-  /* ---- fake dbSNP card, same layout as the lecture slide ---- */
-  .dbsnp{background:#fff;color:#1c1c22;border:1px solid #d8d4e4;border-radius:12px;padding:14px 16px;margin:12px 0;font-size:14px;box-shadow:0 2px 10px rgba(58,53,72,.07);overflow-x:auto}
+  .dbsnp{background:#fff;color:#1c1c22;border:1px solid #D8D4E4;border-radius:12px;padding:14px 16px;margin:12px 0;font-size:14px;box-shadow:0 2px 10px rgba(16,22,47,.06);overflow-x:auto}
   .dbsnp .rs{color:#7030a0;font-weight:700}
   .dbsnp .rs i{color:#1c1c22;font-weight:400}
   .dbsnp table{border-collapse:collapse;margin-top:6px}
-  .dbsnp td{padding:1.5px 14px 1.5px 0;vertical-align:top;white-space:nowrap}
+  .dbsnp td{padding:2px 14px 2px 0;vertical-align:top;white-space:nowrap}
   .dbsnp td.k{font-weight:600;color:#333}
   .dbsnp .maf{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:13.5px;line-height:1.65}
   .dbsnp .flank{color:#2f5aa8}
-  .dbsnp-head{font-size:11px;font-weight:900;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:2px}
-  /* ---- generated coverage cartoon (exam practice): reads stacked over a genome line ---- */
-  .covfig{margin:12px 0;background:var(--surface2);border:1px solid var(--line);border-radius:16px;padding:10px}
+  .dbsnp-head{font-size:11px;font-weight:900;letter-spacing:.11em;text-transform:uppercase;color:var(--muted);margin-bottom:2px}
+  .covfig{margin:14px 0;background:var(--surface2);border:1px solid var(--line);border-radius:14px;padding:10px}
   .covfig svg{width:100%;height:auto;display:block}
   .covcap{font-size:12.5px;font-weight:800;color:var(--muted);padding:6px 4px 0}
-
-  /* ---- per-category resets: small, quiet, with an in-page confirm step ---- */
-  .resetbtn{font-size:12.5px;padding:8px 11px}
-  .confirmbox{position:fixed;inset:0;background:rgba(24,20,36,.55);z-index:210;display:none;align-items:center;justify-content:center;padding:16px}
+  .resetbtn{font-size:12.5px;padding:8px 12px}
+  .confirmbox{position:fixed;inset:0;background:rgba(16,22,47,.55);z-index:210;display:none;align-items:center;justify-content:center;padding:16px}
   .confirmbox.open{display:flex}
-  .confirmcard{background:var(--surface);color:var(--ink);border:1px solid var(--line);border-radius:18px;padding:18px;max-width:420px;width:100%;box-shadow:var(--shadow)}
+  .confirmcard{background:var(--surface);color:var(--ink);border:1px solid var(--line);border-radius:18px;padding:20px;max-width:420px;width:100%;box-shadow:var(--shadow)}
   .confirmcard p{margin:0 0 14px;font-weight:800;font-size:16px;line-height:1.45}
-  /* ---- lecture selector ---- */
-  .sec-title{font-size:19px;margin:0 0 10px;letter-spacing:-.01em}
-  .lecgrid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-  @media(max-width:640px){.lecgrid{grid-template-columns:1fr}}
-  .leccard{text-align:left;font:inherit;background:var(--surface);border:2px solid var(--line);border-radius:18px;padding:14px 16px;cursor:pointer;color:var(--ink);display:block;width:100%}
-  .leccard b{display:block;font-size:16.5px}
-  .leccard span{display:block;color:var(--muted);font-size:13.5px;font-weight:600;margin-top:3px}
-  .leccard em{font-style:normal;display:inline-block;margin-top:8px;font-size:11.5px;font-weight:900;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
-  .leccard.selected{border-color:#2F6B57;background:#EAF4EE;color:#2E2A33}
-  .leccard.selected span{color:#43524A}
-  .leccard.selected em{color:#2F6B57}
-  @media (prefers-color-scheme: dark){ .leccard.selected{background:#22483A;color:#F4F1FA} .leccard.selected span{color:#DCE7DF} .leccard.selected em{color:#A5D8BE} }
-  .factgroup{font-weight:900;font-size:14.5px;padding:14px 16px 2px;color:var(--ink)}
-  /* ---- codon chart toggle ---- */
-  details.codonchart{margin:12px 0;border:1.5px solid #2F6B57;border-radius:14px;background:var(--surface2);padding:10px 12px}
+  .factgroup{font-weight:900;font-size:15px;padding:16px 20px 2px;color:var(--ink)}
+  details.codonchart{margin:12px 0;border:1.5px solid var(--teal-dark);border-radius:14px;background:var(--surface2);padding:10px 13px}
   details.codonchart summary{font-weight:900;cursor:pointer;color:var(--ink);font-size:15px;padding:2px 0}
   details.codonchart img{width:100%;max-width:520px;height:auto;display:block;margin:10px auto 6px;background:#fff;border-radius:10px;cursor:zoom-in}
   .codoncap{font-size:13px;font-weight:700;color:var(--muted);text-align:center;padding-bottom:4px}
-  @media(max-width:640px){ .tabs{flex-wrap:wrap;overflow-x:visible;border-radius:20px} .tab{flex:1 1 30%;white-space:normal} }
-  /* ---- assigned video (Lecture 11): Keolu Fox TED talk ---- */
-  .video-meta{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:12px 0}
+  .video-meta{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:14px 0}
   .videobeats{margin:10px 0 0 20px;padding:0;display:grid;gap:10px}
-  .videobeats li{font-size:14.5px;line-height:1.6;color:var(--muted);font-weight:600}
+  .videobeats li{font-size:14.5px;line-height:1.65;color:var(--muted);font-weight:600}
   .videobeats li b{color:var(--ink)}
   .video-flip .flash{min-height:330px}
   .video-flip .face .term{font-size:20px;line-height:1.35}
   .video-flip .face .def{font-size:16.5px}
   @media(max-width:640px){ .video-flip .flash{min-height:380px} }
-  /* ---- learning objectives & worksheets ---- */
-  .objlist{list-style:none;margin:12px 0 0;padding:0;display:grid;gap:10px}
-  .obj{border:1px solid var(--line);border-radius:16px;padding:13px 14px;background:var(--surface2)}
-  .obj b.q{display:block;font-size:15.5px;line-height:1.45}
-  .obj .a{margin-top:6px;font-size:14.5px;color:var(--muted);font-weight:600}
+  .objlist{list-style:none;margin:14px 0 0;padding:0;display:grid;gap:14px}
+  .obj{border:1px solid var(--line);border-radius:14px;padding:16px 18px;background:var(--surface)}
+  .obj b.q{display:block;font-size:16px;line-height:1.5}
+  .obj .a{margin-top:8px;font-size:14.5px;color:var(--muted);font-weight:600;line-height:1.65}
   .obj .a b{color:var(--ink)}
-  .objsub{margin-top:12px;border-top:1px dashed var(--line);padding-top:12px}
-  .objsub b.q{font-size:14.5px}
+  .objsub{margin-top:14px;border-top:1px dashed var(--line);padding-top:14px}
+  .objsub b.q{font-size:15px}
   .objsub .a{font-size:14px}
-  .announce{border:1.5px solid #2F6B57;border-radius:16px;padding:12px 14px;background:#EAF4EE;color:#2E2A33;font-size:14px;font-weight:600}
-  @media (prefers-color-scheme: dark){ .announce{background:#22483A;color:#F4F1FA} }
-  .wsq{border:1px solid var(--line);border-radius:18px;padding:16px;margin:14px 0;background:var(--surface)}
-  .wsq h3{font-size:17px}
-  .wsq ol{margin:8px 0 0 18px;padding:0}
-  .wsq ol li{margin:6px 0}
-  .wsans{background:#ecfdf5;border:1px solid #a7f3d0;color:#064e3b;border-radius:14px;padding:12px 13px;font-weight:700;font-size:14.5px;margin-top:10px}
-  @media (prefers-color-scheme: dark){ .wsans{background:#0b2e24;color:#d1fae5;border-color:#065f46} }
-  .cheatsheet{width:100%;border-collapse:collapse;font-size:14px;margin-top:8px}
-  .cheatsheet th,.cheatsheet td{border:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
-  .cheatsheet th{background:var(--surface2)}
-  .cheatsheet td code,.wsq code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:13px;background:var(--surface2);padding:2px 5px;border-radius:6px}
-  details.practice{border:1px solid var(--line);border-radius:14px;padding:11px 13px;margin:8px 0;background:var(--surface)}
-  details.practice summary{font-weight:800;cursor:pointer;line-height:1.45}
-  details.practice p{margin:8px 0 0;font-size:14.5px;color:var(--muted);font-weight:600}
+  .objgroup{margin:0 0 26px}
+  .objgroup h3{font-size:19px;margin:0 0 4px}
+  .announce{border:1px solid #BFE9DA;border-radius:14px;padding:13px 15px;background:var(--teal-soft);color:#0B5B47;font-size:14px;font-weight:600}
+  .wsq{border:1px solid var(--line);border-radius:16px;padding:20px;margin:16px 0;background:var(--surface);box-shadow:var(--shadow)}
+  .wsq h3{font-size:18px}
+  .wsq ol{margin:10px 0 0 18px;padding:0}
+  .wsq ol li{margin:8px 0;line-height:1.6}
+  .wsans{background:var(--teal-soft);border:1px solid #BFE9DA;color:#0B5B47;border-radius:12px;padding:12px 14px;font-weight:700;font-size:14.5px;margin-top:12px}
+  .ws-how{display:grid;gap:10px;margin-top:8px}
+  .ws-how .row{background:var(--surface2);border:1px solid var(--line);border-radius:12px;padding:13px 15px;font-size:14.5px;line-height:1.6}
+  .ws-how .row b{display:block}
+  .ws-cheat{display:grid;gap:8px;margin-top:8px}
+  .ws-cheat .row{display:flex;flex-wrap:wrap;gap:6px 14px;justify-content:space-between;background:var(--surface2);border:1px solid var(--line);border-radius:12px;padding:11px 14px;font-size:14.5px}
+  .ws-cheat code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:13px;background:#fff;border:1px solid var(--line);padding:2px 7px;border-radius:6px}
+  .wsq code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:13px;background:var(--surface2);padding:2px 6px;border-radius:6px}
+  .practice-list{list-style:none;margin:8px 0 0;padding:0;display:grid;gap:10px;counter-reset:practice}
+  .practice-list li{counter-increment:practice}
+  details.practice{border:1px solid var(--line);border-radius:14px;padding:13px 15px;background:var(--surface)}
+  details.practice summary{font-weight:800;cursor:pointer;line-height:1.5}
+  details.practice summary::before{content:counter(practice) ". ";color:var(--teal-dark)}
+  details.practice p{margin:10px 0 0;font-size:14.5px;color:var(--muted);font-weight:600;line-height:1.6}
   details.practice p b{color:var(--ink)}
   .gelcap{font-size:12.5px;font-weight:800;color:var(--muted);padding:6px 4px 0}
-  /* ---- chunky rounded display font: headings, lecture names, mode names, big numbers only ---- */
-  .hero h1,.card h2,.card h3,.sec-title,.leccard b,.numcard strong,.face .term,.tab,.quick .answer{font-family:var(--font-display)}
+  .label{font-size:11px;font-weight:900;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+  /* dark footer band */
+  .footerband{margin-top:44px;background:var(--navy);color:#E8ECF7;border-radius:18px 18px 0 0;padding:26px 24px 30px;text-align:center}
+  .footerband .sprites{display:flex;justify-content:center;align-items:flex-end;gap:26px;margin-bottom:14px}
+  .footerband .sprites canvas{width:52px;height:auto;image-rendering:pixelated;image-rendering:crisp-edges}
+  .footerband p{margin:0;font-size:14px;font-weight:600;color:#C7CEE6}
 </style>
 </head>
 <body>
 <div class="wrap">
-  <header class="hero">
-    <div style="font-weight:800;letter-spacing:.08em;font-size:11px;text-transform:uppercase;color:var(--muted)">UC San Diego • Population Genetics</div>
-    <h1>BIEB 146 Study Site <canvas class="sprite" data-sprite="sprout" style="width:30px;vertical-align:-4px" aria-hidden="true"></canvas></h1>
-    <p>Learn the facts, practice each skill with hints, then check yourself.</p>
-    <div class="pills">
-      <span class="pill white" id="pillLecture">Lecture 8 — Oct 20, 2026</span>
-      <span class="pill" id="pillTopic">Genome diversity in space</span>
-      <button class="btn ghost" id="sfxToggle" aria-pressed="true" style="padding:6px 12px;font-size:12.5px">🔊 Sound: On</button>
+  <header class="topbar">
+    <div>
+      <h1>BIEB 146</h1>
+      <p class="subtitle">Genome Diversity in Space</p>
+    </div>
+    <div class="profile">
+      <span class="avatar"><canvas class="sprite" data-sprite="sprout" aria-hidden="true"></canvas></span>
+      <span class="who"><span class="name">Kari</span><br><span class="streak" id="streakLine">🔥 0 day streak</span><br><span class="stepsdone" id="stepsTotal">0 steps completed</span></span>
+      <button class="btn ghost" id="sfxToggle" aria-pressed="true">🔊 Sound: On</button>
     </div>
   </header>
 
-  <section aria-label="Choose a lecture" style="margin-top:16px">
-    <h2 class="sec-title">Choose a lecture</h2>
-    <div class="lecgrid" role="group" aria-label="Lectures">
-      <button class="leccard selected" id="lecBtn8" aria-pressed="true"><b>Lecture 8 — Oct 20, 2026</b><span>Genome diversity in space • 18 flashcards • 3 poll questions • 7 main facts</span><em>Lecture 8</em></button>
-      <button class="leccard" id="lecBtn27" aria-pressed="false"><b>Tue Oct 27, 2026 — GWAS &amp; Odds Ratios</b><span>Case–control GWAS, odds ratios, Manhattan plots &amp; SNP chips • 18 flashcards • 4 poll questions • 10 main facts</span><em>Lecture 10</em></button>
-      <button class="leccard" id="lecBtn29" aria-pressed="false"><b>Thu Oct 29, 2026 — Lecture 11</b><span>Tag SNPs, haplotypes &amp; imputation, missing heritability, Lewontin, FST &amp; race • 25 flashcards • 6 poll questions • 12 main facts</span><em>New lecture</em></button>
-      <button class="leccard" id="lecBtnAll" aria-pressed="false"><b>All Lectures</b><span>Cumulative review — every lecture so far, nothing mixed up: each deck stays labeled, Main Facts grouped by lecture</span><em>End-of-term review</em></button>
-    </div>
-    <p class="muted" id="scopeBar" style="margin:10px 2px 0;font-weight:600">Now studying: <b>Lecture 8 — Oct 20, 2026</b>. Every mode below uses only this lecture. New lectures arrive here as their own dated cards.</p>
-  </section>
+  <div class="layout">
+    <aside class="sidebar" aria-label="Lectures">
+      <h2 class="side-title">Lectures</h2>
+      <button class="side-entry selected" id="lecBtn8" aria-pressed="true"><b>Lecture 8</b><span class="date">Tuesday, October 20, 2026</span><span class="note">SNPs &amp; Allele Frequencies</span></button>
+      <div class="side-progress" id="prog-lec8"></div>
+      <button class="side-entry" id="lecBtn27" aria-pressed="false"><b>Lecture 10</b><span class="date">Tuesday, October 27, 2026</span><span class="note">GWAS &amp; Odds Ratios</span></button>
+      <div class="side-progress" id="prog-lec27"></div>
+      <button class="side-entry" id="lecBtn29" aria-pressed="false"><b>Lecture 11</b><span class="date">Thursday, October 29, 2026</span><span class="note">TagSNPs, Imputation &amp; Human Variation</span></button>
+      <div class="side-progress" id="prog-lec29"></div>
+      <button class="side-entry" id="lecBtnAll" aria-pressed="false"><b>All Lectures</b><span class="note">Cumulative review</span></button>
+      <div class="side-progress" id="prog-all"></div>
+      <hr class="side-sep">
+      <button class="side-entry" id="lecBtnWs" aria-pressed="false"><b>Worksheets</b><span class="note">Worksheet 5 — Friday, October 30, 2026</span><span class="note">Odds ratios + dbSNP entries</span></button>
+    </aside>
 
-  <section class="card flowcard" aria-label="How to study this lecture">
-    <div class="steplabel">How this lecture works</div>
-    <h2 style="margin-bottom:2px">Learn &rarr; practice &rarr; check</h2>
-    <p class="muted" style="margin:0">Start with the learn layer, practice one skill at a time with hints, and save the quizzes for last &mdash; the same rhythm as a good practice set.</p>
-    <div class="flowsteps">
-      <div class="flowstep"><b>1 &middot; Learn</b>Flashcards &amp; Main Facts &mdash; the terms and figures first.</div>
-      <div class="flowstep"><b>2 &middot; Practice</b>Math Drills &mdash; one skill at a time, a Hint button when you&rsquo;re stuck, and a full worked solution after you answer.</div>
-      <div class="flowstep"><b>3 &middot; Check</b>Poll Quiz &amp; Exam Practice &mdash; the lecture&rsquo;s questions, then the same shapes with new numbers.</div>
-    </div>
-    <h3 style="margin-top:14px">Skills in this lecture</h3>
-    <p class="muted" style="margin:0">Your level updates quietly as you answer &mdash; it lives on this device, per skill.</p>
-    <ul class="skilllist" id="skillList"></ul>
-    <div class="controls" style="margin-top:14px">
-      <button class="btn ghost resetbtn" id="resetSkillsTop">Reset skill mastery</button>
-      <button class="btn ghost resetbtn" id="resetEverything">Reset everything for this lecture</button>
-    </div>
-    <p class="muted" style="margin:8px 0 0">Every category can be reset on its own, too — the reset button lives inside Flashcards, Poll Quiz, Math Drills and Exam Practice. Resetting asks first, then puts that category back to zero / Not started so you can start again.</p>
-  </section>
-
-  <nav class="tabs" role="tablist" aria-label="Study modes">
-    <button class="tab" role="tab" aria-selected="true" data-panel="flashPanel">🃏 Flashcards <span id="tabCount">(18)</span></button>
-    <button class="tab" role="tab" aria-selected="false" data-panel="numbersPanel">★ Main Facts</button>
-    <button class="tab" role="tab" aria-selected="false" data-panel="mathPanel">🧮 Math Drills</button>
-    <button class="tab" role="tab" aria-selected="false" data-panel="quizPanel">✏️ Poll Quiz</button>
-    <button class="tab" role="tab" aria-selected="false" data-panel="examPanel">🎯 Exam Practice</button>
-    <button class="tab" role="tab" aria-selected="false" data-panel="objectivesPanel">📋 Learning Objectives</button>
-    <button class="tab" role="tab" aria-selected="false" data-panel="videoPanel">🎬 Assigned Video</button>
-    <button class="tab" role="tab" aria-selected="false" data-panel="worksheetsPanel">📝 Worksheets</button>
-  </nav>
+    <main class="content" id="contentTop">
+      <div class="continue-card" id="continueCard">
+        <div><b>Continue where you left off</b><p id="continueText">Lecture 8 · Learning Objectives</p></div>
+        <button class="btn" id="continueBtn">Continue →</button>
+      </div>
+      <ol class="stepslist" id="stepsList" aria-label="Steps in this lecture"></ol>
 
   <!-- FLASHCARDS -->
   <section class="panel active" id="flashPanel">
     <div class="card">
       <div style="display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;align-items:center">
-        <div><div class="steplabel">Step 1 &middot; Learn</div><h2 style="margin-bottom:2px">Terminology flashcards</h2><p class="muted" style="margin:0">Tap the card to flip it. Be honest with the buttons — that’s what makes review work.</p></div>
+        <div><div class="steplabel">Flashcards</div><h2 style="margin-bottom:2px">Terminology flashcards</h2><p class="muted" style="margin:0">Tap the card to flip it. Be honest with the buttons — that’s what makes review work.</p></div>
         <span class="pill" style="background:var(--surface2);border:1px solid var(--line);color:var(--ink)" id="deckLabel">Lecture 8 — Oct 20, 2026 • All cards</span>
       </div>
       <div class="bar" role="progressbar" aria-label="Flashcards known" aria-valuemin="0" aria-valuemax="18" aria-valuenow="0" id="progressBar"><i class="know" id="barKnow" style="width:0%"></i><i class="learn" id="barLearn" style="width:0%"></i></div>
@@ -344,7 +308,7 @@
       <p class="muted" id="filterNote" style="margin-bottom:0"></p>
       <div class="controls" style="margin-top:12px">
         <button class="btn ghost" id="reviewHard">Review “Still learning” only</button>
-        <button class="btn ghost resetbtn" id="resetProgress">Reset marks — back to Not started</button>
+        <button class="btn ghost resetbtn" id="resetProgress">Reset</button>
       </div>
     </div>
   </section>
@@ -352,7 +316,7 @@
   <!-- QUIZ -->
   <section class="panel" id="quizPanel">
     <div class="card">
-      <div class="steplabel">Step 3 &middot; Check</div>
+      <div class="steplabel">Poll Quiz</div>
       <h2>Poll quiz — the lecture's questions, from the slides</h2>
       <p class="muted" style="margin-top:0" id="quizIntro">Each question comes with <b>the actual slide from class</b> — read the numbers off it. Question 1 also has a <b>codon chart</b> toggle under it. Tap any slide to zoom.</p>
       <div class="scorebanner"><span>🎯 Current score: <b id="quizScore">0 / 3</b></span><span id="quizBestLabel">Best so far: —</span></div>
@@ -360,7 +324,7 @@
       <div class="controls" style="margin-top:14px">
         <button class="btn primary" id="checkQuiz">Check my answers</button>
         <button class="btn" id="resetQuiz">Try again</button>
-        <button class="btn ghost resetbtn" id="resetQuizScores">Reset scores — back to none</button>
+        <button class="btn ghost resetbtn" id="resetQuizScores">Reset</button>
       </div>
       <p class="muted" id="quizFeedback"></p>
     </div>
@@ -369,7 +333,7 @@
   <!-- MATH -->
   <section class="panel" id="mathPanel">
     <div class="card">
-      <div class="steplabel">Step 2 &middot; Practice &middot; <span id="drillSkillLabel">Skill: MAF &amp; allele frequencies</span></div>
+      <div class="steplabel">Math Drills &middot; <span id="drillSkillLabel">Skill: MAF &amp; allele frequencies</span></div>
       <h2>Math drills — “to the T”</h2>
       <p class="muted" style="margin-top:0" id="mathIntro">Three moves, step by step. Every human is diploid, so people × 2 = alleles. Every drill shows its numbers on a <b>dbSNP card in the exact format of the lecture slide</b> (the worked example below) — same layout every time, so finding the <b>(1000Genomes)</b> row becomes automatic. Type your answer for instant feedback, tap <b>Hint</b> for one step at a time, and open the full worked solution after you answer.</p>
       <div class="moves" id="mathMoves">
@@ -395,7 +359,7 @@
         <div class="steps" id="drillSteps"></div>
       </div>
       <div class="controls" style="margin-top:14px">
-        <button class="btn ghost resetbtn" id="resetMathMastery">Reset skill mastery — back to Not started</button>
+        <button class="btn ghost resetbtn" id="resetMathMastery">Reset</button>
       </div>
       <div id="lec8Ref">
       <h3 style="margin-top:20px">Reference visual — the lecture slide every MAF question copies</h3>
@@ -422,11 +386,10 @@
   <section class="panel" id="examPanel">
     <div class="card">
       <div>
-          <div class="steplabel">Step 3 &middot; Check</div>
-          <h2 style="margin-bottom:2px">Exam Practice — the lecture's questions, new numbers</h2>
+          <div class="steplabel">Exam Practice</div>
+          <h2 style="margin-bottom:2px">Exam Practice — the unit test</h2>
           <p class="muted" style="margin:0" id="examIntro">The polls, remixed: questions rotate through <b>every poll family</b> — codon classification, coverage, the dbSNP major-allele question, frequency &harr; count conversions, and three-allele MAF — shuffled so you never get a long run of one kind, with fresh numbers and drawings each time. <b>Codon questions include the codon chart</b>, and their right answers rotate too (missense, synonymous, nonsense, noncoding). <b>Coverage questions come with a fresh cartoon drawing</b> — count the reads stacked over the marked position. <b>Every MAF question shows its dbSNP card in the exact format of the lecture slide</b> — and each question names <b>which study’s row</b> to read (1000Genomes, gnomAD, TOPMed, PAGE Study, Vietnamese, HapMap, ALFA…), so find that row first, then do the math. Stuck? Tap <b>Hint</b> for one step at a time; the full worked solution appears after you answer.</p>
         </div>
-      </div>
       <div class="scorebanner" style="margin-top:14px"><span>🏆 Score: <b id="examScore">0 / 0</b></span><span id="examMeta">Streak: 0 • Best streak: 0</span></div>
       <div class="qbox pixelbox" id="examBox">
         <div style="font-size:11px;font-weight:900;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)" id="examKind">—</div>
@@ -442,7 +405,7 @@
         <button class="btn sun" id="examHint">💡 Hint</button>
         <button class="btn" id="examStepsBtn">Show full solution</button>
         <button class="btn primary" id="examNext" style="display:none">Next question →</button>
-        <button class="btn ghost resetbtn" id="resetExam">Reset scores &amp; mastery — back to zero</button>
+        <button class="btn ghost resetbtn" id="resetExam">Reset</button>
       </div>
       <p class="muted" style="margin-bottom:0">Tip: for frequency answers you can type the decimal (0.30) or the percent (30) — both count.</p>
     </div>
@@ -451,7 +414,7 @@
   <!-- LEARNING OBJECTIVES -->
   <section class="panel" id="objectivesPanel">
     <div class="card">
-      <div class="steplabel">Covered in full • <span id="objectivesLectureLabel">Lecture 11 — Thu Oct 29, 2026</span></div>
+      <div class="steplabel">Learning Objectives • <span id="objectivesLectureLabel">Lecture 11 — Thu Oct 29, 2026</span></div>
       <h2>Learning objectives — each one stated, then answered</h2>
       <p class="muted" style="margin-top:0" id="objectivesIntro">The lecture’s “By the end of the lecture you should be able to…” aims, stated in full and answered underneath each one, so coverage can be checked at a glance.</p>
       <div id="objectivesAnnounce"></div>
@@ -463,7 +426,7 @@
   <section class="panel" id="videoPanel">
     <div class="card">
       <div id="videoContent">
-        <div class="steplabel">Assigned video • Lecture 11, Thu Oct 29, 2026</div>
+        <div class="steplabel">Assigned Video • Lecture 11, Thu Oct 29, 2026</div>
         <h2>Assigned Video: “Why genetic research must be more diverse”</h2>
         <p class="muted" style="margin-top:0">Keolu Fox, professor in UCSD’s Department of Anthropology and a Native Hawaiian (Kānaka Maoli) geneticist. TED2016. Runtime 6 minutes 49 seconds.</p>
         <div class="video-meta">
@@ -531,11 +494,6 @@
           <button class="btn" id="videoRetry">Try again</button>
         </div>
       </div>
-      <div id="videoEmpty" style="display:none">
-        <div class="steplabel">Assigned video</div>
-        <h2>No assigned video for this lecture yet</h2>
-        <p class="muted" style="margin-bottom:0">The assigned video was added for <b>Lecture 11, Thu Oct 29, 2026</b>. Switch to that lecture (or All Lectures) to see the talk, its key terms, flashcards, and practice questions.</p>
-      </div>
     </div>
   </section>
 
@@ -543,8 +501,8 @@
   <section class="panel" id="worksheetsPanel">
     <div class="card">
       <div class="steplabel">Weekly • most weeks</div>
-      <h2>Worksheets — the section worksheets, worked</h2>
-      <p class="muted" style="margin-top:0">Worksheets are given most weeks and are due Fridays at 9 PM. Each one lives here in date order, with every question worked step by step, the formula cheat sheet, and practice problems whose answers stay hidden until you tap them. Future worksheets stack below the newest one.</p>
+      <h2>Worksheets</h2>
+      <p class="muted" style="margin-top:0">Worksheets are given most weeks and are due Fridays at 9 PM. Each one lives here in date order, with every question worked step by step, the formula summary, and practice problems whose answers stay hidden until you tap them.</p>
       <div id="worksheetsList"></div>
     </div>
   </section>
@@ -552,7 +510,7 @@
   <!-- NUMBERS -->
   <section class="panel" id="numbersPanel">
     <div class="card">
-      <div class="steplabel">Step 1 &middot; Learn</div>
+      <div class="steplabel">Main Facts</div>
       <h2>Main Facts — the figures to know</h2>
       <p class="muted" style="margin-top:0">The key figures for this lecture, as one clean list. In All Lectures view they stay grouped by lecture.</p>
       <div class="interp-sec" id="interpBox" style="display:none">
@@ -592,7 +550,23 @@
     </div>
   </section>
 
-  <footer id="siteFooter">BIEB 146 • Lecture 8 — Oct 20, 2026 • Genome diversity in space</footer>
+  <div class="pathnav" id="pathNav">
+        <button class="btn" id="backStep">← Back</button>
+        <span class="spacer"></span>
+        <button class="btn sun" id="markDoneBtn">Mark as done</button>
+        <button class="btn primary" id="nextStep">Next →</button>
+      </div>
+      <p class="pathnote" id="pathNote"></p>
+    </main>
+  </div>
+  <footer class="footerband">
+    <div class="sprites" aria-hidden="true">
+      <canvas data-sprite="sprout"></canvas>
+      <canvas data-sprite="dupe"></canvas>
+      <canvas data-sprite="star"></canvas>
+    </div>
+    <p>BIEB 146 study site — built from Kari’s lecture slides and transcripts.</p>
+  </footer>
 </div>
 <div class="lightbox" id="lightbox" role="dialog" aria-label="Slide zoom"><button class="lb-close" id="lbClose">✕ Close</button><img id="lbImg" alt="Slide, enlarged"></div>
 <div class="confirmbox" id="confirmBox" role="dialog" aria-modal="true" aria-labelledby="confirmMsg">
@@ -707,9 +681,9 @@
 
   // ---------- lectures & scope ----------
   var LECTURES=[
-    {id:'lec8', label:'Lecture 8 — Oct 20, 2026', short:'Lecture 8', topic:'Genome diversity in space'},
-    {id:'lec27', label:'Tue Oct 27, 2026 — GWAS & Odds Ratios', short:'Oct 27 lecture', topic:'GWAS & Odds Ratios'},
-    {id:'lec29', label:'Lecture 11 — Thu Oct 29, 2026', short:'Lecture 11', topic:'Tag SNPs, haplotypes, imputation & Lewontin'}
+    {id:'lec8', label:'Lecture 8 — Tuesday, October 20, 2026', short:'Lecture 8', topic:'SNPs & Allele Frequencies'},
+    {id:'lec27', label:'Tuesday, October 27, 2026 — GWAS & Odds Ratios', short:'Oct 27 lecture', topic:'GWAS & Odds Ratios'},
+    {id:'lec29', label:'Lecture 11 — Thursday, October 29, 2026', short:'Lecture 11', topic:'TagSNPs, Imputation & Human Variation'}
   ];
   FLASH.forEach(function(c){ c.lecture='lec8'; });
   POLLS.forEach(function(c){ c.lecture='lec8'; });
@@ -965,6 +939,132 @@
       if(r8) r8.style.display=''; if(r27) r27.style.display='none'; if(r29) r29.style.display='none';
     }
   }
+
+  // ---------- step path: sidebar units, one step at a time, Next / Mark as done ----------
+  var STEP_DEFS=[
+    {id:'objectives', panel:'objectivesPanel', label:'Learning Objectives', reading:true},
+    {id:'facts', panel:'numbersPanel', label:'Main Facts', reading:true},
+    {id:'flash', panel:'flashPanel', label:'Flashcards', reading:false},
+    {id:'video', panel:'videoPanel', label:'Assigned Video', reading:true, only:['lec29','all']},
+    {id:'math', panel:'mathPanel', label:'Math Drills', reading:false},
+    {id:'quiz', panel:'quizPanel', label:'Poll Quiz', reading:false},
+    {id:'exam', panel:'examPanel', label:'Exam Practice', reading:false}
+  ];
+  function stepsFor(lec){ return STEP_DEFS.filter(function(d){ return !d.only || d.only.indexOf(lec)>=0; }); }
+  function stepByPanel(panelId){ for(var i=0;i<STEP_DEFS.length;i++){ if(STEP_DEFS[i].panel===panelId) return STEP_DEFS[i]; } return null; }
+  var PATHKEY='bieb146_path_v1', VISITKEY='bieb146_visits_v1';
+  var pathStore=loadJSON(PATHKEY, {lecture:'lec8', step:'objectives', done:{}});
+  var visitDays=loadJSON(VISITKEY, []);
+  function todayKey(d){ return d.getFullYear()+'-'+('0'+(d.getMonth()+1)).slice(-2)+'-'+('0'+d.getDate()).slice(-2); }
+  (function recordVisit(){
+    var t=todayKey(new Date());
+    if(visitDays.indexOf(t)<0){ visitDays.push(t); visitDays.sort(); saveJSON(VISITKEY, visitDays); }
+  })();
+  function streakCount(){
+    if(!visitDays.length) return 0;
+    var set={}; visitDays.forEach(function(d){ set[d]=true; });
+    var cur=new Date(); var k=todayKey(cur);
+    if(!set[k]){ cur.setDate(cur.getDate()-1); k=todayKey(cur); if(!set[k]) return 0; }
+    var n=0;
+    while(set[k]){ n++; cur.setDate(cur.getDate()-1); k=todayKey(cur); }
+    return n;
+  }
+  function doneFor(lec){ return pathStore.done[lec]||[]; }
+  function isStepDone(lec, stepId){ return doneFor(lec).indexOf(stepId)>=0; }
+  function markStepDone(stepId, lec){
+    lec=lec||activeLecture; if(lec==='worksheets') return;
+    var arr=doneFor(lec); if(arr.indexOf(stepId)<0){ arr.push(stepId); pathStore.done[lec]=arr; saveJSON(PATHKEY, pathStore); }
+    renderPathUI();
+  }
+  function totalStepsDone(){
+    var total=0; Object.keys(pathStore.done).forEach(function(k){ total+=pathStore.done[k].length; }); return total;
+  }
+  function firstNotDone(lec){
+    var steps=stepsFor(lec);
+    for(var i=0;i<steps.length;i++){ if(!isStepDone(lec, steps[i].id)) return steps[i].id; }
+    return steps[0].id;
+  }
+  function lectureTitle(lec){
+    if(lec==='lec8') return 'Lecture 8';
+    if(lec==='lec27') return 'Tuesday, October 27, 2026';
+    if(lec==='lec29') return 'Lecture 11';
+    return 'All Lectures';
+  }
+  function renderPathUI(){
+    var st=document.getElementById('streakLine'); if(st) st.textContent='\uD83D\uDD25 '+streakCount()+' day streak';
+    var tt=document.getElementById('stepsTotal'); if(tt){ var tot=totalStepsDone(); tt.textContent=tot===1?'1 step completed':tot+' steps completed'; }
+    var ct=document.getElementById('continueText');
+    if(ct){ var lec=pathStore.lecture||'lec8'; var stepId=firstNotDone(lec); var def=null; stepsFor(lec).forEach(function(d){ if(d.id===stepId) def=d; }); ct.textContent=lectureTitle(lec)+' \u00b7 '+(def?def.label:stepId); }
+    ['lec8','lec27','lec29','all'].forEach(function(lec){
+      var el=document.getElementById('prog-'+lec); if(!el) return;
+      var steps=stepsFor(lec), done=steps.filter(function(d){ return isStepDone(lec, d.id); }).length;
+      el.innerHTML='<span>'+done+' of '+steps.length+' steps done</span><span class="track"><i style="width:'+Math.round(done/steps.length*100)+'%"></i></span>';
+    });
+    var list=document.getElementById('stepsList'); if(!list) return;
+    var steps=stepsFor(activeLecture); list.innerHTML='';
+    steps.forEach(function(d, i){
+      var li=document.createElement('li');
+      var b=document.createElement('button'); b.className='step-item'+(d.id===pathStore.step?' current':'')+(isStepDone(activeLecture, d.id)?' done':'');
+      var n=document.createElement('span'); n.className='n'; n.textContent=isStepDone(activeLecture, d.id)?'\u2713':String(i+1); b.appendChild(n);
+      b.appendChild(document.createTextNode(d.label));
+      b.onclick=function(){ showStep(d.id); document.getElementById('contentTop').scrollIntoView({behavior:'smooth'}); };
+      li.appendChild(b); list.appendChild(li);
+    });
+    var def2=null; steps.forEach(function(d){ if(d.id===pathStore.step) def2=d; });
+    var md=document.getElementById('markDoneBtn'); if(md) md.style.display=(def2&&def2.reading)?'':'none';
+    var nx=document.getElementById('nextStep'); if(nx) nx.textContent=(pathStore.step===steps[steps.length-1].id)?'Finish':'Next \u2192';
+  }
+  function showStep(stepId, opts){
+    var steps=stepsFor(activeLecture); var ok=false; steps.forEach(function(d){ if(d.id===stepId) ok=true; });
+    if(!ok) stepId=steps[0].id;
+    pathStore.step=stepId; pathStore.lecture=activeLecture; saveJSON(PATHKEY, pathStore);
+    document.querySelectorAll('.panel').forEach(function(p){ p.classList.remove('active'); });
+    var def=null; steps.forEach(function(d){ if(d.id===stepId) def=d; });
+    if(def){ var el=document.getElementById(def.panel); if(el) el.classList.add('active'); }
+    var pn=document.getElementById('pathNav'); if(pn) pn.style.display='';
+    var sl=document.getElementById('stepsList'); if(sl) sl.style.display='';
+    var cc=document.getElementById('continueCard'); if(cc) cc.style.display='';
+    var note=document.getElementById('pathNote'); if(note && !(opts&&opts.keepNote)) note.classList.remove('show');
+    renderPathUI();
+  }
+  function showLectureStep(){ showStep(firstNotDone(activeLecture)); }
+  function goStepByPanel(panelId){ var d=stepByPanel(panelId); if(d) showStep(d.id); }
+  function showWorksheetsView(){
+    document.querySelectorAll('.panel').forEach(function(p){ p.classList.remove('active'); });
+    var el=document.getElementById('worksheetsPanel'); if(el) el.classList.add('active');
+    var pn=document.getElementById('pathNav'); if(pn) pn.style.display='none';
+    var sl=document.getElementById('stepsList'); if(sl) sl.style.display='none';
+    var cc=document.getElementById('continueCard'); if(cc) cc.style.display='none';
+    document.querySelectorAll('.side-entry').forEach(function(x){ var on=x.id==='lecBtnWs'; x.classList.toggle('selected', on); x.setAttribute('aria-pressed', on?'true':'false'); });
+    renderPathUI();
+  }
+  document.getElementById('nextStep').onclick=function(){
+    var steps=stepsFor(activeLecture); var idx=0; steps.forEach(function(d,i){ if(d.id===pathStore.step) idx=i; });
+    if(idx>=steps.length-1){
+      var note=document.getElementById('pathNote');
+      if(note){ note.textContent='You finished this lecture\u2019s path — nice work. Back at the start if you want another pass.'; note.classList.add('show'); }
+      showStep(steps[0].id, {keepNote:true});
+    } else { showStep(steps[idx+1].id); }
+    document.getElementById('contentTop').scrollIntoView({behavior:'smooth'});
+  };
+  document.getElementById('backStep').onclick=function(){
+    var steps=stepsFor(activeLecture); var idx=0; steps.forEach(function(d,i){ if(d.id===pathStore.step) idx=i; });
+    showStep(steps[Math.max(0, idx-1)].id);
+    document.getElementById('contentTop').scrollIntoView({behavior:'smooth'});
+  };
+  document.getElementById('markDoneBtn').onclick=function(){
+    markStepDone(pathStore.step);
+    var mb=document.getElementById('markDoneBtn'); if(mb) mb.textContent='Done \u2713';
+    setTimeout(function(){ if(mb) mb.textContent='Mark as done'; }, 1600);
+    showToast('Marked as done');
+  };
+  document.getElementById('continueBtn').onclick=function(){
+    var lec=pathStore.lecture||'lec8';
+    if(activeLecture!==lec){ setLecture(lec); refreshScope(); }
+    showStep(firstNotDone(lec));
+    document.getElementById('contentTop').scrollIntoView({behavior:'smooth'});
+  };
+
   var activeLecture='lec8';
   function inScope(item){ return activeLecture==='all' || item.lecture===activeLecture; }
   function currentPolls(){ return POLLS.filter(inScope); }
@@ -978,18 +1078,13 @@
     if(b27){ b27.classList.toggle('selected', id==='lec27'); b27.setAttribute('aria-pressed', id==='lec27'?'true':'false'); }
     if(b29){ b29.classList.toggle('selected', id==='lec29'); b29.setAttribute('aria-pressed', id==='lec29'?'true':'false'); }
     if(ba){ ba.classList.toggle('selected', id==='all'); ba.setAttribute('aria-pressed', id==='all'?'true':'false'); }
-    var sb=document.getElementById('scopeBar');
-    if(sb) sb.innerHTML = id==='all'
-      ? 'Now studying: <b>All Lectures</b> — cumulative review. Modes combine every lecture so far; Main Facts stay grouped by lecture.'
-      : 'Now studying: <b>'+lecLabel(id)+'</b> — '+lecTopic(id)+'. Every mode below uses only this lecture.';
-    var pl=document.getElementById('pillLecture'), pto=document.getElementById('pillTopic');
-    if(pl) pl.textContent = id==='all' ? 'All Lectures — cumulative review' : lecLabel(id);
-    if(pto) pto.textContent = id==='all' ? 'Every lecture so far' : lecTopic(id);
-    var ft=document.getElementById('siteFooter');
-    if(ft) ft.textContent = id==='all' ? 'BIEB 146 • All Lectures • Cumulative review' : ('BIEB 146 • '+lecLabel(id)+' • '+lecTopic(id));
+    var bw=document.getElementById('lecBtnWs');
+    if(bw){ bw.classList.remove('selected'); bw.setAttribute('aria-pressed','false'); }
+    document.querySelectorAll('.side-entry').forEach(function(el){ var on = (el.id==='lecBtn8'&&id==='lec8')||(el.id==='lecBtn27'&&id==='lec27')||(el.id==='lecBtn29'&&id==='lec29')||(el.id==='lecBtnAll'&&id==='all'); el.classList.toggle('selected', !!on); el.setAttribute('aria-pressed', on?'true':'false'); });
     var tc=document.getElementById('tabCount');
     if(tc) tc.textContent='('+FLASH.filter(inScope).length+')';
     rebuildOrder(); hardOnly=false;
+    if(typeof showLectureStep==='function') showLectureStep();
     chosen=currentPolls().map(function(){ return null; }); checked=false;
     var qs=document.getElementById('quizScore'); if(qs) qs.textContent='0 / '+currentPolls().length;
     var qf=document.getElementById('quizFeedback'); if(qf) qf.textContent='';
@@ -997,10 +1092,11 @@
     renderNumbers(); renderQuick(); renderExamples(); renderChrome(); renderObjectives(); renderVideo();
   }
   function refreshScope(){ renderCard(); renderQuiz(); newDrill(); newExamQ(); updateProgress(); renderSkills(); }
-  document.getElementById('lecBtn8').addEventListener('click', function(){ setLecture('lec8'); refreshScope(); showToast('Lecture 8 — Oct 20, 2026'); document.querySelector('.tabs').scrollIntoView({behavior:'smooth'}); });
-  document.getElementById('lecBtn27').addEventListener('click', function(){ setLecture('lec27'); refreshScope(); showToast('Tue Oct 27, 2026 — GWAS & Odds Ratios'); document.querySelector('.tabs').scrollIntoView({behavior:'smooth'}); });
-  document.getElementById('lecBtn29').addEventListener('click', function(){ setLecture('lec29'); refreshScope(); showToast('Lecture 11 — Thu Oct 29, 2026'); document.querySelector('.tabs').scrollIntoView({behavior:'smooth'}); });
-  document.getElementById('lecBtnAll').addEventListener('click', function(){ setLecture('all'); refreshScope(); showToast('All Lectures — cumulative review'); document.querySelector('.tabs').scrollIntoView({behavior:'smooth'}); });
+  document.getElementById('lecBtn8').addEventListener('click', function(){ setLecture('lec8'); refreshScope(); showToast('Lecture 8 — Oct 20, 2026'); document.getElementById('contentTop').scrollIntoView({behavior:'smooth'}); });
+  document.getElementById('lecBtn27').addEventListener('click', function(){ setLecture('lec27'); refreshScope(); showToast('Tue Oct 27, 2026 — GWAS & Odds Ratios'); document.getElementById('contentTop').scrollIntoView({behavior:'smooth'}); });
+  document.getElementById('lecBtn29').addEventListener('click', function(){ setLecture('lec29'); refreshScope(); showToast('Lecture 11 — Thu Oct 29, 2026'); document.getElementById('contentTop').scrollIntoView({behavior:'smooth'}); });
+  document.getElementById('lecBtnAll').addEventListener('click', function(){ setLecture('all'); refreshScope(); showToast('All Lectures — cumulative review'); document.getElementById('contentTop').scrollIntoView({behavior:'smooth'}); });
+  document.getElementById('lecBtnWs').addEventListener('click', function(){ showWorksheetsView(); document.getElementById('contentTop').scrollIntoView({behavior:'smooth'}); });
 
   // ---------- storage ----------
   var FKEY='bieb146_github_flash_v1', QKEY='bieb146_github_quiz_v1', SKKEY='bieb146_github_skills_v1';
@@ -1008,35 +1104,14 @@
   function saveJSON(k,v){ try{ localStorage.setItem(k, JSON.stringify(v)); }catch(e){} }
   var marks=loadJSON(FKEY, {});
   var quizStore=loadJSON(QKEY, {best:null, last:null, attempts:0});
-  // ---------- quiet per-skill mastery (Khan-style levels, kept local to each skill) ----------
+  // ---------- per-skill answer counts, kept locally (no levels shown) ----------
   var skillStore=loadJSON(SKKEY, {});
   function recordSkill(id, correct){
     if(!id) return;
-    var s=skillStore[id]||{a:0,c:0}; s.a++; if(correct) s.c++; skillStore[id]=s; saveJSON(SKKEY, skillStore); renderSkills();
+    var s=skillStore[id]||{a:0,c:0}; s.a++; if(correct) s.c++; skillStore[id]=s; saveJSON(SKKEY, skillStore);
   }
-  function skillLevel(id){
-    if(id==='terms'){
-      var scoped=FLASH.filter(inScope); if(!scoped.length) return '';
-      var know=0, marked=0; scoped.forEach(function(c){ if(marks[c.id]==='know'){know++; marked++;} else if(marks[c.id]==='learn'){marked++;} });
-      if(!marked) return '';
-      return (know>=Math.ceil(scoped.length/2)) ? 'proficient' : 'familiar';
-    }
-    var s=skillStore[id]; if(!s||!s.a) return '';
-    if(s.c>=4 && s.c/s.a>=0.75) return 'proficient';
-    return 'familiar';
-  }
-  function renderSkills(){
-    var ul=document.getElementById('skillList'); if(!ul) return;
-    var skills=currentSkills();
-    ul.innerHTML=skills.map(function(s){ return '<li><span>'+s.label+'</span><span class="mastery" id="skillState-'+s.id+'">Not started</span></li>'; }).join('');
-    skills.forEach(function(s){
-      var el=document.getElementById('skillState-'+s.id); if(!el) return;
-      var lv=skillLevel(s.id);
-      el.className='mastery'+(lv?' '+lv:'');
-      el.textContent= lv==='proficient' ? 'Proficient' : (lv==='familiar' ? 'Familiar' : 'Not started');
-    });
-  }
-  // ---------- resets: every category can go back to zero / Not started, scoped to the selected lecture ----------
+  function renderSkills(){ return; }
+  // ---------- resets: every category can go back to zero, scoped to the selected lecture ----------
   function scopeName(){ return activeLecture==='all' ? 'All Lectures' : lecShort(activeLecture); }
   var pendingConfirm=null;
   function askConfirm(msg, fn){
@@ -1142,13 +1217,13 @@
   // ---------- tabs ----------
   var tabs=document.querySelectorAll('.tab');
   function switchTab(panelId){
-    tabs.forEach(function(x){ x.setAttribute('aria-selected', x.getAttribute('data-panel')===panelId?'true':'false'); });
+    if(typeof goStepByPanel==='function'){ goStepByPanel(panelId); return; }
     document.querySelectorAll('.panel').forEach(function(p){ p.classList.remove('active'); });
-    document.getElementById(panelId).classList.add('active');
+    var el=document.getElementById(panelId); if(el) el.classList.add('active');
   }
   tabs.forEach(function(t){ t.addEventListener('click', function(){
     switchTab(t.getAttribute('data-panel'));
-    window.scrollTo({top: document.querySelector('.tabs').offsetTop-8, behavior:'smooth'});
+    var ct=document.getElementById('contentTop'); if(ct) window.scrollTo({top: ct.offsetTop-8, behavior:'smooth'});
   });});
 
   // ---------- flashcards ----------
@@ -1175,10 +1250,10 @@
   document.getElementById('nextCard').onclick=function(){ idx++; renderCard(); };
   document.getElementById('prevCard').onclick=function(){ idx--; renderCard(); };
   document.getElementById('shuffleBtn').onclick=function(){ for(var i=order.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1)); var t=order[i]; order[i]=order[j]; order[j]=t;} idx=0; hardOnly=false; renderCard(); showToast('Deck shuffled 🔀'); };
-  function mark(kind){ var list=currentList(); var card=FLASH[list[idx]]; marks[card.id]=kind; saveJSON(FKEY, marks); showToast(kind==='know'?'Marked: Know it ✓ — saved':'Marked: Still learning ↻ — saved'); idx++; renderCard(); }
+  function mark(kind){ var list=currentList(); var card=FLASH[list[idx]]; if(typeof markStepDone==='function') markStepDone('flash'); marks[card.id]=kind; saveJSON(FKEY, marks); showToast(kind==='know'?'Marked: Know it ✓ — saved':'Marked: Still learning ↻ — saved'); idx++; renderCard(); }
   document.getElementById('knowBtn').onclick=function(){ mark('know'); };
   document.getElementById('learnBtn').onclick=function(){ mark('learn'); };
-  document.getElementById('resetProgress').onclick=function(){ askConfirm('Reset your flashcard marks for '+scopeName()+'? Every card will go back to Not started.', function(){ clearFlashMarks(); showToast('Flashcard marks reset — Not started'); }); };
+  document.getElementById('resetProgress').onclick=function(){ askConfirm('Reset your flashcard marks for '+scopeName()+'? Every card will go back to unmarked.', function(){ clearFlashMarks(); showToast('Flashcard marks reset'); }); };
   document.getElementById('reviewHard').onclick=function(){ var any=FLASH.some(function(c){return marks[c.id]==='learn'}); if(!any){showToast('No “Still learning” cards yet — mark a few first'); return;} hardOnly=true; idx=0; switchTab('flashPanel'); renderCard(); document.getElementById('flashPanel').scrollIntoView({behavior:'smooth'}); };
 
   function updateProgress(){
@@ -1237,7 +1312,7 @@
   }
   document.getElementById('checkQuiz').onclick=function(){
     if(chosen.some(function(c){return c===null})){ showToast('Pick an answer for every question first'); return; }
-    checked=true; var score=0; var pollSkill={poll1:'codon', poll2:'coverage', poll3:'maf'}; currentPolls().forEach(function(p,i){ if(chosen[i]===p.answer) score++; recordSkill(p.skill||pollSkill[p.img], chosen[i]===p.answer); });
+    checked=true; if(typeof markStepDone==='function') markStepDone('quiz'); var score=0; var pollSkill={poll1:'codon', poll2:'coverage', poll3:'maf'}; currentPolls().forEach(function(p,i){ if(chosen[i]===p.answer) score++; recordSkill(p.skill||pollSkill[p.img], chosen[i]===p.answer); });
     document.getElementById('quizScore').textContent=score+' / '+currentPolls().length;
     quizStore.last=score; quizStore.attempts=(quizStore.attempts||0)+1; if(quizStore.best===null||score>quizStore.best) quizStore.best=score; saveJSON(QKEY, quizStore);
     document.getElementById('quizFeedback').textContent= score===currentPolls().length ? 'Perfect — '+score+'/'+currentPolls().length+'! That’s exactly how it’s tested. Score saved.' : (score===currentPolls().length-1 ? 'So close — '+score+'/'+currentPolls().length+'. Check the one in red, re-read its slide, then try again.' : 'Good reps — review the explanations, re-read the numbers on the slides, and run it again.');
@@ -1704,6 +1779,7 @@
     st.classList.add('show');
   }
   function finishExam(correct, extra){
+    if(typeof markStepDone==='function') markStepDone('exam');
     if(exam.answered) return; exam.answered=true; exam.answeredCount++; examStore.totA++;
     if(correct){ exam.score++; exam.streak++; examStore.totC++;
       if(exam.streak>examStore.bestStreak){ examStore.bestStreak=exam.streak; }
@@ -1884,7 +1960,7 @@
     var inp=document.getElementById('drillNum'); var v=parseFloat(inp.value);
     if(isNaN(v)){ showToast('Type your number first \ud83d\udd22'); return; }
     var ok=Math.abs(normVal(v, curDrill.mode)-curDrill.answer)<=curDrill.tol;
-    drillAnswered=true; recordSkill(curDrill.skill, ok);
+    drillAnswered=true; if(typeof markStepDone==='function') markStepDone('math'); recordSkill(curDrill.skill, ok);
     if(ok) sfxChime(); else sfxBuzz();
     var fb=document.getElementById('drillFeedback');
     fb.className='feedback show '+(ok?'good':'bad');
@@ -1912,6 +1988,8 @@
   renderExamples();
 
   // ---------- learning objectives: Lecture 11, each stated in full and answered ----------
+  var OBJECTIVES8=[{"q": "describe the scope of diversity within the human population", "a": "Any two people are about <b>99.9% identical</b>; they differ at roughly <b>3 million</b> genome positions. Hundreds of millions of SNP positions are known (about 660 million at the time of the lecture, over a billion in dbSNP now), so about <b>22% of genome positions are polymorphic</b> — but most polymorphisms are lopsided (for example 95% A / 5% T), so two random people usually carry the same allele anyway. Of the small variable fraction, about <b>85% is old variation shared globally</b>, and only about <b>15% is region-associated</b>."}, {"q": "describe the source of diversity within the human population", "a": "<b>Mutation</b> is the original source (point mutations, insertions, deletions, and structural changes), shuffled by <b>recombination</b>. The diversity in today’s populations comes from four sources: <b>(1)</b> variation already present in the original African population, which is the vast majority; <b>(2)</b> random subsampling and founder effects as small groups migrated out and did not carry every allele; <b>(3)</b> new mutations arising in the semi-separated regional populations; and <b>(4)</b> interbreeding with other hominins such as Neanderthals and Denisovans, which moved alleles between populations (admixture and introgression)."}, {"q": "contrast Mendelian & multifactorial traits", "a": "<b>Mendelian traits</b> are controlled by a single gene with high, often complete, penetrance — if you have the genotype, you get the phenotype — like <b>sickle cell disease and cystic fibrosis</b>; this is the rare way traits work. <b>Multifactorial traits</b> come from many genes (polygenic) plus environment and lifestyle, each allele nudging risk only slightly (low penetrance), like <b>BMI and heart disease</b>; most traits are multifactorial, which is why the course uses statistics (GWAS) to link alleles to them."}];
+  var OBJECTIVES27=[{"q": "Contrast Mendelian & multifactorial traits", "a": "Same contrast as Lecture 8: Mendelian = one gene, high penetrance, sickle cell and cystic fibrosis. Multifactorial = many genes plus environment, each variant contributing a little (low penetrance), like BMI and heart disease — and those small contributions are what this lecture’s statistics measure."}, {"q": "Calculate if a SNP is associated with a phenotype", "a": "Build the counts: how many people with each allele have the disease and how many do not. Compute each allele’s odds = (with disease) ÷ (without disease) — never divide by the total. Then the odds ratio = odds for the allele the question asks about ÷ odds for the other allele. <b>OR = 1</b> means no association; <b>OR &gt; 1</b> means risk factor; <b>OR &lt; 1</b> means protective. Lecture example: allele C 1 with / 50 without vs allele A 20 with / 80 without gives OR = 0.02 ÷ 0.25 = <b>0.08</b>, so C is protective. The p-value then tells you whether the association is likely real or chance."}, {"q": "Apply odds ratio to actual change in risk", "a": "Multiply the baseline risk by the odds ratio. Lecture example: baseline risk <b>10%</b> and OR <b>2.25</b> gives 10% × 2.25 = <b>22.5%</b> actual risk for carriers. It also works as a reality check the other way: an average lifetime risk of 2% with an OR of 1.9 becomes <b>3.8%</b> — “twice as likely” is not the same as “likely.”"}, {"q": "Explain difference between odds ratio and p-value", "a": "The <b>odds ratio</b> measures the size and direction of an allele’s effect: how much it multiplies the odds of the phenotype. The <b>p-value</b> measures the strength of the evidence: the probability that a result at least this far from “no effect” would show up by chance in a sample of this size. A big effect can still have a weak p-value in a small sample, and a tiny effect can have a very small p-value in a huge one. Because a GWAS tests millions of SNPs at once, the significance bar is corrected (<b>Bonferroni: 0.05 ÷ number of tests</b>), which is why Manhattan plots use −log<sub>10</sub>(p) heights."}, {"q": "Explain how researchers get data for GWAS (SNP chips)", "a": "By <b>genotyping, not sequencing</b>. A SNP chip is a glass slide patterned with patches of probe DNA, each patch complementary to the sequence around one preselected SNP (chips directly measure roughly <b>600,000</b> of the ~600 million known SNPs). A person’s DNA is fragmented, fluorescently labeled, and washed over the chip; DNA binds tightest to its perfect complement, so the brightest patch reveals the allele — with a twist: the bright patch is labeled with the probe’s allele, so the person’s allele is the complement (a bright A-probe patch means <b>homozygous T</b>). Homozygous = one patch bright; heterozygous = both patches moderate."}];
   var OBJECTIVES29=[
     {q:'describe the limitations of GWAS', a:'A chip measures only about <b>600,000 tag SNPs</b> out of about <b>600 million</b> known SNPs; the rest are <b>imputed</b> from haplotype blocks, not measured. The haplotype rules were built mostly from <b>European-ancestry</b> data, so imputation can predict the wrong variants for other ancestries (Moana: G and A instead of T and T), and GWAS participants have been mostly European \u2014 only <b>4% non-European in 2009, 20% in 2016, 22% in 2019</b>. GWAS also leaves <b>missing heritability</b>: found SNPs explain only about half the variation twin studies predict. And a tag-SNP association does not by itself identify the causative SNP.'},
     {q:'compare approaches to describing variation in humans', a:'Three ways of counting the same pattern, and they agree. <b>Lewontin\u2019s gels (1972):</b> of the 0.1% of the genome that varies, <b>~85% of variation is global and ~15% is region-associated</b>. <b>F<sub>ST</sub>:</b> (differences between populations \u2212 differences within) \u00f7 differences between \u2014 the worked example gives 0.33, while modern data give <b>F<sub>ST</sub> \u2248 0.05</b> (0.651 \u2212 0.618 = 0.033; 0.033 \u00f7 0.651 \u2248 5% extra difference between regions). <b>Allele sharing (microsatellites):</b> <b>92.5%</b> of alleles in at least 2 regions, <b>83%</b> in at least 3, <b>46%</b> in all regions, only <b>7.5%</b> unique to one region and rare (&lt;1%) there. Every approach says the same thing: variation is mostly shared, and group differences are uneven distributions, not discrete types.'},
@@ -1926,12 +2004,13 @@
   function renderObjectives(){
     var list=document.getElementById('objectivesList'); if(!list) return;
     var label=document.getElementById('objectivesLectureLabel'), intro=document.getElementById('objectivesIntro'), ann=document.getElementById('objectivesAnnounce');
-    list.innerHTML='';
-    if(activeLecture==='lec29' || activeLecture==='all'){
-      if(label) label.textContent='Lecture 11 — Thu Oct 29, 2026';
-      if(intro) intro.textContent='The lecture\u2019s \u201cBy the end of the next lecture you should be able to:\u2026\u201d aims, stated exactly as on the slide and answered underneath each one, so coverage can be checked at a glance. There are three aims; the third carries three sub-aims. The lecture\u2019s central question, as the professor put it: ancestry matters for making GWAS and imputation less biased and more relevant for people of all ancestry groups \u2014 AND there is no biological evidence for race. Both are true; this lecture unpacks how.';
-      if(ann) ann.innerHTML='<div class="announce">📣 '+OBJECTIVES_ANNOUNCE+'</div>';
-      OBJECTIVES29.forEach(function(o, i){
+    var introText='These are the professor\u2019s own \u201cBy the end of today you should be able to:\u201d list from each deck\u2019s opening slide, stated in full and answered underneath each one, so coverage can be checked at a glance.';
+    function addGroup(heading, items, groupIntro){
+      var g=document.createElement('div'); g.className='objgroup';
+      var h=document.createElement('h3'); h.textContent=heading; g.appendChild(h);
+      if(groupIntro){ var gp=document.createElement('p'); gp.className='muted'; gp.style.marginTop='0'; gp.textContent=groupIntro; g.appendChild(gp); }
+      var ol=document.createElement('ol'); ol.className='objlist';
+      items.forEach(function(o, i){
         var li=document.createElement('li'); li.className='obj';
         var b=document.createElement('b'); b.className='q'; b.textContent=(i+1)+'. '+o.q; li.appendChild(b);
         var a=document.createElement('div'); a.className='a'; a.innerHTML=o.a; li.appendChild(a);
@@ -1941,15 +2020,27 @@
           var sa=document.createElement('div'); sa.className='a'; sa.innerHTML=s.a; sub.appendChild(sa);
           li.appendChild(sub);
         }); }
-        list.appendChild(li);
+        ol.appendChild(li);
       });
+      g.appendChild(ol); list.appendChild(g);
+    }
+    list.innerHTML='';
+    if(ann) ann.innerHTML='';
+    if(label) label.textContent = activeLecture==='all' ? 'All Lectures' : lecLabel(activeLecture);
+    if(intro) intro.textContent = introText;
+    if(activeLecture==='lec8'){
+      addGroup('Lecture 8 — Tuesday, October 20, 2026', OBJECTIVES8);
+    } else if(activeLecture==='lec27'){
+      addGroup('Tuesday, October 27, 2026 — GWAS & Odds Ratios', OBJECTIVES27);
+    } else if(activeLecture==='lec29'){
+      if(intro) intro.textContent='The lecture\u2019s \u201cBy the end of the next lecture you should be able to:\u2026\u201d aims, stated exactly as on the slide and answered underneath each one, so coverage can be checked at a glance. There are three aims; the third carries three sub-aims. The lecture\u2019s central question, as the professor put it: ancestry matters for making GWAS and imputation less biased and more relevant for people of all ancestry groups \u2014 AND there is no biological evidence for race. Both are true; this lecture unpacks how.';
+      if(ann) ann.innerHTML='<div class="announce">📣 '+OBJECTIVES_ANNOUNCE+'</div>';
+      addGroup('Lecture 11 — Thursday, October 29, 2026', OBJECTIVES29);
     } else {
-      if(label) label.textContent=lecLabel(activeLecture);
-      if(intro) intro.textContent='Learning objectives were added starting with Lecture 11 (Thu Oct 29, 2026).';
-      if(ann) ann.innerHTML='';
-      var li=document.createElement('li'); li.className='obj';
-      li.innerHTML='<b class=\"q\">No learning-objectives list has been added for this lecture yet.</b><div class=\"a\">Switch to <b>Lecture 11 \u2014 Thu Oct 29, 2026</b> (or All Lectures) to see the three objectives for that lecture (plus the three sub-objectives under the third), each stated in full and answered.</div>';
-      list.appendChild(li);
+      addGroup('Lecture 8 — Tuesday, October 20, 2026', OBJECTIVES8);
+      addGroup('Tuesday, October 27, 2026 — GWAS & Odds Ratios', OBJECTIVES27);
+      if(ann) ann.innerHTML='<div class="announce">📣 '+OBJECTIVES_ANNOUNCE+'</div>';
+      addGroup('Lecture 11 — Thursday, October 29, 2026', OBJECTIVES29);
     }
   }
 
@@ -1992,7 +2083,7 @@
       p.opts.forEach(function(opt, oi){
         var b=document.createElement('button'); b.className='opt'; b.textContent=('ABCD'[oi])+'. '+opt;
         if(videoChosen[qi]!==null){ b.disabled=true; if(oi===p.answer) b.classList.add('correct'); else if(videoChosen[qi]===oi) b.classList.add('wrong'); }
-        b.onclick=function(){ if(videoChosen[qi]!==null) return; videoChosen[qi]=oi; renderVideoQuiz(); };
+        b.onclick=function(){ if(videoChosen[qi]!==null) return; videoChosen[qi]=oi; if(typeof markStepDone==='function') markStepDone('video'); renderVideoQuiz(); };
         opts.appendChild(b);
       });
       box.appendChild(opts);
@@ -2091,10 +2182,12 @@
     wrap.innerHTML='';
     WORKSHEETS.forEach(function(ws){
       var sec=document.createElement('section'); sec.setAttribute('aria-label', ws.title);
-      var h=document.createElement('h3'); h.textContent=ws.title; sec.appendChild(h);
+      var h=document.createElement('h3'); h.textContent='Worksheet 5 — Friday, October 30, 2026'; sec.appendChild(h);
+      var sub=document.createElement('p'); sub.className='muted'; sub.style.margin='2px 0 0'; sub.textContent=ws.title; sec.appendChild(sub);
       var meta=document.createElement('p'); meta.className='muted'; meta.style.marginTop='0'; meta.textContent=ws.date+' • '+ws.intro; sec.appendChild(meta);
-      var how=document.createElement('div');
-      how.innerHTML='<div class="dbsnp-head">How to approach this worksheet</div><div class="dbsnp"><table>'+ws.howto.map(function(r){ return '<tr><td class="k">'+r[0]+'</td><td>'+r[1]+'</td></tr>'; }).join('')+'</table></div>';
+      var howHead=document.createElement('h3'); howHead.style.marginTop='20px'; howHead.textContent='How to approach this worksheet'; sec.appendChild(howHead);
+      var how=document.createElement('div'); how.className='ws-how';
+      ws.howto.forEach(function(r){ var row=document.createElement('div'); row.className='row'; var b=document.createElement('b'); b.textContent=r[0]; row.appendChild(b); row.appendChild(document.createTextNode(r[1])); how.appendChild(row); });
       sec.appendChild(how);
       ws.questions.forEach(function(q){
         var d=document.createElement('div'); d.className='wsq';
@@ -2107,18 +2200,22 @@
         var kw=document.createElement('p'); kw.className='muted'; kw.style.margin='10px 0 0'; kw.textContent=q.keywords; d.appendChild(kw);
         sec.appendChild(d);
       });
-      var ch=document.createElement('div');
-      ch.innerHTML='<h3 style="margin-top:20px">Formula cheat sheet — everything on this worksheet in one table</h3><table class="cheatsheet"><tbody>'+ws.cheat.map(function(r){ return '<tr><th>'+r[0]+'</th><td><code>'+r[1]+'</code></td></tr>'; }).join('')+'</tbody></table>';
+      var chHead=document.createElement('h3'); chHead.style.marginTop='24px'; chHead.textContent='Formula summary — everything on this worksheet in one place'; sec.appendChild(chHead);
+      var ch=document.createElement('div'); ch.className='ws-cheat';
+      ws.cheat.forEach(function(r){ var row=document.createElement('div'); row.className='row'; var lab=document.createElement('span'); lab.textContent=r[0]; var code=document.createElement('code'); code.textContent=r[1]; row.appendChild(lab); row.appendChild(code); ch.appendChild(row); });
       sec.appendChild(ch);
       var ph=document.createElement('h3'); ph.style.marginTop='20px'; ph.textContent='Practice problems with answers — same question types as Worksheet 5. Cover the answer and try each one first.'; sec.appendChild(ph);
       ws.practice.forEach(function(part, pi){
-        var ph2=document.createElement('h3'); ph2.style.fontSize='15.5px'; ph2.textContent=part.part; sec.appendChild(ph2);
+        var ph2=document.createElement('h3'); ph2.style.fontSize='15.5px'; ph2.style.marginTop='22px'; ph2.textContent=part.part; sec.appendChild(ph2);
+        var ol=document.createElement('ol'); ol.className='practice-list';
         part.items.forEach(function(it, ii){
+          var li=document.createElement('li');
           var det=document.createElement('details'); det.className='practice';
-          var sum=document.createElement('summary'); sum.textContent='Problem '+(ii+1)+' — '+it.q; det.appendChild(sum);
+          var sum=document.createElement('summary'); sum.textContent=it.q; det.appendChild(sum);
           var p=document.createElement('p'); p.innerHTML=it.work; det.appendChild(p);
-          sec.appendChild(det);
+          li.appendChild(det); ol.appendChild(li);
         });
+        sec.appendChild(ol);
       });
       wrap.appendChild(sec);
     });
@@ -2149,16 +2246,13 @@
   var rQuizBtn=document.getElementById('resetQuizScores');
   if(rQuizBtn) rQuizBtn.onclick=function(){ askConfirm('Reset your Poll Quiz scores for '+scopeName()+'? Your best score will go back to none.', function(){ clearQuizScores(); showToast('Poll Quiz scores reset — back to none'); }); };
   var rMathBtn=document.getElementById('resetMathMastery');
-  if(rMathBtn) rMathBtn.onclick=function(){ askConfirm('Reset your skill mastery for '+scopeName()+'? Every skill will go back to Not started.', function(){ clearSkillMastery(); newDrill(); showToast('Skill mastery reset — Not started'); }); };
+  if(rMathBtn) rMathBtn.onclick=function(){ askConfirm('Reset your Math Drills and Exam Practice answer history for '+scopeName()+'?', function(){ clearSkillMastery(); newDrill(); showToast('Answer history reset'); }); };
   var rExamBtn=document.getElementById('resetExam');
-  if(rExamBtn) rExamBtn.onclick=function(){ askConfirm('Reset your Exam Practice scores for '+scopeName()+'? Score, streak and best go back to zero, and every skill goes back to Not started.', function(){ clearExamScores(); clearSkillMastery(); newExamQ(); showToast('Exam Practice reset — back to zero'); }); };
-  var rSkillsTopBtn=document.getElementById('resetSkillsTop');
-  if(rSkillsTopBtn) rSkillsTopBtn.onclick=function(){ askConfirm('Reset your skill mastery for '+scopeName()+'? Every skill will go back to Not started.', function(){ clearSkillMastery(); showToast('Skill mastery reset — Not started'); }); };
-  var rAllBtn=document.getElementById('resetEverything');
-  if(rAllBtn) rAllBtn.onclick=function(){ askConfirm('Reset everything for '+scopeName()+'? Flashcards, Poll Quiz scores, skill mastery and Exam Practice will all go back to zero / Not started.', function(){ clearFlashMarks(); clearQuizScores(); clearSkillMastery(); clearExamScores(); newExamQ(); showToast('Everything reset for '+scopeName()+' — back to zero'); }); };
+  if(rExamBtn) rExamBtn.onclick=function(){ askConfirm('Reset your Exam Practice scores for '+scopeName()+'? Score and streak go back to zero.', function(){ clearExamScores(); clearSkillMastery(); newExamQ(); showToast('Exam Practice reset — back to zero'); }); };
 
   // init
-  setLecture('lec8'); renderCard(); renderQuiz(); newDrill(); newExamQ(); updateProgress(); renderSkills(); renderWorksheets();
+  var startLec=(pathStore.lecture && pathStore.lecture!=='worksheets') ? pathStore.lecture : 'lec8';
+  setLecture(startLec); renderCard(); renderQuiz(); newDrill(); newExamQ(); updateProgress(); renderSkills(); renderWorksheets(); renderPathUI();
 })();
 </script>
 </body>
