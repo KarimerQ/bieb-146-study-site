@@ -4,12 +4,12 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="color-scheme" content="light dark">
-<meta name="description" content="BIEB 146 study site — lectures organized by date (Lecture 8, Oct 20, 2026; GWAS & Odds Ratios, Tue Oct 27, 2026). Each lecture is organized by skill: learn with flashcards and Main Facts, practice with math drills (hints and worked solutions), then check yourself with the poll quiz and exam practice. Plus an All Lectures cumulative review.">
+<meta name="description" content="BIEB 146 study site — lectures organized by date (Lecture 8, Oct 20, 2026; Lecture 10, Tue Oct 27, 2026; Lecture 11, Thu Oct 29, 2026). Each lecture is organized by skill: learn with flashcards and Main Facts, practice with math drills (hints and worked solutions), then check yourself with the poll quiz and exam practice. Plus learning objectives, worksheets, and an All Lectures cumulative review.">
 <link rel="icon" href="data:,">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&display=swap" rel="stylesheet">
-<title>BIEB 146 Study Site — Lectures Oct 20 & Oct 27, 2026</title>
+<title>BIEB 146 Study Site — Lectures Oct 20, Oct 27 &amp; Oct 29, 2026</title>
 <style>
   :root{
     --bg:#faf7f2; --surface:#ffffff; --surface2:#f6f1ea; --ink:#2E2A33; --muted:#5C566B; --line:#ece6dd;
@@ -38,9 +38,9 @@
   .card h2{margin:0 0 6px;font-size:19px;letter-spacing:-.01em}
   .card h3{margin:0 0 6px;font-size:16px}
   .muted{color:var(--muted);font-size:14px}
-  .tabs{position:sticky;top:10px;z-index:5;display:flex;gap:8px;overflow-x:auto;padding:6px;background:var(--surface);border:1px solid var(--line);border-radius:999px;box-shadow:var(--shadow);margin:16px 0 14px;scrollbar-width:none}
+  .tabs{position:sticky;top:10px;z-index:5;display:flex;flex-wrap:wrap;gap:8px;padding:6px;background:var(--surface);border:1px solid var(--line);border-radius:20px;box-shadow:var(--shadow);margin:16px 0 14px;scrollbar-width:none}
   .tabs::-webkit-scrollbar{display:none}
-  .tab{flex:1;white-space:nowrap;border:0;background:transparent;color:var(--muted);font:inherit;font-weight:900;font-size:14px;padding:10px 12px;border-radius:999px;cursor:pointer;transition:.18s}
+  .tab{flex:1 1 130px;white-space:nowrap;border:0;background:transparent;color:var(--muted);font:inherit;font-weight:900;font-size:14px;padding:10px 12px;border-radius:999px;cursor:pointer;transition:.18s}
   .tab[aria-selected="true"]{background:#e9e3f5;color:#2E2A33;box-shadow:inset 0 0 0 1px var(--line)}
   .tab:active{transform:scale(.97)}
   .panel{display:none} .panel.active{display:block;animation:pop .28s ease}
@@ -189,6 +189,29 @@
   details.codonchart img{width:100%;max-width:520px;height:auto;display:block;margin:10px auto 6px;background:#fff;border-radius:10px;cursor:zoom-in}
   .codoncap{font-size:13px;font-weight:700;color:var(--muted);text-align:center;padding-bottom:4px}
   @media(max-width:640px){ .tabs{flex-wrap:wrap;overflow-x:visible;border-radius:20px} .tab{flex:1 1 30%;white-space:normal} }
+  /* ---- learning objectives & worksheets ---- */
+  .objlist{list-style:none;margin:12px 0 0;padding:0;display:grid;gap:10px}
+  .obj{border:1px solid var(--line);border-radius:16px;padding:13px 14px;background:var(--surface2)}
+  .obj b.q{display:block;font-size:15.5px;line-height:1.45}
+  .obj .a{margin-top:6px;font-size:14.5px;color:var(--muted);font-weight:600}
+  .obj .a b{color:var(--ink)}
+  .announce{border:1.5px solid #2F6B57;border-radius:16px;padding:12px 14px;background:#EAF4EE;color:#2E2A33;font-size:14px;font-weight:600}
+  @media (prefers-color-scheme: dark){ .announce{background:#22483A;color:#F4F1FA} }
+  .wsq{border:1px solid var(--line);border-radius:18px;padding:16px;margin:14px 0;background:var(--surface)}
+  .wsq h3{font-size:17px}
+  .wsq ol{margin:8px 0 0 18px;padding:0}
+  .wsq ol li{margin:6px 0}
+  .wsans{background:#ecfdf5;border:1px solid #a7f3d0;color:#064e3b;border-radius:14px;padding:12px 13px;font-weight:700;font-size:14.5px;margin-top:10px}
+  @media (prefers-color-scheme: dark){ .wsans{background:#0b2e24;color:#d1fae5;border-color:#065f46} }
+  .cheatsheet{width:100%;border-collapse:collapse;font-size:14px;margin-top:8px}
+  .cheatsheet th,.cheatsheet td{border:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+  .cheatsheet th{background:var(--surface2)}
+  .cheatsheet td code,.wsq code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:13px;background:var(--surface2);padding:2px 5px;border-radius:6px}
+  details.practice{border:1px solid var(--line);border-radius:14px;padding:11px 13px;margin:8px 0;background:var(--surface)}
+  details.practice summary{font-weight:800;cursor:pointer;line-height:1.45}
+  details.practice p{margin:8px 0 0;font-size:14.5px;color:var(--muted);font-weight:600}
+  details.practice p b{color:var(--ink)}
+  .gelcap{font-size:12.5px;font-weight:800;color:var(--muted);padding:6px 4px 0}
   /* ---- chunky rounded display font: headings, lecture names, mode names, big numbers only ---- */
   .hero h1,.card h2,.card h3,.sec-title,.leccard b,.numcard strong,.face .term,.tab,.quick .answer{font-family:var(--font-display)}
 </style>
@@ -210,7 +233,8 @@
     <h2 class="sec-title">Choose a lecture</h2>
     <div class="lecgrid" role="group" aria-label="Lectures">
       <button class="leccard selected" id="lecBtn8" aria-pressed="true"><b>Lecture 8 — Oct 20, 2026</b><span>Genome diversity in space • 18 flashcards • 3 poll questions • 7 main facts</span><em>Lecture 8</em></button>
-      <button class="leccard" id="lecBtn27" aria-pressed="false"><b>Tue Oct 27, 2026 — GWAS &amp; Odds Ratios</b><span>Case–control GWAS, odds ratios, Manhattan plots &amp; SNP chips • 18 flashcards • 4 poll questions • 10 main facts</span><em>New lecture</em></button>
+      <button class="leccard" id="lecBtn27" aria-pressed="false"><b>Tue Oct 27, 2026 — GWAS &amp; Odds Ratios</b><span>Case–control GWAS, odds ratios, Manhattan plots &amp; SNP chips • 18 flashcards • 4 poll questions • 10 main facts</span><em>Lecture 10</em></button>
+      <button class="leccard" id="lecBtn29" aria-pressed="false"><b>Thu Oct 29, 2026 — Lecture 11</b><span>Tag SNPs, haplotypes &amp; imputation, missing heritability, Lewontin, FST &amp; race • 25 flashcards • 6 poll questions • 12 main facts</span><em>New lecture</em></button>
       <button class="leccard" id="lecBtnAll" aria-pressed="false"><b>All Lectures</b><span>Cumulative review — every lecture so far, nothing mixed up: each deck stays labeled, Main Facts grouped by lecture</span><em>End-of-term review</em></button>
     </div>
     <p class="muted" id="scopeBar" style="margin:10px 2px 0;font-weight:600">Now studying: <b>Lecture 8 — Oct 20, 2026</b>. Every mode below uses only this lecture. New lectures arrive here as their own dated cards.</p>
@@ -241,6 +265,8 @@
     <button class="tab" role="tab" aria-selected="false" data-panel="mathPanel">🧮 Math Drills</button>
     <button class="tab" role="tab" aria-selected="false" data-panel="quizPanel">✏️ Poll Quiz</button>
     <button class="tab" role="tab" aria-selected="false" data-panel="examPanel">🎯 Exam Practice</button>
+    <button class="tab" role="tab" aria-selected="false" data-panel="objectivesPanel">📋 Learning Objectives</button>
+    <button class="tab" role="tab" aria-selected="false" data-panel="worksheetsPanel">📝 Worksheets</button>
   </nav>
 
   <!-- FLASHCARDS -->
@@ -344,6 +370,10 @@
         <h3 style="margin-top:20px">Reference — the setup rules from Poll 1</h3>
         <p class="muted" style="margin-top:0">The professor's rules, literally: <b>1)</b> the allele named in the question goes in the <b>numerator</b> of the odds ratio. <b>2)</b> In each odds fraction, the <b>disease count goes on top</b>. <b>3)</b> Odds are <b>counts, not totals</b> — 1 with / 50 without is 1/50, never 1/51. <b>4)</b> <b>Sanity-check first</b>: eyeball which allele's carriers get sick more often, then make the math agree. And Han Solo's rule: never judge one allele's odds alone — only the ratio means anything.</p>
       </div>
+      <div id="lec29Ref" style="display:none">
+        <h3 style="margin-top:20px">Reference — the three counting rules from Lecture 11</h3>
+        <p class="muted" style="margin-top:0"><b>1) Gel counting:</b> humans are diploid — a <b>single band = homozygous = 2 copies</b> of that allele; <b>two bands = heterozygous = 1 copy of each</b>. Total alleles = people × 2. <b>2) Frequency:</b> frequency = count ÷ (people × 2). <b>3) F<sub>ST</sub>:</b> F<sub>ST</sub> = (differences between populations − differences within populations) ÷ differences between populations. F<sub>ST</sub> = 1 means completely separate alleles; 0 means an identical distribution. The haplotype key for the Moana poll: red — if T, then C and C; blue (Merida) — if A, then G and A; green (Moana) — if A, then T and T.</p>
+      </div>
       <p class="muted">Tap to open the answer + steps.</p>
       <div id="examples"></div>
     </div>
@@ -376,6 +406,27 @@
         <button class="btn ghost resetbtn" id="resetExam">Reset scores &amp; mastery — back to zero</button>
       </div>
       <p class="muted" style="margin-bottom:0">Tip: for frequency answers you can type the decimal (0.30) or the percent (30) — both count.</p>
+    </div>
+  </section>
+
+  <!-- LEARNING OBJECTIVES -->
+  <section class="panel" id="objectivesPanel">
+    <div class="card">
+      <div class="steplabel">Covered in full • <span id="objectivesLectureLabel">Lecture 11 — Thu Oct 29, 2026</span></div>
+      <h2>Learning objectives — each one stated, then answered</h2>
+      <p class="muted" style="margin-top:0" id="objectivesIntro">The lecture’s “By the end of the lecture you should be able to…” aims, stated in full and answered underneath each one, so coverage can be checked at a glance.</p>
+      <div id="objectivesAnnounce"></div>
+      <ol class="objlist" id="objectivesList"></ol>
+    </div>
+  </section>
+
+  <!-- WORKSHEETS -->
+  <section class="panel" id="worksheetsPanel">
+    <div class="card">
+      <div class="steplabel">Weekly • most weeks</div>
+      <h2>Worksheets — the section worksheets, worked</h2>
+      <p class="muted" style="margin-top:0">Worksheets are given most weeks and are due Fridays at 9 PM. Each one lives here in date order, with every question worked step by step, the formula cheat sheet, and practice problems whose answers stay hidden until you tap them. Future worksheets stack below the newest one.</p>
+      <div id="worksheetsList"></div>
     </div>
   </section>
 
@@ -508,7 +559,8 @@
   // ---------- lectures & scope ----------
   var LECTURES=[
     {id:'lec8', label:'Lecture 8 — Oct 20, 2026', short:'Lecture 8', topic:'Genome diversity in space'},
-    {id:'lec27', label:'Tue Oct 27, 2026 — GWAS & Odds Ratios', short:'Oct 27 lecture', topic:'GWAS & Odds Ratios'}
+    {id:'lec27', label:'Tue Oct 27, 2026 — GWAS & Odds Ratios', short:'Oct 27 lecture', topic:'GWAS & Odds Ratios'},
+    {id:'lec29', label:'Lecture 11 — Thu Oct 29, 2026', short:'Lecture 11', topic:'Tag SNPs, haplotypes, imputation & Lewontin'}
   ];
   FLASH.forEach(function(c){ c.lecture='lec8'; });
   POLLS.forEach(function(c){ c.lecture='lec8'; });
@@ -613,17 +665,143 @@
     { title:'Example 5 — Reading a SNP chip', q:'Alleles G and A. The patch labeled G glows bright; the A patch is faint. Genotype?', steps:['DNA binds strongest to its perfect Watson–Crick complement — read the complement, not the label.','Bright G-probe patch → the sample strand carries A there.','Only one patch is bright → both copies match. Answer: homozygous A (AA). (Lecture version: bright A patch, alleles A/T → homozygous T.)'] }
   ];
   EXAMPLES27.forEach(function(c){ c.lecture='lec27'; EXAMPLES.push(c); });
+  // ---------- redrawn diagrams for Lecture 11: no slide photos of the Oct 29 polls were available, so the gel and haplotype figures below are redrawn from the poll wording and the counts given in class. They show the same numbers the polls used. ----------
+  function gelSVG(groups, cap){
+    var laneW=26, gap=6, x0=8, rowH=80, W=340;
+    var H=groups.length*rowH+8, s='';
+    groups.forEach(function(g, gi){
+      var y=6+gi*rowH;
+      s+='<text x="8" y="'+(y+14)+'" font-size="11.5" font-weight="800" fill="#5C566B">'+g.label+'</text>';
+      g.lanes.forEach(function(lane, li){
+        var x=x0+li*(laneW+gap), ly=y+20;
+        s+='<rect x="'+x+'" y="'+ly+'" width="'+laneW+'" height="52" rx="4" fill="none" stroke="#c9c2d4" stroke-width="1.4"/>';
+        if(lane.indexOf('T')>=0) s+='<rect x="'+(x+3)+'" y="'+(ly+8)+'" width="'+(laneW-6)+'" height="8" rx="4" fill="#2F6B57"/>';
+        if(lane.indexOf('B')>=0) s+='<rect x="'+(x+3)+'" y="'+(ly+34)+'" width="'+(laneW-6)+'" height="8" rx="4" fill="#b8a9d9"/>';
+      });
+    });
+    return '<div class="covfig"><svg viewBox="0 0 '+W+' '+H+'" role="img" aria-label="Redrawn gel diagram: each lane is one person. A single dark green bar is the top allele counted twice; a single violet bar is the bottom allele counted twice; both bars together are one copy of each.">'+s+'</svg><div class="gelcap">'+cap+'</div></div>';
+  }
+  function haplotypeSVG(){
+    var rows=[['Red','T','C','C'],['Blue — Merida','A','G','A'],['Green — Moana','A','T','T']];
+    var s='<text x="160" y="18" font-size="11" font-weight="800" fill="#5C566B" text-anchor="middle">Tag SNP</text><text x="250" y="18" font-size="11" font-weight="800" fill="#5C566B" text-anchor="middle">Inferred 1</text><text x="340" y="18" font-size="11" font-weight="800" fill="#5C566B" text-anchor="middle">Inferred 2</text>';
+    rows.forEach(function(r, i){
+      var y=28+i*40;
+      if(i===1) s+='<rect x="8" y="'+(y-4)+'" width="384" height="34" rx="8" fill="none" stroke="#d96a4b" stroke-width="2" stroke-dasharray="5 4"/>';
+      s+='<text x="10" y="'+(y+18)+'" font-size="12" font-weight="800" fill="#2E2A33">'+r[0]+'</text>';
+      for(var j=1;j<=3;j++){ var cx=160+(j-1)*90; s+='<rect x="'+(cx-26)+'" y="'+y+'" width="52" height="26" rx="7" fill="#f6f1ea" stroke="#c9c2d4"/><text x="'+cx+'" y="'+(y+18)+'" font-size="14" font-weight="900" fill="#2E2A33" text-anchor="middle">'+r[j]+'</text>'; }
+    });
+    return '<div class="covfig"><svg viewBox="0 0 400 148" role="img" aria-label="Haplotype key redrawn from the slide: red, if T then C and C; blue (Merida), if A then G and A; green (Moana), if A then T and T. The blue row is outlined: imputing from it predicts G and A.">'+s+'</svg><div class="gelcap">Haplotype key, redrawn from the slide. The dashed blue row is Merida’s haplotype — the one the imputation wrongly uses for Moana.</div></div>';
+  }
+  // ---------- data: Thu Oct 29, 2026 — Lecture 11 (terms, polls and numbers from the lecture and poll log) ----------
+  var FLASH29=[
+    {id:'h1', term:'Tag SNP', def:'The SNP actually measured by a SNP chip; it stands in for its whole haplotype block.'},
+    {id:'h2', term:'Inferred SNP', def:'A nearby SNP whose allele is predicted from the tag SNP using known haplotype patterns — not measured.'},
+    {id:'h3', term:'Haplotype', def:'The combination of alleles a person carries across a segment of DNA — all positions together, e.g. C-T-C at three SNPs. (Genotype = one position; haplotype = the segment.)'},
+    {id:'h4', term:'Haplotype block', def:'A set of nearby SNPs that tend to be inherited together because recombination rarely breaks them up.'},
+    {id:'h5', term:'Imputation', def:'Filling in unmeasured SNP genotypes by guessing from haplotype patterns in a reference database. A grounded guess — not a measurement — and it can be wrong.'},
+    {id:'h6', term:'SNP chip / genotyping array', def:'Glass slide with probe patches for a preselected set of known SNPs — about 600,000 on a 23andMe chip. Genotyping, NOT sequencing.'},
+    {id:'h7', term:'Heritability', def:'The fraction of variation in a trait that is explained by genetics; often predicted from twin studies.'},
+    {id:'h8', term:'Missing heritability problem', def:'GWAS-found SNPs explain only about half the variation twin studies predict. The rest of the genetic contribution has not been located.'},
+    {id:'h9', term:'Epistasis', def:'Non-additive interaction: a phenotype depends on combinations of alleles at several loci, not on each locus separately.'},
+    {id:'h10', term:'Epigenetics', def:'Semi-permanent changes in DNA expression (not sequence) that can affect phenotype and might be partially heritable.'},
+    {id:'h11', term:'Native gel electrophoresis', def:'Lewontin’s pre-sequencing method: proteins run on a gel, and an allele that changes an amino acid changes the protein’s charge or conformation, which changes how far it migrates. Not just size.'},
+    {id:'h12', term:'Private allele', def:'An allele found in only one population or ancestry group. Key catch: when private alleles exist they are RARE inside that group — most members of the group do not carry them.'},
+    {id:'h13', term:'FST / fixation index', def:'Sewall Wright’s measure of how differentiated two subpopulations are: the excess sequence differences between populations vs within, as a fraction of the total. 1 = completely separate alleles; 0 = identical distributions.'},
+    {id:'h14', term:'Subpopulation', def:'A subgroup within a population (Lewontin used ancestry groups as subpopulations) that can diverge by drift and mutation over time.'},
+    {id:'h15', term:'Population structure', def:'The real pattern: allele distributions are uneven between subpopulations — about 5% of differences cluster with geographic origin. Structure is NOT discrete races.'},
+    {id:'h16', term:'Population stratification', def:'The confounding version of structure: allele-frequency differences between groups that can create false GWAS associations with traits that actually differ for non-genetic reasons.'},
+    {id:'h17', term:'Microsatellite DNA', def:'Highly variable repeat regions of the genome, useful for measuring diversity; the source of the modern ~5% figure and the private-allele percentages.'},
+    {id:'h18', term:'Ancestry testing', def:'Predicting geographic ancestry by COMBINING allele frequencies across many SNPs. It does not rely on private alleles, and it leans on self-reported reference data.'},
+    {id:'h19', term:'Racial genetic essentialism', def:'The false belief that racial groups have distinct genetic essences causing physical, cognitive or behavioral differences. It assumes uniformity within groups, discreteness between groups, and genetics as the cause.'},
+    {id:'h20', term:'Scientific racism', def:'Use of misunderstood genetics and biology to argue racial inferiority; it fed eugenics and genocide. Scientific racism existed before genetics — early genetics added fuel.'},
+    {id:'h21', term:'Mendelian variant', def:'A variant with a large, obvious, all-or-nothing phenotypic effect — the kind Mendel picked for his peas. Most variation does NOT behave this way.'},
+    {id:'h22', term:'Multifactorial trait', def:'A trait shaped by many genes plus environment, with low penetrance. Most complex traits are multifactorial (and polygenic).'},
+    {id:'h23', term:'Racial realism', def:'The claim that race is biologically real, with race-specific behavioral traits. Refuted by the genomic data.'},
+    {id:'h24', term:'Colorblindness (post-race view)', def:'“Race isn’t real, so we’re done.” It ignores the real legacy and effects of racism.'},
+    {id:'h25', term:'Racial constructivism', def:'Race is real as a SOCIAL construct: human-invented categories with real consequences — not a biological reality.'}
+  ];
+  FLASH29.forEach(function(c){ c.lecture='lec29'; FLASH.push(c); });
+  var POLLS29=[
+    { skill:'impute', cap:'Lecture 11 • Thu Oct 29, 2026 — Poll 1 (the Oct 27 deck’s Poll 5, run today)',
+      svg:haplotypeSVG(),
+      rows:[['Red haplotype:','If T, will have C and C'],['Blue haplotype (Merida):','If A, will have G and A'],['Green haplotype (Moana):','If A, will have T and T']],
+      q:'Moana’s ancestry matches the green haplotype. What happens if her 23andMe results are imputed based on the trends for Merida’s (blue) haplotype?',
+      opts:['the tag allele in her results will be T','the inferred alleles in her results will be C and C','the inferred alleles in her results will be G and A','the inferred alleles in her results will be T and T'], answer:2,
+      explain:'C) the inferred alleles will be G and A — the BLUE haplotype’s alleles. That is the wrong guess for Moana: her own green haplotype would infer T and T. The follow-up slide said it plainly: imputing from the blue haplotype predicts wrong variants for people whose ancestry matches the green haplotype. The professor’s nuance: the patterns are ~80% tendencies within an ancestry, not certainties.',
+      yes:'Exactly — the blue rule says “if A, then G and A,” so imputation from Merida’s haplotype hands Moana G and A, the wrong variants. Her green haplotype would have given T and T.',
+      no:'Read the key, not the tag allele. The blue (Merida) row says: if A, then G and A. Imputing from blue therefore predicts G and A for Moana — the wrong variants, since her green haplotype says T and T. The tag allele itself is not what changes.' },
+    { skill:'diversity', cap:'Lecture 11 • Thu Oct 29, 2026 — Poll 2 (gel diagram redrawn from the poll)',
+      svg:gelSVG([{label:'Protein A — UK', lanes:['TB','TB','T','B']},{label:'Protein A — France', lanes:['TB','T','B','TB']},{label:'Protein B — UK', lanes:['T','TB','T','B']},{label:'Protein B — France', lanes:['B','TB','B','B']},{label:'Protein C — UK', lanes:['T','T','T','T']},{label:'Protein C — France', lanes:['B','B','B','B']}], 'Redrawn from the poll description: 4 people per region. Dark green bar = top allele, violet bar = bottom allele. Protein A: same split (4 top / 4 bottom) in both regions. Protein B: uneven (UK 5 top, France 1 top). Protein C: completely different (UK all top, France all bottom).'),
+      q:'Three proteins, samples from the UK vs France (4 people each). Which protein(s) have an allele distribution that differs between the regions?',
+      opts:['Protein A','Protein B','Protein C','Proteins B and C','Proteins A and B'], answer:3,
+      explain:'B and C. Protein A has the SAME distribution in both regions (4 top / 4 bottom) even though the band pattern looks different lane by lane. Protein B is uneven between regions. Protein C is completely different — UK all top allele, France all bottom. Both B and C count toward Lewontin’s 15%: complete separation (C) and merely uneven distributions (B) both contribute.',
+      yes:'Right — A only looks different lane by lane; count the alleles and both regions have 4 top and 4 bottom. B is uneven and C is fully flipped, so both count.',
+      no:'Don’t compare band patterns lane by lane — count alleles. Protein A: 4 top / 4 bottom in the UK and the same in France, so its distribution does not differ. Protein B is uneven, and Protein C is all-top in the UK and all-bottom in France. Both B and C differ.' },
+    { skill:'gelcount', cap:'Lecture 11 • Thu Oct 29, 2026 — Poll 3 (gel diagram redrawn from the poll)',
+      svg:gelSVG([{label:'UK — 9 people', lanes:['T','T','T','T','TB','TB','TB','TB','TB']}], 'Redrawn from the poll: 9 people from the UK, one protein. Count the top (dark green) allele. The trap answer is 8 — the number of visible top bands.'),
+      q:'Count the TOP allele in this gel: 9 people, one protein. (Remember: a single band counts as 2.)',
+      opts:['8','11','13','18'], answer:2,
+      explain:'13. Humans are diploid: a single band = homozygous = 2 copies; two bands = 1 copy each. The 4 single top bands count 2 each (8), and the 5 two-band lanes add 1 top each (5) — 8 + 5 = 13 top alleles, 5 bottom, 18 total. The trap is 8: counting visible top bands as if each were one copy.',
+      yes:'Exactly — 4 homozygous-top lanes × 2 = 8, plus 5 heterozygotes × 1 = 5. Total 13, not 8.',
+      no:'The trap is counting bands: there are 8 visible top bands, but a single band is a homozygous person — 2 copies. 4 single-top lanes × 2 = 8, plus 1 top copy in each of the 5 two-band lanes = 13.' },
+    { skill:'gelfreq', cap:'Lecture 11 • Thu Oct 29, 2026 — Poll 4',
+      rows:[['Top allele count (Poll 3):','13'],['Bottom allele count:','5'],['People:','9'],['Total alleles:','9 × 2 = 18']],
+      q:'Convert the Poll 3 count to a frequency: what is the frequency of the top allele in the UK sample?',
+      opts:['0.28','0.44','0.72','0.78'], answer:2,
+      explain:'0.72. Frequency = count ÷ total alleles = 13 ÷ 18 = 0.72. The fast denominator: 9 people × 2 (diploid) = 18 alleles.',
+      yes:'Right — 13 ÷ 18 = 0.72. Nine people, times two copies each, is the denominator.',
+      no:'Frequency needs the total: 13 top + 5 bottom = 18 alleles, or 9 people × 2 = 18. 13 ÷ 18 = 0.72.' },
+    { skill:'gelfreq', cap:'Lecture 11 • Thu Oct 29, 2026 — Poll 5 (counts given on the slide)',
+      rows:[['Top allele count:','4'],['People:','9'],['Total alleles:','9 × 2 = 18'],['Sample:','France — a different set of 9 people, same protein']],
+      q:'Same protein, France sample (the counts were given on the slide): 4 top alleles out of 18. What is the frequency of the top allele in France?',
+      opts:['0.22','0.28','0.44','0.72'], answer:0,
+      explain:'0.22. 4 ÷ 18 = 0.22. Same SNP, very different frequency by region — 0.72 in the UK vs 0.22 in France. One SNP alone says little about ancestry; ancestry testing combines frequencies like this across many SNPs.',
+      yes:'Right — 4 ÷ 18 = 0.22, against 0.72 in the UK. That uneven distribution is the raw material ancestry testing combines.',
+      no:'Same denominator as Poll 4: 9 people × 2 = 18 alleles. 4 ÷ 18 = 0.22 — not 0.72, which was the UK frequency.' },
+    { skill:'diversity', cap:'Lecture 11 • Thu Oct 29, 2026 — Poll 6',
+      rows:[['SNP frequencies:','Differ between the two groups'],['Trait:','Tea drinking in England vs coffee drinking in France — differs between the groups'],['Question:','Do the SNP differences cause the trait difference?']],
+      q:'SNPs differ in frequency between two groups, and a trait differs too (tea in England, coffee in France). Can we conclude the SNPs cause the trait difference?',
+      opts:['Yes — the SNP difference explains the trait difference','No — correlation does not prove causation','Only if the SNPs are in a coding region','Only with more SNPs tested'], answer:1,
+      explain:'No — correlation, not causation. The trait difference may be environmental or cultural (population stratification), which is a source of false positives in GWAS. The professor did not read this poll aloud; the answer is confirmed in her explanation: group differences in a trait cannot automatically be attributed to group differences in allele frequencies.',
+      yes:'Exactly — a frequency difference plus a trait difference is still only a correlation. The tea/coffee difference could be entirely cultural.',
+      no:'Two things differing together is correlation. The trait difference could be environmental or cultural — that is population stratification, and it is why GWAS must control for population structure instead of attributing every group difference to genetics.' }
+  ];
+  POLLS29.forEach(function(c){ c.lecture='lec29'; POLLS.push(c); });
+  var NUMBERS29=[
+    {label:'Lewontin 1972', value:'85% global / 15% region-associated', note:'Of the 0.1% of the genome that varies at all — 85% of variation is global, 15% is associated with specific regions/ancestry groups. Measured in 1972, before Sanger sequencing (1978).'},
+    {label:'Modern revision (microsatellites)', value:'FST ≈ 0.05 → only ~5% between-group excess', note:'About a third of Lewontin’s 15%. The region-associated slice of the genomic pizza is smaller than drawn in 1972.'},
+    {label:'FST anchors', value:'1 = separate • 0 = identical • 0.33 example', note:'15 differences between populations vs 10 within: (15−10)/15 = 0.33. A slightly uneven distribution gave ~0.11 in class.'},
+    {label:'Allele-sharing ladder', value:'92.5% in ≥2 groups • >80% in ≥3 • ~half in all • ~7% private', note:'From the microsatellite study. Private alleles are the ~7% found in just one group — and they are rare inside that group.'},
+    {label:'Gel count — UK (Poll 3)', value:'13 top alleles / 18 = 0.72', note:'9 people × 2 = 18 alleles. Single band = 2 copies; two bands = 1 each. The trap count is 8 visible bands.'},
+    {label:'Gel count — France (Poll 5)', value:'4 top alleles / 18 = 0.22', note:'Same protein, different region: 0.72 (UK) vs 0.22 (France). One SNP says little alone; ancestry tests combine many.'},
+    {label:'SNP chip reach', value:'~600,000 SNPs measured of ~600 million+ known', note:'The rest are imputed from haplotype blocks via tag SNPs — a guess, not a measurement.'},
+    {label:'Worksheet 5 — dbSNP today', value:'1,197,210,835 known SNPs ≈ 39.9% of positions', note:'Up from 660,773,127 in 2018 (+536,437,708, about 81% growth). The number keeps growing; write the number the site shows when you look.'},
+    {label:'Two people vs the whole population', value:'99.9% identical = 3,000,000 differences = 0.25% of known SNP sites', note:'39.9% counts every position where anyone varies; two people differ at only ~0.1% of the genome.'},
+    {label:'Missing heritability', value:'GWAS SNPs explain only ~half the predicted variation', note:'Twin studies predicted ~80% heritability in the lecture example. Possible causes: extreme polygenicity, epistasis, epigenetics, twin-study overestimates.'},
+    {label:'Dates that matter', value:'Lewontin 1972 • Sanger sequencing 1978', note:'Lewontin measured alleles with protein gels because sequencing did not exist yet.'},
+    {label:'Imputation tendency', value:'~80% tendencies, not certainties', note:'Haplotype patterns hold about 80% of the time within an ancestry — tendencies, not guarantees, and the rules were built mostly from European-ancestry data.'}
+  ];
+  NUMBERS29.forEach(function(c){ c.lecture='lec29'; NUMBERS.push(c); });
+  var EXAMPLES29=[
+    { title:'Example 1 — Count alleles from a gel', q:'A gel shows 9 people: 4 lanes with a single top band, 5 lanes with two bands. How many top alleles?', steps:['Single band = homozygous = 2 copies: 4 × 2 = 8 top alleles.','Two bands = heterozygous = 1 top copy each: 5 × 1 = 5.','Total top = 8 + 5 = 13. Total alleles = 9 × 2 = 18, so 5 bottom alleles.','Answer: 13 top alleles. (Counting visible bands gives 8 — the trap.)'] },
+    { title:'Example 2 — Gel count → frequency', q:'13 top alleles out of 18 total. Frequency?', steps:['Frequency = count ÷ total alleles.','13 ÷ 18 = 0.72.','Answer: 0.72 (72%). Denominator shortcut: people × 2.'] },
+    { title:'Example 3 — FST from difference counts', q:'Two people from different subpopulations differ at 15 positions on average; two from the same subpopulation differ at 10. FST?', steps:['FST = (between − within) ÷ between.','(15 − 10) ÷ 15 = 5 ÷ 15 = 0.33.','Answer: FST ≈ 0.33. Compare: modern human value ≈ 0.05.'] },
+    { title:'Example 4 — The Moana imputation', q:'Moana’s haplotype is green (if A, then T and T). Her results are imputed from Merida’s blue haplotype (if A, then G and A). What inferred alleles does she get?', steps:['Imputation follows the reference haplotype’s rule, not the person’s own.','Blue rule: if A, then G and A.','Answer: G and A — the wrong variants. Her true inferred alleles would be T and T.'] }
+  ];
+  EXAMPLES29.forEach(function(c){ c.lecture='lec29'; EXAMPLES.push(c); });
   // ---------- skills per lecture (Khan-style, quiet mastery tags) ----------
-  var SKILL_LABELS={maf:'Reading a dbSNP card & MAF',freq:'Allele counts ↔ frequencies',codon:'Codon classification',coverage:'Coverage counting',odds:'Odds from counts',orclass:'Odds ratios — risk / protective / none',risk:'OR → actual carrier risk',gwstats:'p-values, Manhattan plots & Bonferroni',chip:'SNP chip reading (the complement rule)',terms:'Terms & main facts'};
+  var SKILL_LABELS={maf:'Reading a dbSNP card & MAF',freq:'Allele counts ↔ frequencies',codon:'Codon classification',coverage:'Coverage counting',odds:'Odds from counts',orclass:'Odds ratios — risk / protective / none',risk:'OR → actual carrier risk',gwstats:'p-values, Manhattan plots & Bonferroni',chip:'SNP chip reading (the complement rule)',impute:'Imputation & haplotype bias',gelcount:'Counting alleles from gel bands',gelfreq:'Gel counts → allele frequencies',fst:'FST — between vs within differences',diversity:'How diversity is distributed / race vs structure',terms:'Terms & main facts'};
   var SKILLS8=['maf','freq','codon','coverage','terms'];
   var SKILLS27=['odds','orclass','risk','gwstats','chip','terms'];
+  var SKILLS29=['impute','gelcount','gelfreq','fst','diversity','terms'];
   function currentSkills(){
-    var ids = activeLecture==='lec27' ? SKILLS27 : (activeLecture==='all' ? ['maf','freq','codon','coverage','odds','orclass','risk','gwstats','chip','terms'] : SKILLS8);
+    var ids = activeLecture==='lec27' ? SKILLS27 : (activeLecture==='lec29' ? SKILLS29 : (activeLecture==='all' ? ['maf','freq','codon','coverage','odds','orclass','risk','gwstats','chip','impute','gelcount','gelfreq','fst','diversity','terms'] : SKILLS8));
     return ids.map(function(id){ return {id:id, label:SKILL_LABELS[id]}; });
   }
   function currentExamFamilies(){
     if(activeLecture==='lec27') return ['orinterp','orrisk','manhattan','chip'];
-    if(activeLecture==='all') return ['codon','coverage','dbsnp','conv','three','orinterp','orrisk','manhattan','chip'];
+    if(activeLecture==='lec29') return ['gelcount','gelfreq','fst','impute','diversity'];
+    if(activeLecture==='all') return ['codon','coverage','dbsnp','conv','three','orinterp','orrisk','manhattan','chip','gelcount','gelfreq','fst','impute','diversity'];
     return ['codon','coverage','dbsnp','conv','three'];
   }
   // ---------- per-lecture panel chrome: intros, drill moves, reference blocks ----------
@@ -632,22 +810,28 @@
     if(!mi||!mm) return;
     if(!renderChrome.orig) renderChrome.orig={mi:mi.innerHTML, mm:mm.innerHTML, qi:qi?qi.innerHTML:'', ei:ei?ei.innerHTML:''};
     var o=renderChrome.orig;
-    var r8=document.getElementById('lec8Ref'), r27=document.getElementById('lec27Ref');
-    if(activeLecture==='lec27'){
+    var r8=document.getElementById('lec8Ref'), r27=document.getElementById('lec27Ref'), r29=document.getElementById('lec29Ref');
+    if(activeLecture==='lec29'){
+      mi.innerHTML='Three moves, step by step — the gel-counting routine from class. Every drill shows its <b>gel diagram or difference counts</b> first. Remember: a single band counts as 2 copies, two bands as 1 each, and total alleles = people × 2. Type your answer for instant feedback, tap <b>Hint</b> for one step at a time, and open the full worked solution after you answer.';
+      mm.innerHTML='<div class="move"><b>Move 1</b><br><code>single band = 2 • two bands = 1 + 1</code><br><span class="muted">Count alleles, not bands.</span></div><div class="move"><b>Move 2</b><br><code>frequency = count ÷ (people × 2)</code><br><span class="muted">Count → frequency.</span></div><div class="move"><b>Move 3</b><br><code>FST = (between − within) ÷ between</code><br><span class="muted">Excess difference, as a fraction.</span></div>';
+      if(qi) qi.innerHTML='The six Oct 29 polls, in the wording used in class, with the haplotype key and gel diagrams <b>redrawn from the poll wording and the counts given in class</b> — no slide photos of these polls were available, so each diagram is labeled as a redraw and shows the same numbers the poll used. Count first, then convert.';
+      if(ei) ei.innerHTML='The Oct 29 polls, remixed: questions rotate through <b>every poll family</b> — gel counting, gel-count → frequency, FST, imputation from the wrong haplotype, and how diversity is distributed — shuffled so you never get a long run of one kind, with fresh gels, counts and haplotypes each time. Stuck? Tap <b>Hint</b> for one step at a time; the full worked solution appears after you answer.';
+      if(r8) r8.style.display='none'; if(r27) r27.style.display='none'; if(r29) r29.style.display='';
+    } else if(activeLecture==='lec27'){
       mi.innerHTML='Four moves, step by step — the odds-ratio routine from class. Every drill shows its <b>case / control counts</b> first: the allele named in the question goes in the numerator, and the disease count goes on top of each odds fraction (counts, never totals). Type your answer for instant feedback, tap <b>Hint</b> for one step at a time, and open the full worked solution after you answer.';
       mm.innerHTML='<div class="move"><b>Move 1</b><br><code>odds = with ÷ without</code><br><span class="muted">Disease count on top — never the total.</span></div><div class="move"><b>Move 2</b><br><code>OR = odds(named) ÷ odds(other)</code><br><span class="muted">Named allele in the numerator.</span></div><div class="move"><b>Move 3</b><br><code>OR = 1 none • &gt;1 risk • &lt;1 protective</code><br><span class="muted">Read the ratio.</span></div><div class="move"><b>Move 4</b><br><code>risk = baseline × OR</code><br><span class="muted">From ratio to actual risk.</span></div>';
       if(qi) qi.innerHTML='Each question comes with <b>the actual slide from class</b> — read the table, the Manhattan plot, or the chip image right on it. Sanity-check first, then do the math, exactly like class. Tap any slide to zoom.';
       if(ei) ei.innerHTML='The Oct 27 polls, remixed: questions rotate through <b>every poll family</b> — odds-ratio interpretation, odds-ratio risk calculation, Manhattan plot reading, and SNP chip reading — shuffled so you never get a long run of one kind, with fresh counts and diagrams each time. Every question shows its counts or its diagram first. Stuck? Tap <b>Hint</b> for one step at a time; the full worked solution appears after you answer.';
-      if(r8) r8.style.display='none'; if(r27) r27.style.display='';
+      if(r8) r8.style.display='none'; if(r27) r27.style.display=''; if(r29) r29.style.display='none';
     } else if(activeLecture==='all'){
-      mi.innerHTML='Both drill sets, mixed: the Lecture 8 dbSNP moves and the Oct 27 odds-ratio moves. Every drill shows its data first — a dbSNP card or the case/control counts. Type your answer for instant feedback, tap <b>Hint</b> for one step at a time, and open the full worked solution after you answer.';
+      mi.innerHTML='All three drill sets, mixed: the Lecture 8 dbSNP moves, the Oct 27 odds-ratio moves, and the Lecture 11 gel / FST moves. Every drill shows its data first — a dbSNP card, the case/control counts, or a gel diagram. Type your answer for instant feedback, tap <b>Hint</b> for one step at a time, and open the full worked solution after you answer.';
       mm.innerHTML=o.mm+'<div class="move"><b>Odds</b><br><code>odds = with ÷ without</code><br><span class="muted">Disease count on top — never the total.</span></div><div class="move"><b>Odds ratio</b><br><code>OR = odds(named) ÷ odds(other)</code><br><span class="muted">1 = none • &gt;1 risk • &lt;1 protective.</span></div><div class="move"><b>Risk</b><br><code>risk = baseline × OR</code><br><span class="muted">From ratio to actual risk.</span></div>';
-      if(qi) qi.innerHTML='Every poll from both lectures, each with its slide, data card, or diagram. Lecture 8 Question 1 also has a <b>codon chart</b> toggle under it. Tap any slide to zoom.';
-      if(ei) ei.innerHTML='All poll families from both lectures, mixed and shuffled: codon classification, coverage, dbSNP / MAF, three-allele MAF, odds-ratio interpretation and risk, Manhattan plots, and SNP chips — fresh numbers and drawings each time. Stuck? Tap <b>Hint</b> for one step at a time; the full worked solution appears after you answer.';
-      if(r8) r8.style.display=''; if(r27) r27.style.display='';
+      if(qi) qi.innerHTML='Every poll from all three lectures, each with its slide, data card, or diagram. Lecture 8 Question 1 also has a <b>codon chart</b> toggle under it. The Oct 29 polls use diagrams redrawn from the poll wording and class counts — no slide photos of those polls were available. Tap any slide to zoom.';
+      if(ei) ei.innerHTML='All poll families from all three lectures, mixed and shuffled: codon classification, coverage, dbSNP / MAF, three-allele MAF, odds-ratio interpretation and risk, Manhattan plots, SNP chips, gel counting, gel frequencies, FST, imputation, and how diversity is distributed — fresh numbers and drawings each time. Stuck? Tap <b>Hint</b> for one step at a time; the full worked solution appears after you answer.';
+      if(r8) r8.style.display=''; if(r27) r27.style.display=''; if(r29) r29.style.display='';
     } else {
       mi.innerHTML=o.mi; mm.innerHTML=o.mm; if(qi) qi.innerHTML=o.qi; if(ei) ei.innerHTML=o.ei;
-      if(r8) r8.style.display=''; if(r27) r27.style.display='none';
+      if(r8) r8.style.display=''; if(r27) r27.style.display='none'; if(r29) r29.style.display='none';
     }
   }
   var activeLecture='lec8';
@@ -658,9 +842,10 @@
   function setLecture(id){
     activeLecture=id;
     examBag=[];
-    var b8=document.getElementById('lecBtn8'), b27=document.getElementById('lecBtn27'), ba=document.getElementById('lecBtnAll');
+    var b8=document.getElementById('lecBtn8'), b27=document.getElementById('lecBtn27'), b29=document.getElementById('lecBtn29'), ba=document.getElementById('lecBtnAll');
     if(b8){ b8.classList.toggle('selected', id==='lec8'); b8.setAttribute('aria-pressed', id==='lec8'?'true':'false'); }
     if(b27){ b27.classList.toggle('selected', id==='lec27'); b27.setAttribute('aria-pressed', id==='lec27'?'true':'false'); }
+    if(b29){ b29.classList.toggle('selected', id==='lec29'); b29.setAttribute('aria-pressed', id==='lec29'?'true':'false'); }
     if(ba){ ba.classList.toggle('selected', id==='all'); ba.setAttribute('aria-pressed', id==='all'?'true':'false'); }
     var sb=document.getElementById('scopeBar');
     if(sb) sb.innerHTML = id==='all'
@@ -678,11 +863,12 @@
     var qs=document.getElementById('quizScore'); if(qs) qs.textContent='0 / '+currentPolls().length;
     var qf=document.getElementById('quizFeedback'); if(qf) qf.textContent='';
     quickIdx=0; quickRevealed=false;
-    renderNumbers(); renderQuick(); renderExamples(); renderChrome();
+    renderNumbers(); renderQuick(); renderExamples(); renderChrome(); renderObjectives();
   }
   function refreshScope(){ renderCard(); renderQuiz(); newDrill(); newExamQ(); updateProgress(); renderSkills(); }
   document.getElementById('lecBtn8').addEventListener('click', function(){ setLecture('lec8'); refreshScope(); showToast('Lecture 8 — Oct 20, 2026'); document.querySelector('.tabs').scrollIntoView({behavior:'smooth'}); });
   document.getElementById('lecBtn27').addEventListener('click', function(){ setLecture('lec27'); refreshScope(); showToast('Tue Oct 27, 2026 — GWAS & Odds Ratios'); document.querySelector('.tabs').scrollIntoView({behavior:'smooth'}); });
+  document.getElementById('lecBtn29').addEventListener('click', function(){ setLecture('lec29'); refreshScope(); showToast('Lecture 11 — Thu Oct 29, 2026'); document.querySelector('.tabs').scrollIntoView({behavior:'smooth'}); });
   document.getElementById('lecBtnAll').addEventListener('click', function(){ setLecture('all'); refreshScope(); showToast('All Lectures — cumulative review'); document.querySelector('.tabs').scrollIntoView({behavior:'smooth'}); });
 
   // ---------- storage ----------
@@ -895,6 +1081,7 @@
       var q=document.createElement('p'); q.className='q'; q.textContent='Q'+(qi+1)+'. '+p.q; box.appendChild(q);
       if(p.img){ box.appendChild(slideFig(p.img, p.cap, SLIDE_ALTS[p.img])); if(p.img==='poll1') box.appendChild(codonToggle()); }
       else {
+        if(p.cap){ var capEl=document.createElement('div'); capEl.className='dbsnp-head'; capEl.textContent=p.cap; box.appendChild(capEl); }
         if(p.rows){ var dv=document.createElement('div'); dv.innerHTML=dataCardHtml(p.dataHead||'Given data — from the lecture poll', p.rows); box.appendChild(dv); }
         if(p.svg){ var sv=document.createElement('div'); sv.innerHTML=p.svg; box.appendChild(sv); }
       }
@@ -1239,6 +1426,73 @@
         het ? 'Both patches glow moderately → the sample has fragments matching both probes → one copy of each allele.' : 'Bright patch label: '+bright+' → the sample\u2019s allele is its complement: '+comp[bright]+'.',
         het ? 'Answer: heterozygous '+pr[0]+pr[1]+'.' : 'Only one patch is bright → both copies are the same → homozygous '+comp[bright]+'. Answer: homozygous '+comp[bright]+'.'] };
   }
+  // ---------- Lecture 11 exam families: fresh gels, FST, imputation and diversity, every time ----------
+  function makeGelLanes(people){
+    var homTop=ri(0, Math.floor(people/2)), het=ri(0, people-homTop), homBot=people-homTop-het;
+    var lanes=[];
+    for(var i=0;i<homTop;i++) lanes.push('T');
+    for(var j=0;j<het;j++) lanes.push('TB');
+    for(var k=0;k<homBot;k++) lanes.push('B');
+    return {lanes:shuffleArr(lanes), count:homTop*2+het, homTop:homTop, het:het, homBot:homBot, people:people};
+  }
+  function genGelCount(){
+    var people=pickA([7,8,9,10]); var g=makeGelLanes(people);
+    return { kind:'Same shape as Lecture 11 Poll 3 • Count the top allele', skill:'gelcount', type:'num', mode:'count', answer:g.count, tol:0, answerText:g.count+' top alleles',
+      visual:gelSVG([{label:people+' people, one protein', lanes:g.lanes}], 'Each lane is one person. A single dark green bar counts as 2; both bars together count as 1 top copy.'),
+      q:'Count the TOP allele in this gel: '+people+' people, one protein. (Type the count.)',
+      steps:['Single band = homozygous = 2 copies: '+g.homTop+' single-top lane(s) × 2 = '+(g.homTop*2)+'.','Two bands = heterozygous = 1 top copy each: '+g.het+' lane(s) × 1 = '+g.het+'.','Total top = '+(g.homTop*2)+' + '+g.het+' = '+g.count+'. Total alleles = '+people+' × 2 = '+(people*2)+'.','Answer: '+g.count+' top alleles. (Counting visible top bands would give '+(g.homTop+g.het)+' — the trap.)'] };
+  }
+  function genGelFreq(){
+    var people=pickA([8,9,10]); var g=makeGelLanes(people); var total=people*2, freq=g.count/total;
+    return { kind:'Same shape as Lecture 11 Polls 4–5 • Gel count → frequency', skill:'gelfreq', type:'num', mode:'freq', suffix:'', answer:freq, tol:0.011, answerText:fmt(freq)+' ('+Math.round(freq*100)+'%)',
+      visual:gelSVG([{label:people+' people, one protein', lanes:g.lanes}], 'Count first, then divide. Total alleles = people × 2.'),
+      q:'In this gel of '+people+' people, what is the frequency of the top allele? Type the decimal or the %.',
+      steps:['Count the top allele: '+g.homTop+' single-top lane(s) × 2 = '+(g.homTop*2)+', plus '+g.het+' two-band lane(s) × 1 = '+g.het+' → '+g.count+' top alleles.','Total alleles = '+people+' × 2 = '+total+'.','Frequency = '+g.count+' ÷ '+total+' = '+fmt(freq)+'.','Answer: '+fmt(freq)+' ('+Math.round(freq*100)+'%).'] };
+  }
+  function genFST(){
+    var between=ri(12,20), within=ri(5, between-2), fst=(between-within)/between;
+    return { kind:'Same shape as Lecture 11 • FST', skill:'fst', type:'num', mode:'raw', answer:fst, tol:0.02, answerText:fmt(fst),
+      visual:dataCardHtml('Given data — average sequence differences', [['Between two people from DIFFERENT subpopulations', String(between)],['Between two people from the SAME subpopulation', String(within)]]),
+      q:'Two people from different subpopulations differ at '+between+' positions on average; two from the same subpopulation differ at '+within+'. What is FST? (Type the decimal.)',
+      steps:['FST = (differences between populations − differences within populations) ÷ differences between populations.','FST = ('+between+' − '+within+') ÷ '+between+' = '+(between-within)+' ÷ '+between+' = '+fmt(fst)+'.','Answer: '+fmt(fst)+'. For scale: 1 = completely separate alleles, 0 = identical distribution, modern human value ≈ 0.05.'] };
+  }
+  function genImpute(){
+    var cases=[
+      {person:'green (Moana)', personRule:'if A, then T and T', ref:'blue (Merida)', refRule:'if A, then G and A', correct:'G and A', wrong:'T and T'},
+      {person:'red', personRule:'if T, then C and C', ref:'green (Moana)', refRule:'if A, then T and T', correct:'T and T', wrong:'C and C'},
+      {person:'blue (Merida)', personRule:'if A, then G and A', ref:'red', refRule:'if T, then C and C', correct:'C and C', wrong:'G and A'}
+    ];
+    var c=pickA(cases);
+    var opts=shuffleArr([c.correct, c.wrong, 'C and G', 'A and A']);
+    return { kind:'Same shape as Lecture 11 Poll 1 • Imputation bias', skill:'impute', type:'mc', opts:opts, answerIdx:opts.indexOf(c.correct), answerText:c.correct,
+      visual:dataCardHtml('Haplotype key — from the lecture', [['Person’s own haplotype ('+c.person+')', c.personRule],['Reference haplotype used for imputation ('+c.ref+')', c.refRule]]),
+      q:'A person whose ancestry matches the '+c.person+' haplotype has their results imputed using the '+c.ref+' haplotype’s trends. What inferred alleles will the imputation predict?',
+      why:'Imputation follows the reference haplotype’s rule, not the person’s own: the '+c.ref+' rule ('+c.refRule+') predicts '+c.correct+'. That is the wrong guess for this person, whose own '+c.person+' haplotype would infer '+c.wrong+'.',
+      steps:['Imputation does not measure the inferred SNPs — it guesses them from the reference haplotype’s pattern.','The reference used is '+c.ref+': '+c.refRule+'.','So the prediction is '+c.correct+' — even though the person’s own haplotype ('+c.person+', '+c.personRule+') would give '+c.wrong+'.','Answer: '+c.correct+'. Haplotype rules built mostly from one ancestry’s data go wrong for other ancestries.'] };
+  }
+  function genDiversity(){
+    var variants=[
+      {q:'In the microsatellite study, what share of alleles are private alleles — found in only one regional ancestry group — and how common are they inside that group?',
+       correct:'About 7%, and rare inside their group', opts:['About 7%, and rare inside their group','About 15%, and carried by most of the group','About 50%, and carried by most of the group','About 92.5%, and rare inside their group'],
+       why:'Only ~7% of alleles are private, and when they exist they are rare inside their group — most members of the group do not carry them. That is why ancestry testing cannot rely on private alleles. (92.5% is the share found in at least TWO groups.)',
+       steps:['The study’s ladder: 92.5% of alleles in at least 2 groups, over 80% in at least 3, almost half in all groups.','What is left — found in just one group — is only about 7%.','And those private alleles are rare where they occur: they are not universal markers of that ancestry.','Answer: about 7%, and rare inside their group.']},
+      {q:'Modern microsatellite data revise Lewontin’s 1972 split (85% global / 15% region-associated). What is the modern between-group excess?',
+       correct:'About 5% (FST ≈ 0.05)', opts:['About 5% (FST ≈ 0.05)','About 15% (FST ≈ 0.15)','About 33% (FST ≈ 0.33)','About 50% (FST ≈ 0.50)'],
+       why:'The microsatellite study gives FST ≈ 0.05 — only ~5% excess variation between groups vs within, about a third of Lewontin’s 15%. 0.33 was the hypothetical worked example (15 vs 10 differences).',
+       steps:['Lewontin (1972, protein gels): 85% global / 15% region-associated.','Modern microsatellite data, fed through the FST calculation, give about 5%.','That is the same kind of calculation as the 0.33 example — only the modern answer is 0.05.','Answer: about 5% (FST ≈ 0.05).']},
+      {q:'Why does ancestry testing NOT work by looking for private alleles?',
+       correct:'Private alleles are rare in their group, so most people of that ancestry do not carry them', opts:['Private alleles are rare in their group, so most people of that ancestry do not carry them','Private alleles do not exist in humans','Private alleles are carried by everyone in their group','Ancestry testing only uses one SNP'],
+       why:'A private allele found in only one group is still rare inside that group, so finding it (or not) says little about one person. Ancestry testing instead combines allele frequencies across many SNPs — each SNP adds a little confidence.',
+       steps:['Private alleles: ~7% of alleles, found in one group only.','Catch: they are rare inside that group — most members do not carry them.','So a single private allele cannot identify a person’s ancestry.','Instead, tests combine frequencies (e.g. 0.72 vs 0.22) across many SNPs. Answer: private alleles are rare in their group.']},
+      {q:'Population structure is real — about 5% of differences cluster with geographic origin. What does that NOT mean?',
+       correct:'That there are discrete races, uniform within and distinct between', opts:['That there are discrete races, uniform within and distinct between','That allele distributions are uneven between subpopulations','That ancestry testing can combine frequencies across SNPs','That no allele is carried by all members of one group only'],
+       why:'Population structure is uneven distributions on a continuous gradient — not discrete groups. No allele is carried by all members of one group and only that group, and race is a social construct. The other options are all true statements from the lecture.',
+       steps:['Structure = uneven allele distributions clustering weakly with geography (~5%).','Discrete races would need uniformity within and sharp separation between — the data show neither.','No allele is universal to one group only; private alleles are rare.','Answer: it does not mean discrete races exist.']}
+    ];
+    var v=pickA(variants);
+    var opts=shuffleArr(v.opts.slice());
+    return { kind:'Same shape as Lecture 11 • How diversity is distributed', skill:'diversity', type:'mc', opts:opts, answerIdx:opts.indexOf(v.correct), answerText:v.correct, q:v.q, why:v.why, steps:v.steps };
+  }
   // ---------- Oct 27 math drills: odds ratios, fresh counts every time ----------
   function genDrillOdds(){
     var named=pickA(['C','T','A','G']); var a=ri(2,30), b=pickA([40,50,60,70,80,90]); var odds=a/b;
@@ -1353,6 +1607,11 @@
       if(examBag[0]===examLastFam && examBag.length>1){ var t=examBag[0]; examBag[0]=examBag[1]; examBag[1]=t; }
     }
     var fam=examBag.shift(); examLastFam=fam;
+    if(fam==='gelcount') return genGelCount();
+    if(fam==='gelfreq') return genGelFreq();
+    if(fam==='fst') return genFST();
+    if(fam==='impute') return genImpute();
+    if(fam==='diversity') return genDiversity();
     if(fam==='codon') return genCodon();
     if(fam==='coverage') return genCoverage();
     if(fam==='three') return genThree();
@@ -1450,9 +1709,36 @@
     var st=document.getElementById('drillSteps'); st.classList.remove('show'); st.innerHTML='';
     document.getElementById('showSteps').disabled=false;
   }
+  function newDrill29(){
+    var gens=[genDrillGelCount, genDrillGelFreq, genDrillFST];
+    curDrill=pickA(gens)();
+    drillHintIdx=0; drillAnswered=false;
+    document.getElementById('drillType').textContent=curDrill.type;
+    document.getElementById('drillSkillLabel').textContent=curDrill.skillLabel;
+    document.getElementById('drillQ').textContent=curDrill.q;
+    document.getElementById('drillVisual').innerHTML=curDrill.visual||'';
+    var inp=document.getElementById('drillNum'); inp.value='';
+    var fb=document.getElementById('drillFeedback'); fb.className='feedback'; fb.textContent='';
+    var hb=document.getElementById('drillHints'); hb.classList.remove('show'); hb.innerHTML='';
+    var st=document.getElementById('drillSteps'); st.classList.remove('show'); st.innerHTML='';
+    document.getElementById('showSteps').disabled=false;
+  }
+  function genDrillGelCount(){
+    var g=genGelCount();
+    return { type:'Move 1 • Count alleles from a gel', skill:'gelcount', skillLabel:'Skill: Counting alleles from gel bands', mode:'count', tol:0, answer:g.answer, answerText:g.answerText, visual:g.visual, q:g.q, steps:g.steps };
+  }
+  function genDrillGelFreq(){
+    var g=genGelFreq();
+    return { type:'Move 2 • Gel count → frequency', skill:'gelfreq', skillLabel:'Skill: Gel counts → allele frequencies', mode:'freq', tol:0.011, answer:g.answer, answerText:g.answerText, visual:g.visual, q:g.q, steps:g.steps };
+  }
+  function genDrillFST(){
+    var g=genFST();
+    return { type:'Move 3 • FST', skill:'fst', skillLabel:'Skill: FST — between vs within differences', mode:'raw', tol:0.02, answer:g.answer, answerText:g.answerText, visual:g.visual, q:g.q, steps:g.steps };
+  }
   function newDrill(){
+    if(activeLecture==='lec29'){ newDrill29(); return; }
+    if(activeLecture==='all'){ var r=Math.random(); if(r<0.34){ newDrill29(); return; } if(r<0.67){ newDrill27(); return; } newDrill8(); return; }
     if(activeLecture==='lec27'){ newDrill27(); return; }
-    if(activeLecture==='all' && Math.random()<0.5){ newDrill27(); return; }
     newDrill8();
   }
   document.getElementById('newDrill').onclick=newDrill;
@@ -1488,6 +1774,148 @@
   }
   renderExamples();
 
+  // ---------- learning objectives: Lecture 11, each stated in full and answered ----------
+  var OBJECTIVES29=[
+    {q:'Explain how SNP chips “scan the genome” without measuring every SNP.', a:'A chip measures only about <b>600,000 tag SNPs</b>. Nearby SNPs sit in <b>haplotype blocks</b> that tend to be inherited together, so each tag SNP stands in for its block and the nearby SNPs are <b>imputed</b> — predicted from known haplotype patterns — instead of being measured.'},
+    {q:'Explain why imputation can be biased.', a:'The haplotype rules were built mostly from <b>European-ancestry</b> data. Apply a European (Merida / blue) rule to someone whose ancestry follows a different (Moana / green) haplotype and the imputed variants are <b>wrong</b> — G and A instead of T and T. The patterns are only ~80% tendencies, not certainties.'},
+    {q:'Define heritability and the missing heritability problem, and list its possible causes.', a:'<b>Heritability</b> is the fraction of variation in a trait explained by genetics. The <b>missing heritability problem</b>: GWAS-found SNPs explain only about <b>half</b> the variation twin studies predict (the lecture’s example predicted ~80%). Possible causes: <b>extreme polygenicity</b> (huge numbers of tiny effects), <b>epistasis</b>, <b>epigenetics</b>, and <b>twin studies overestimating</b> heritability because separated twins still share similar environments.'},
+    {q:'Describe how Lewontin measured genetic variation in 1972, before sequencing existed.', a:'With <b>native gel electrophoresis of proteins</b>. An allele that changes an amino acid can change the protein’s <b>charge or conformation</b>, which changes how far it migrates in a native gel. Different alleles → different band positions → allele counts, all without sequencing (Sanger sequencing came in 1978).'},
+    {q:'Count alleles and calculate allele frequencies from gel band patterns.', a:'Humans are diploid: a <b>single band = homozygous = 2 copies</b>; <b>two bands = heterozygous = 1 copy of each</b>. Total alleles = people × 2. Worked in class: <b>13 ÷ 18 = 0.72</b> (UK) and <b>4 ÷ 18 = 0.22</b> (France).'},
+    {q:'State Lewontin’s result and how modern data revise it.', a:'Lewontin (1972): of the <b>0.1%</b> of the genome that varies, <b>~85% of variation is global and ~15% is associated with specific regions</b>. Modern microsatellite data shrink the between-group excess to <b>~5% (F<sub>ST</sub> ≈ 0.05)</b> — about a third of the size originally drawn.'},
+    {q:'Define and interpret FST.', a:'<b>F<sub>ST</sub></b> (fixation index, Sewall Wright) measures how differentiated two subpopulations are: the <b>excess</b> sequence differences between populations vs within, as a <b>fraction of the total</b> difference. <b>1</b> = completely separate alleles, <b>0</b> = identical distribution, <b>0.33</b> = the class example (15 vs 10 differences), <b>~0.05</b> = the modern human value.'},
+    {q:'Explain what private alleles are and why ancestry tests don’t use them.', a:'A <b>private allele</b> is found in only one group — only <b>~7%</b> of alleles are private, and they are <b>rare inside their group</b>, so most members of the group do not carry them. Ancestry tests instead <b>combine allele frequencies across many SNPs</b> (e.g. 0.72 vs 0.22), each SNP adding a little confidence. Reference data lean on self-reported ancestry.'},
+    {q:'Distinguish population structure from race, and define racial genetic essentialism.', a:'<b>Population structure</b> is real: allele distributions are uneven between subpopulations (~5% clustering with geography), on a continuous gradient. <b>Race</b> is a <b>social construct</b>, not a biological grouping. <b>Racial genetic essentialism</b> is the false belief in distinct genetic essences per race — assuming uniformity within groups, discreteness between groups, and genetics as the cause. The genomic data refute all three assumptions.'},
+    {q:'Explain why group differences in a trait can’t automatically be attributed to group differences in allele frequencies.', a:'<b>Correlation ≠ causation.</b> If SNPs differ between groups and a trait differs too (tea in England vs coffee in France), the trait difference may be <b>environmental or cultural</b>. Attributing it to the SNPs is <b>population stratification</b>, a source of false positives in GWAS. Most complex traits are multifactorial with strong environmental components, and the decisive test — raising children in identical environments — would be deeply unethical.'}
+  ];
+  var OBJECTIVES_ANNOUNCE='Worksheet 5 is due <b>Fri Oct 30, 9 PM</b>. The quiz opens <b>Sun Nov 1 at noon</b> and closes <b>Mon Nov 2, 9 PM</b> — it covers this week <b>plus Lecture 8</b> (week 4, not on Midterm 1), and includes <b>one question from the ~10-minute Keolu Fox YouTube video</b> shown in class, so watch it before starting the quiz. Midterm 1 scores were expected Fri Oct 30 evening.';
+  function renderObjectives(){
+    var list=document.getElementById('objectivesList'); if(!list) return;
+    var label=document.getElementById('objectivesLectureLabel'), intro=document.getElementById('objectivesIntro'), ann=document.getElementById('objectivesAnnounce');
+    list.innerHTML='';
+    if(activeLecture==='lec29' || activeLecture==='all'){
+      if(label) label.textContent='Lecture 11 — Thu Oct 29, 2026';
+      if(intro) intro.textContent='The lecture’s “By the end of the lecture you should be able to…” aims, stated in full and answered underneath each one, so coverage can be checked at a glance. The lecture’s central question, as the professor put it: ancestry matters for making GWAS and imputation less biased and more relevant for people of all ancestry groups — AND there is no biological evidence for race. Both are true; this lecture unpacks how.';
+      if(ann) ann.innerHTML='<div class="announce">📣 '+OBJECTIVES_ANNOUNCE+'</div>';
+      OBJECTIVES29.forEach(function(o, i){
+        var li=document.createElement('li'); li.className='obj';
+        var b=document.createElement('b'); b.className='q'; b.textContent=(i+1)+'. '+o.q; li.appendChild(b);
+        var a=document.createElement('div'); a.className='a'; a.innerHTML=o.a; li.appendChild(a);
+        list.appendChild(li);
+      });
+    } else {
+      if(label) label.textContent=lecLabel(activeLecture);
+      if(intro) intro.textContent='Learning objectives were added starting with Lecture 11 (Thu Oct 29, 2026).';
+      if(ann) ann.innerHTML='';
+      var li=document.createElement('li'); li.className='obj';
+      li.innerHTML='<b class="q">No learning-objectives list has been added for this lecture yet.</b><div class="a">Switch to <b>Lecture 11 — Thu Oct 29, 2026</b> (or All Lectures) to see the ten objectives for that lecture, each stated in full and answered.</div>';
+      list.appendChild(li);
+    }
+  }
+
+  // ---------- worksheets: Worksheet 5, worked in full, plus its 25 practice problems ----------
+  var WORKSHEETS=[
+    { title:'Worksheet 5 — SNPs, genome similarity, allele frequency and odds ratios',
+      date:'Due Friday, October 30, 2026, 9 PM',
+      intro:'Each question is labeled, answered, and explained step by step, followed by practice problems with answers. Cover an answer, try the problem first, then check.',
+      howto:[['“Use the database to find the number”','Look it up. Do not calculate anything yet. Write the number exactly as the site shows it.'],['“What percent of…”','Find the part and the whole, divide part by whole, then multiply by 100.'],['“X% identical”','Subtract from 100% to get the percent different, change it to a decimal, then multiply by the genome size.'],['“Frequency” with a line like A=0.012195/47','The decimal is the frequency, and the number after the slash is a count of allele copies (not people).'],['“Odds ratio”','Work out the odds inside each group (yes divided by no), then divide the two odds.']],
+      questions:[
+        { title:'Question 1 — Current number of known human SNPs', q:'Use dbSNP and the search all[sb] to find the current number of known human SNPs (the lecture said 660,773,127 in 2018).',
+          steps:['Open the dbSNP site (ncbi.nlm.nih.gov/snp). The question tells you dbSNP is the source for the current number.','Type <b>all[sb]</b> in the search bar and press Search. all[sb] tells dbSNP to list every SNP record it holds, so the result count is the total.','Read the total number of results shown — that total is the number of known human SNPs right now.','Write it with commas: <b>1,197,210,835</b>.','Sanity check: 1,197,210,835 − 660,773,127 = 536,437,708. The new total should be bigger than the 2018 number, and it is, by about 536 million new SNPs.'],
+          answer:'1,197,210,835 known human SNPs (write the number the site shows when you look; it can grow over time).',
+          keywords:'SNP = one position where people can differ by a single letter • dbSNP = the NIH database listing every SNP found • Known SNP = a position found to vary in at least one person • Base pair = one rung of the DNA ladder; the genome has about 3,000,000,000.' },
+        { title:'Question 2 — Percent of the genome with known SNPs', q:'Using that current number, about what percent of the positions in the human genome are known to have SNPs now?',
+          steps:['Name the part and the whole. Part = 1,197,210,835 SNP positions. Whole = 3,000,000,000 base pairs.','Divide: 1,197,210,835 ÷ 3,000,000,000 = 0.39907.','Multiply by 100: 0.39907 × 100 = 39.907.','Round: 39.907 becomes <b>39.9%</b> — the question says “about,” so one decimal place is enough.','Sanity check: 1,200,000,000 ÷ 3,000,000,000 = 0.4 = 40%, close to 39.9%, so the work is reasonable.'],
+          answer:'About 39.9% of the positions in the human genome are known to have SNPs.',
+          keywords:'Percent = part ÷ whole × 100 • 0.39907 is the fraction; 39.9% is the same amount written out of 100 • Genome size ≈ 3,000,000,000 base pairs, used as the whole. Possible exam check: 600,000,000 SNP positions would be 600,000,000 ÷ 3,000,000,000 = 20%.' },
+        { title:'Question 3 — Why 39.9% known SNPs and 99.9% identical are both true', q:'Explain how, given your answer to Question 2, any 2 randomly chosen people can still have genomes that are about 99.9% identical.',
+          steps:['Find the percent different: 100% − 99.9% = 0.1%.','Change to a decimal: 0.1 ÷ 100 = 0.001.','Count the differences: 3,000,000,000 × 0.001 = 3,000,000. Two people differ at about 3,000,000 positions.','Compare to known SNP sites: 3,000,000 ÷ 1,197,210,835 = 0.0025058.','Make it a percent: 0.0025058 × 100 = 0.25058, about <b>0.25%</b>.','Write the conclusion in words: the 39.9% pools variants from the whole population, but any two people share the same letter at almost all of those sites.'],
+          answer:'Two people who are 99.9% identical differ at 0.1% of their genome: 3,000,000,000 × 0.001 = 3,000,000 differences. Of the 1,197,210,835 known SNP sites (39.9% of the genome), 3,000,000 ÷ 1,197,210,835 = 0.25%. The 39.9% represents variants found across the entire population, not differences between two individuals.',
+          keywords:'Identical = same letter at the same position • Common variant = a letter most people carry • Rare variant = a letter only a few people carry • Population vs two people: the 39.9% pools everyone; the 99.9% compares only two people. Possible exam check: two people 99.5% identical differ at 15,000,000 positions.' },
+        { title:'Question 4 — Allele frequencies for rs9333618 in the ALSPAC dataset', q:'Find the dbSNP entry for rs9333618. Give the minor allele and its frequency in ALSPAC, the major allele and its frequency, and how many people contributed to ALSPAC.',
+          steps:['Search rs9333618 in dbSNP, then click “…more” under MAF — ALSPAC is hidden until you do.','Find the ALSPAC line: <b>A=0.012195/47</b>. The format is letter = frequency / count, so this line holds everything you need.','Minor allele = <b>A</b>, frequency = <b>0.012195</b> (about 0.0122, or 1.2%).','Major allele = <b>G</b> — the entry shows the alleles as G&gt;A, so if A is the rare one, G is the other one.','Major frequency: 1 − 0.012195 = <b>0.987805</b> (about 98.8%). The two frequencies must add to 1.','Total alleles: 47 ÷ 0.012195 = 3,854. Frequency = count ÷ total, so total = count ÷ frequency.','People: 3,854 ÷ 2 = <b>1,927</b> — each person has 2 copies.','Check: 1,927 × 2 = 3,854, and 3,854 × 0.012195 = 47.'],
+          answer:'Minor allele: A, frequency 0.012195 (about 1.2%). Major allele: G, frequency 0.987805 (about 98.8%). About 1,927 people contributed to ALSPAC (not 1,957).',
+          keywords:'Allele = one version of a gene / one letter at a SNP position • Minor / major allele = less / more common allele in a dataset • Allele frequency = fraction of all allele copies that are a given allele • Diploid = two copies of each gene, one from each parent — which is why people = alleles ÷ 2. Rearrangements: frequency = count ÷ total alleles • count = frequency × total alleles • total alleles = count ÷ frequency • people = total alleles ÷ 2. Possible exam check: a line reading T=0.02/10 means 10 ÷ 0.02 = 500 alleles, 250 people.' },
+        { title:'Question 5 — Odds ratio for high blood pressure (allele A vs allele T)', q:'In a genome-wide association study, calculate the odds ratio that shows how likely you are to have high blood pressure given that you have the A allele instead of the T allele. The table: allele A — 30 high BP, 60 regular; allele T — 40 high BP, 120 regular.',
+          steps:['Rebuild the table: A has 30 high BP and 60 regular; T has 40 high BP and 120 regular. The question’s numbers are scattered, so put each number under the right allele and the right group first.','Odds for A: 30 ÷ 60 = 1/2 = 0.5. Odds look inside the A group only.','Odds for T: 40 ÷ 120 = 1/3 = 0.3333.','Odds ratio: (1/2) ÷ (1/3) = 1/2 × 3/1 = 3/2 = <b>1.5</b>. Dividing by a fraction is multiplying by its flip.','Check by cross-multiplying: (30 × 120) ÷ (60 × 40) = 3,600 ÷ 2,400 = 1.5.','Interpret: 1.5 is greater than 1, so A goes with higher odds.'],
+          answer:'Odds ratio = 1.5. People with the A allele have 1.5 times the odds of having high blood pressure compared to people with the T allele.',
+          keywords:'Odds = number with the condition ÷ number without it, inside one group • Odds ratio = odds in one group ÷ odds in another • GWAS = a study comparing many people’s DNA to find SNPs linked to a trait • Association = a link between a SNP and a trait; it does not prove the SNP causes the trait • Cross-product = (a × d) ÷ (b × c) for a 2×2 table. Reading an odds ratio: &gt; 1 = risk allele • = 1 = no association • &lt; 1 = protective. Possible exam check: 30 ÷ 40 = 0.75 is NOT the odds ratio — it compares only the high-BP column and ignores the regular-BP people.' }
+      ],
+      cheat:[['Percent of a whole','(part ÷ whole) × 100'],['Percent different','100% − percent identical'],['Percent to decimal','percent ÷ 100 (for example 0.1% = 0.001)'],['Number of differences','genome size × decimal different (3,000,000,000 × 0.001 = 3,000,000)'],['Minor and major frequency','major = 1 − minor'],['Total alleles','count ÷ frequency'],['Number of people','total alleles ÷ 2'],['Odds','yes ÷ no, inside one group'],['Odds ratio','odds of group 1 ÷ odds of group 2, or (a × d) ÷ (b × c)']],
+      practice:[
+        { part:'Part A — Percent of the genome (like Questions 1 and 2)', items:[
+          {q:'dbSNP lists 900,000,000 known SNPs. The genome has 3,000,000,000 base pairs. What percent has known SNPs?', work:'900,000,000 ÷ 3,000,000,000 = 0.3; 0.3 × 100 = <b>30%</b>.'},
+          {q:'A database lists 1,500,000,000 known SNPs. What percent of 3,000,000,000 positions is that?', work:'1,500,000,000 ÷ 3,000,000,000 = 0.5; 0.5 × 100 = <b>50%</b>.'},
+          {q:'In 2018 there were 660,773,127 known SNPs. What percent of the genome was that?', work:'660,773,127 ÷ 3,000,000,000 = 0.22026; × 100 = 22.026, so about <b>22.0%</b>.'},
+          {q:'By what percent did the number of known SNPs grow from 660,773,127 (2018) to 1,197,210,835 (now)?', work:'New SNPs: 1,197,210,835 − 660,773,127 = 536,437,708. Growth = 536,437,708 ÷ 660,773,127 = 0.81183; × 100 = about <b>81.2% growth</b> (compare to the old number, not the genome).'},
+          {q:'A genome has 3,200,000,000 positions and 1,280,000,000 known SNPs. What percent?', work:'1,280,000,000 ÷ 3,200,000,000 = 0.4; 0.4 × 100 = <b>40%</b>.'}
+        ]},
+        { part:'Part B — How identical are two people (like Question 3)', items:[
+          {q:'Two people are 99.8% identical. How many of the 3,000,000,000 positions differ?', work:'100 − 99.8 = 0.2%; 0.2 ÷ 100 = 0.002; 3,000,000,000 × 0.002 = <b>6,000,000 positions</b>.'},
+          {q:'Those same two people differ at 6,000,000 positions. What percent of the 1,197,210,835 known SNP sites is that?', work:'6,000,000 ÷ 1,197,210,835 = 0.0050116; × 100 = 0.50116, so about <b>0.50%</b>.'},
+          {q:'Two people are 99.95% identical. How many positions differ?', work:'100 − 99.95 = 0.05%; 0.05 ÷ 100 = 0.0005; 3,000,000,000 × 0.0005 = <b>1,500,000 positions</b>.'},
+          {q:'Two people differ at 4,500,000 of 3,000,000,000 positions. What percent identical are they?', work:'4,500,000 ÷ 3,000,000,000 = 0.0015 = 0.15% different; 100 − 0.15 = <b>99.85% identical</b>.'},
+          {q:'Two people are 99.9% identical. A database has 1,000,000,000 known SNP sites. What percent of those sites do the two people differ at?', work:'100 − 99.9 = 0.1% = 0.001; 3,000,000,000 × 0.001 = 3,000,000 differences; 3,000,000 ÷ 1,000,000,000 = 0.003 = <b>0.3%</b>.'},
+          {q:'In one sentence, why can 40% of positions be known SNP sites while two people are still 99.9% identical?', work:'The 40% counts variants found in everyone combined, but at most of those sites almost everyone has the same common letter, so any two people differ at only about 0.1% of positions.'}
+        ]},
+        { part:'Part C — Allele frequency and number of people (like Question 4)', items:[
+          {q:'A dbSNP line reads T=0.02/40 (StudyX). Give the major allele frequency, total alleles and number of people.', work:'Major frequency: 1 − 0.02 = <b>0.98</b>. Total alleles: 40 ÷ 0.02 = 2,000. People: 2,000 ÷ 2 = <b>1,000</b>.'},
+          {q:'A line reads C=0.05/150. How many people?', work:'150 ÷ 0.05 = 3,000 alleles; 3,000 ÷ 2 = <b>1,500 people</b>. Major frequency = 1 − 0.05 = 0.95.'},
+          {q:'A line reads A=0.0125/25. How many people?', work:'25 ÷ 0.0125 = 2,000 alleles; 2,000 ÷ 2 = <b>1,000 people</b>. Major frequency = 1 − 0.0125 = 0.9875.'},
+          {q:'A line reads G=0.25/500. How many people, and what is the major allele frequency?', work:'500 ÷ 0.25 = 2,000 alleles; 2,000 ÷ 2 = <b>1,000 people</b>. Major frequency = 1 − 0.25 = <b>0.75</b>.'},
+          {q:'A study has 800 people and the minor allele frequency is 0.03. How many copies of the minor allele were counted?', work:'Total alleles: 800 × 2 = 1,600. Count = frequency × total = 0.03 × 1,600 = <b>48 copies</b>.'},
+          {q:'A study has 2,500 people and 75 copies of the minor allele. What is the minor allele frequency?', work:'Total alleles: 2,500 × 2 = 5,000. Frequency = 75 ÷ 5,000 = 0.015 = <b>1.5%</b>.'},
+          {q:'The minor allele frequency is 0.10. What percent of alleles are the major allele?', work:'1 − 0.10 = 0.90, which is <b>90%</b>.'},
+          {q:'A line reads T=0.045/90. How many people?', work:'90 ÷ 0.045 = 2,000 alleles; 2,000 ÷ 2 = <b>1,000 people</b>.'}
+        ]},
+        { part:'Part D — Odds ratios (like Question 5)', items:[
+          {q:'Allele G: 40 high BP, 20 regular. Allele C: 30 high BP, 60 regular. Odds ratio for G vs C?', work:'Odds G = 40 ÷ 20 = 2. Odds C = 30 ÷ 60 = 0.5. Odds ratio = 2 ÷ 0.5 = <b>4</b>. Check: (40 × 60) ÷ (20 × 30) = 2,400 ÷ 600 = 4.'},
+          {q:'Allele A: 50 high, 100 regular. Allele T: 25 high, 100 regular. Odds ratio for A vs T?', work:'Odds A = 50 ÷ 100 = 0.5. Odds T = 25 ÷ 100 = 0.25. Odds ratio = 0.5 ÷ 0.25 = <b>2</b>. Check: (50 × 100) ÷ (100 × 25) = 5,000 ÷ 2,500 = 2.'},
+          {q:'Allele X: 20 high, 80 regular. Allele Y: 40 high, 80 regular. Odds ratio for X vs Y, and what does it mean?', work:'Odds X = 20 ÷ 80 = 0.25. Odds Y = 40 ÷ 80 = 0.5. Odds ratio = 0.25 ÷ 0.5 = <b>0.5</b>. It is less than 1, so X is protective: half the odds of high BP compared to Y.'},
+          {q:'Allele A: 45 high, 15 regular. Allele T: 30 high, 30 regular. Odds ratio for A vs T, and for T vs A?', work:'Odds A = 45 ÷ 15 = 3. Odds T = 30 ÷ 30 = 1. A vs T = 3 ÷ 1 = <b>3</b>. T vs A = 1 ÷ 3 = <b>0.3333</b> (flipping the comparison flips the ratio).'},
+          {q:'Allele M: 10 high, 20 regular. Allele N: 25 high, 50 regular. Odds ratio for M vs N?', work:'Odds M = 10 ÷ 20 = 0.5. Odds N = 25 ÷ 50 = 0.5. Odds ratio = 0.5 ÷ 0.5 = <b>1</b>, so there is no association.'},
+          {q:'Allele A: 60 high, 20 regular. Allele T: 20 high, 40 regular. Odds ratio for A vs T?', work:'Odds A = 60 ÷ 20 = 3. Odds T = 20 ÷ 40 = 0.5. Odds ratio = 3 ÷ 0.5 = <b>6</b>. Check: (60 × 40) ÷ (20 × 20) = 2,400 ÷ 400 = 6.'}
+        ]}
+      ]
+    }
+  ];
+  function renderWorksheets(){
+    var wrap=document.getElementById('worksheetsList'); if(!wrap) return;
+    wrap.innerHTML='';
+    WORKSHEETS.forEach(function(ws){
+      var sec=document.createElement('section'); sec.setAttribute('aria-label', ws.title);
+      var h=document.createElement('h3'); h.textContent=ws.title; sec.appendChild(h);
+      var meta=document.createElement('p'); meta.className='muted'; meta.style.marginTop='0'; meta.textContent=ws.date+' • '+ws.intro; sec.appendChild(meta);
+      var how=document.createElement('div');
+      how.innerHTML='<div class="dbsnp-head">How to approach this worksheet</div><div class="dbsnp"><table>'+ws.howto.map(function(r){ return '<tr><td class="k">'+r[0]+'</td><td>'+r[1]+'</td></tr>'; }).join('')+'</table></div>';
+      sec.appendChild(how);
+      ws.questions.forEach(function(q){
+        var d=document.createElement('div'); d.className='wsq';
+        var t=document.createElement('h3'); t.textContent=q.title; d.appendChild(t);
+        var qp=document.createElement('p'); qp.style.margin='4px 0'; qp.textContent=q.q; d.appendChild(qp);
+        var ol=document.createElement('ol');
+        q.steps.forEach(function(s){ var li=document.createElement('li'); li.innerHTML=s; ol.appendChild(li); });
+        d.appendChild(ol);
+        var ans=document.createElement('div'); ans.className='wsans'; ans.textContent='Answer: '+q.answer; d.appendChild(ans);
+        var kw=document.createElement('p'); kw.className='muted'; kw.style.margin='10px 0 0'; kw.textContent=q.keywords; d.appendChild(kw);
+        sec.appendChild(d);
+      });
+      var ch=document.createElement('div');
+      ch.innerHTML='<h3 style="margin-top:20px">Formula cheat sheet — everything on this worksheet in one table</h3><table class="cheatsheet"><tbody>'+ws.cheat.map(function(r){ return '<tr><th>'+r[0]+'</th><td><code>'+r[1]+'</code></td></tr>'; }).join('')+'</tbody></table>';
+      sec.appendChild(ch);
+      var ph=document.createElement('h3'); ph.style.marginTop='20px'; ph.textContent='Practice problems with answers — same question types as Worksheet 5. Cover the answer and try each one first.'; sec.appendChild(ph);
+      ws.practice.forEach(function(part, pi){
+        var ph2=document.createElement('h3'); ph2.style.fontSize='15.5px'; ph2.textContent=part.part; sec.appendChild(ph2);
+        part.items.forEach(function(it, ii){
+          var det=document.createElement('details'); det.className='practice';
+          var sum=document.createElement('summary'); sum.textContent='Problem '+(ii+1)+' — '+it.q; det.appendChild(sum);
+          var p=document.createElement('p'); p.innerHTML=it.work; det.appendChild(p);
+          sec.appendChild(det);
+        });
+      });
+      wrap.appendChild(sec);
+    });
+  }
+
   // ---------- numbers ----------
   var numGrid=document.getElementById('numGrid');
   function factRow(n){ var d=document.createElement('div'); d.className='numcard'; var sm=document.createElement('small'); sm.textContent=n.label; var st=document.createElement('strong'); st.textContent=n.value; var pp=document.createElement('p'); pp.textContent=n.note; d.appendChild(sm); d.appendChild(st); d.appendChild(pp); return d; }
@@ -1521,7 +1949,7 @@
   if(rAllBtn) rAllBtn.onclick=function(){ askConfirm('Reset everything for '+scopeName()+'? Flashcards, Poll Quiz scores, skill mastery and Exam Practice will all go back to zero / Not started.', function(){ clearFlashMarks(); clearQuizScores(); clearSkillMastery(); clearExamScores(); newExamQ(); showToast('Everything reset for '+scopeName()+' — back to zero'); }); };
 
   // init
-  setLecture('lec8'); renderCard(); renderQuiz(); newDrill(); newExamQ(); updateProgress(); renderSkills();
+  setLecture('lec8'); renderCard(); renderQuiz(); newDrill(); newExamQ(); updateProgress(); renderSkills(); renderWorksheets();
 })();
 </script>
 </body>
