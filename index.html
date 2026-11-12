@@ -1417,11 +1417,14 @@
   document.getElementById('lecBtnWs').addEventListener('click', function(){ showWorksheetsView(); document.getElementById('contentTop').scrollIntoView({behavior:'smooth'}); });
 
   // ---------- storage ----------
-  var FKEY='bieb146_github_flash_v1', QKEY='bieb146_github_quiz_v1', SKKEY='bieb146_github_skills_v1';
+  var FKEY='bieb146_github_flash_v1', QKEY='bieb146_github_quiz_v1', QKEY2='bieb146_github_quiz_v2', SKKEY='bieb146_github_skills_v1';
   function loadJSON(k, fallback){ try{ var v=localStorage.getItem(k); return v?JSON.parse(v):fallback; }catch(e){ return fallback; } }
   function saveJSON(k,v){ try{ localStorage.setItem(k, JSON.stringify(v)); }catch(e){} }
   var marks=loadJSON(FKEY, {});
-  var quizStore=loadJSON(QKEY, {best:null, last:null, attempts:0});
+  // quiz scores are kept per lecture (v2), so one lecture's best and attempts never show on another lecture
+  var quizStores=loadJSON(QKEY2, {});
+  function currentQuizStore(){ var s=quizStores[activeLecture]; if(!s){ s={best:null, last:null, attempts:0}; quizStores[activeLecture]=s; } return s; }
+  function saveQuizStores(){ saveJSON(QKEY2, quizStores); }
   // ---------- per skill answer counts, kept locally (no levels shown) ----------
   var skillStore=loadJSON(SKKEY, {});
   function recordSkill(id, correct){
@@ -1444,7 +1447,7 @@
     saveJSON(FKEY, marks); hardOnly=false; idx=0; renderCard(); updateProgress(); renderSkills();
   }
   function clearQuizScores(){
-    quizStore={best:null,last:null,attempts:0}; saveJSON(QKEY, quizStore);
+    quizStores[activeLecture]={best:null, last:null, attempts:0}; saveQuizStores();
     chosen=currentPolls().map(function(){return null;}); checked=false;
     var qs=document.getElementById('quizScore'); if(qs) qs.textContent='0 / '+currentPolls().length;
     var qf=document.getElementById('quizFeedback'); if(qf) qf.textContent='';
@@ -1581,8 +1584,9 @@
     if(bl) bl.style.width=(scoped.length?(learn/scoped.length*100):0)+'%';
     if(pb){ pb.setAttribute('aria-valuemax', scoped.length); pb.setAttribute('aria-valuenow', know); }
     if(pt) pt.textContent=know+' of '+scoped.length+' known • '+learn+' still learning • '+(scoped.length-know-learn)+' not marked';
-    document.getElementById('quizBestLabel').textContent= quizStore.best===null?'Best so far: none yet':('Best so far: '+quizStore.best+' / '+scoredPollCount()+' scored • Attempts: '+quizStore.attempts);
-    if(typeof checked!=='undefined' && !checked && quizStore.last!==null && quizStore.last!==undefined){ document.getElementById('quizScore').textContent=quizStore.last+' / '+scoredPollCount(); var qfb=document.getElementById('quizFeedback'); if(qfb && !qfb.textContent) qfb.textContent='Last attempt: '+quizStore.last+' / '+scoredPollCount()+' scored: saved on this device.'; }
+    var qst=currentQuizStore();
+    document.getElementById('quizBestLabel').textContent= qst.best===null?'Best so far: none yet':('Best so far: '+qst.best+' / '+scoredPollCount()+' scored • Attempts: '+qst.attempts);
+    if(typeof checked!=='undefined' && !checked && qst.last!==null && qst.last!==undefined){ document.getElementById('quizScore').textContent=qst.last+' / '+scoredPollCount(); var qfb=document.getElementById('quizFeedback'); if(qfb && !qfb.textContent) qfb.textContent='Last attempt: '+qst.last+' / '+scoredPollCount()+' scored: saved on this device.'; }
     renderSkills();
   }
 
@@ -1647,7 +1651,7 @@
     if(scoredIdx.some(function(i){return chosen[i]===null;})){ showToast('Pick an answer for every scored question first'); return; }
     checked=true; if(typeof markStepDone==='function') markStepDone('quiz'); var score=0; var pollSkill={poll1:'codon', poll2:'coverage', poll3:'maf'}; var scoredTotal=scoredPollCount(); currentPolls().forEach(function(p,i){ if(p.pending||p.open) return; if(chosen[i]===p.answer) score++; recordSkill(p.skill||pollSkill[p.img], chosen[i]===p.answer); });
     document.getElementById('quizScore').textContent=score+' / '+scoredTotal;
-    quizStore.last=score; quizStore.attempts=(quizStore.attempts||0)+1; if(quizStore.best===null||score>quizStore.best) quizStore.best=score; saveJSON(QKEY, quizStore);
+    var qst2=currentQuizStore(); qst2.last=score; qst2.attempts=(qst2.attempts||0)+1; if(qst2.best===null||score>qst2.best) qst2.best=score; saveQuizStores();
     document.getElementById('quizFeedback').textContent= (score===scoredTotal ? 'Perfect on the scored questions: '+score+'/'+scoredTotal+'. Score saved.' : (score===scoredTotal-1 ? 'So close: '+score+'/'+scoredTotal+' scored. Check the one in red, read its slide again, then try again.' : 'Good reps: review the explanations, read the numbers on the slides again, and run it again.')) + (currentPolls().length>scoredTotal ? ' The unmarked questions in this set are not scored.' : '');
     renderQuiz(); updateProgress(); if(score===scoredTotal){ sfxArpeggio(); } else if(score>=scoredTotal-1){ sfxChime(); } else { sfxBuzz(); }
   };
