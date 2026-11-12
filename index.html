@@ -296,6 +296,8 @@
       <div class="side-progress" id="prog-lec29"></div>
       <button class="side-entry" id="lecBtn12" aria-pressed="false"><b>Lecture 12</b><span class="date">Tuesday, November 3, 2026</span><span class="note">Conservation Genomics and Metagenomics</span></button>
       <div class="side-progress" id="prog-lec12"></div>
+      <button class="side-entry" id="lecBtn13" aria-pressed="false"><b>Lecture 13</b><span class="date">Thursday, November 5, 2026</span><span class="note">Richness, Microbiomes &amp; Gene Regulation</span></button>
+      <div class="side-progress" id="prog-lec13"></div>
       <button class="side-entry" id="lecBtn14" aria-pressed="false"><b>Lecture 14</b><span class="date">Tuesday, November 10, 2026</span><span class="note">RNA-seq &amp; Normalization: RPK, RPKM, Heat Maps</span></button>
       <button class="side-entry" id="lecBtnAll" aria-pressed="false"><b>All Lectures</b><span class="note">Cumulative review</span></button>
       <div class="side-progress" id="prog-all"></div>
@@ -418,6 +420,10 @@
       <div id="lec12Ref" style="display:none">
         <h3 style="margin-top:20px">Reference: relative abundance and the two metagenomic approaches</h3>
         <p class="muted" style="margin-top:0"><b>Relative abundance</b> is a proportion of reads: focal reads &#247; total reads. The lecture example: 23 spider reads out of 100 animal reads is 23%, not 23 spiders. <b>Marker genes:</b> prokaryotes 16S, eukaryotes 18S and mt16s, fungi ITS1, plants ITS2, animals CO1. A marker must be present in all members of its group and vary between them. <b>Targeted</b> sequencing answers who is there and their relative proportions. <b>Whole genome</b> sequencing adds contigs, new genes, and functional capacity: what the community can do.</p>
+      </div>
+      <div id="lec13Ref" style="display:none">
+        <h3 style="margin-top:20px">Reference: richness, OTUs, and the regulation vocabulary from Lecture 13</h3>
+        <p class="muted" style="margin-top:0"><b>Rarefaction:</b> richness counts distinct species; a species seen again adds 0. Curve still rising: keep sampling. Curve flat: richness accurately estimated. <b>OTU split rules (16S):</b> more than 3% different = different species; more than 6% different = different genus. <b>Vocabulary:</b> activator and repressor are <b>proteins</b> (binding increases / decreases transcription); enhancer and silencer are <b>DNA sites</b> (binding there increases / decreases it). <b>Promoter boxes, as printed:</b> -35 is 5&prime; TTGACG, -10 is 5&prime; TATAAT; sigma factor binds them and recruits RNA polymerase.</p>
       </div>
       <div id="lec14Ref" style="display:none">
         <h3 style="margin-top:20px">Reference: the normalization ladder from Lecture 14</h3>
@@ -688,6 +694,11 @@
   SLIDES.lec12p2="assets/lec12-poll-2.png";
   SLIDES.lec12p3="assets/lec12-poll-3.png";
   SLIDES.lec12p4="assets/lec12-poll-4.png";
+  SLIDES.lec13p1="assets/lec13-poll-1.png";
+  SLIDES.lec13p2="assets/lec13-poll-2.png";
+  SLIDES.lec13p3="assets/lec13-poll-3.png";
+  SLIDES.lec13p4="assets/lec13-poll-4.png";
+  SLIDES.lec13p5="assets/lec13-poll-5.png";
   SLIDES.lec14p1="assets/lec14-poll-1.png";
   SLIDES.lec14p2="assets/lec14-poll-2.png";
   SLIDES.lec14p3="assets/lec14-poll-3.png";
@@ -782,6 +793,7 @@
     {id:'lec27', label:'Tuesday, October 27, 2026: GWAS & Odds Ratios', short:'Oct 27 lecture', topic:'GWAS & Odds Ratios'},
     {id:'lec29', label:'Lecture 11: Thursday, October 29, 2026', short:'Lecture 11', topic:'TagSNPs, Imputation & Human Variation'},
     {id:'lec12', label:'Lecture 12: Tuesday, November 3, 2026', short:'Lecture 12', topic:'Conservation Genomics and Metagenomics'},
+    {id:'lec13', label:'Lecture 13: Thursday, November 5, 2026', short:'Lecture 13', topic:'Richness, Microbiomes & Gene Regulation'},
     {id:'lec14', label:'Lecture 14: Tuesday, November 10, 2026', short:'Lecture 14', topic:'RNA-seq & Normalization: RPK, RPKM, Heat Maps'}
   ];
   FLASH.forEach(function(c){ c.lecture='lec8'; });
@@ -1088,6 +1100,81 @@
   ];
   EXAMPLES12.forEach(function(c){ c.lecture='lec12'; EXAMPLES.push(c); });
   // ---------- data: Tue Nov 10, 2026: Lecture 14 (terms, polls and numbers from the lecture and poll log) ----------
+  var FLASH13=[
+    {id:'lec13-1', term:'The three scientists: who needs the most reads?', def:'Scientist C. A (hospital surfaces) and B (Prevotella across diets) ask only who is there, which targeted amplicon sequencing answers. C asks about function (metabolic pathways), which needs whole genome metagenomics and the most reads. Her rule: if a question requires whole genome metagenomics to answer, it is going to require more sequencing. (Poll 1: withheld Nov 3, confirmed Nov 5.)'},
+    {id:'lec13-2', term:'Cal eDNA program', def:'A UC-based citizen science program, like iNaturalist but with DNA instead of photographs. Volunteers sample soil, leaf debris, or traces like fur and droppings with preservative kits. It tracks species presence or absence, predicted movement under climate change, pathogens, and genetic erosion across California.'},
+    {id:'lec13-3', term:'Ocean water, per mL (slide)', def:'About 1,000,000 bacterial cells and about 20,000 species in 1 mL of ocean water.'},
+    {id:'lec13-4', term:'Soil, per gram (slide)', def:'About 10^8 to 10^9 bacterial cells, and 4,000 to 50,000 species, in 1 gram of soil (about a paperclip\u2019s weight).'},
+    {id:'lec13-5', term:'Species richness', def:'The number of different species in a community (her slide definition). A raw count of distinct species, not a similarity-weighted diversity index.'},
+    {id:'lec13-6', term:'The 560,000 species poll', def:'One 1 mL pond sample finding 560,000 species has NOT measured the lake\u2019s microbial richness (Poll 2, answer D). One milliliter is tiny and position-dependent; more samples beats a bigger volume, and the plants-and-animals option is a reading trap: the question asks about microbial richness only.'},
+    {id:'lec13-7', term:'Rarefaction', def:'Repeatedly sampling and tracking the cumulative count of distinct species. Curve still rising: under-sampled, keep going. Curve flattened: richness has been accurately estimated. Her cartoon totals: 5, then 8, then 9, then no new species.'},
+    {id:'lec13-8', term:'OTU', def:'Operational taxonomic unit: a working taxonomic unit used when species is unknown, splitting sequences into groups based on how different they are. The proxy researchers use for microbial species.'},
+    {id:'lec13-9', term:'The 16S split rules', def:'More than 3% different in the 16S sequence: distinct species. More than 6% different: distinct genus. The 3% rule is printed on the slide; the 6% genus rule was spoken only.'},
+    {id:'lec13-10', term:'A 4% difference call', def:'Different species (4% crosses the 3% cutoff) but the same genus (4% does not cross the 6% cutoff).'},
+    {id:'lec13-11', term:'Why the biological species concept fails for bacteria', def:'It defines a species by mating and producing viable offspring. Most prokaryotes do not mate; they reproduce by binary fission. So microbial species are 16S sequence-similarity conventions, and the cutoffs are arbitrary.'},
+    {id:'lec13-12', term:'Panda guts: the targeted study', def:'Stool from 5 giant pandas and 6 red pandas, 16S amplified: giant pandas dominated by a Streptococcus genus; red pandas dominated by Clostridiaceae, with a cellulose-digesting Clostridium in some red pandas only. Reported as relative abundances in stacked bar charts.'},
+    {id:'lec13-13', term:'Panda guts: the whole genome follow-up', def:'Cellulase genes were present but not very abundant in pandas, unlike in true herbivores, so the bamboo puzzle stays open. Poll 3 (answer D): eating a ton, very efficient enzymes, and conserving energy by resting all remain possible. Omics generates research directions, not always final answers.'},
+    {id:'lec13-14', term:'Human cells vs bacterial cells (slide)', def:'30 trillion human cells and 39 trillion bacterial cells per human. The 39 trillion is slide-only precision; speaking, she said 30 trillion human cells and \u201Cthat much and more\u201D in bacteria.'},
+    {id:'lec13-15', term:'Genomes shared vs microbiomes shared', def:'Human genomes: 99.5 to 99.9% shared between two people (slide range; speaking, she emphasized 99.9%). Microbiomes: only 60 to 80% shared. That gap is why microbiome differences are candidate explanations for phenotypic differences between people.'},
+    {id:'lec13-16', term:'Burkina Faso vs Europe: which phylum dominates?', def:'Burkina Faso children (high fiber diet): Bacteroidetes dominates. European children (high protein, sugar, starch, fat): Firmicutes dominates. Swapping them is the Poll 4 trap.'},
+    {id:'lec13-17', term:'Why Poll 4 option C fails', def:'\u201CEU microbiomes have more types\u201D counts pie wedges (6 for BF vs 7 for EU), but one wedge is \u201Cothers,\u201D an unspecified mix of many species. Types cannot be counted from a chart with a throwaway wedge. Only D was accurate: Bacteroidetes may be associated with a high-fiber diet.'},
+    {id:'lec13-18', term:'MWAS', def:'Microbiome-wide association studies: comparing microbiomes between phenotypes or lifestyles to find associations. The header over the diet study; GWAS logic applied to microbes.'},
+    {id:'lec13-19', term:'The phenotype equation (updated)', def:'Genotype + environment + expression + experience \u2192 phenotype. Expression is often the route by which environment and experience change phenotype.'},
+    {id:'lec13-20', term:'Gene expression', def:'The process of getting from a DNA gene to functional products: transcription to RNA, translation to a polypeptide, folding into a 3D protein.'},
+    {id:'lec13-21', term:'mRNA steady state', def:'When transcription and mRNA degradation are perfectly balanced, the amount of that mRNA in the cell stays constant. Biology tunes both rates to control expression.'},
+    {id:'lec13-22', term:'Promoter strength', def:'How efficiently a promoter sequence recruits the transcription machinery (its binding efficiency). Different promoter sequences bind with different efficiencies, so transcription initiates at different rates. Her slides spell it \u201Cpromotor.\u201D'},
+    {id:'lec13-23', term:'The two promoter boxes, exactly as printed', def:'-35 box: 5\u2032 TTGACG. -10 box: 5\u2032 TATAAT. Visually verified on her slide (deck page 84). TTGACG is what her slide prints, even though many textbooks print TTGACA.'},
+    {id:'lec13-24', term:'Sigma factor', def:'The protein that binds the prokaryotic -10 and -35 boxes and recruits RNA polymerase: her image is a landing pad for the polymerase. Stronger sigma factor binding means transcription initiates more often.'},
+    {id:'lec13-25', term:'Eukaryotic promoters', def:'Four sequence motifs instead of two, some spanning or downstream of the initiation site (for example the DRE, downstream recognition element), and transcription factors must assemble before RNA polymerase is recruited. She explicitly said she will NOT expect the motif details; only the general idea is testable.'},
+    {id:'lec13-26', term:'Activator, repressor, enhancer, silencer', def:'Activator and repressor are PROTEINS (transcription factors): an activator\u2019s binding increases transcription, a repressor\u2019s binding decreases it. Enhancer and silencer are DNA SITES: binding at an enhancer increases transcription, binding at a silencer decreases it. The vocabulary table she said she really wants known.'},
+    {id:'lec13-27', term:'Repressor degraded: what happens to RNA?', def:'RNA transcription increases (Poll 5, answer B). The repressor was blocking assembly of the transcription complex or recruitment of RNA polymerase; removing it releases transcription.'},
+    {id:'lec13-28', term:'microRNAs', def:'Small RNAs that silence genes post-transcriptionally: cut even smaller and loaded into protein complexes, they bind mRNAs complementary to them and get those mRNAs cut up faster than the natural degradation rate. Expression falls with no change in transcription.'},
+    {id:'lec13-29', term:'Combinatorial control', def:'The integration of many inputs into a single output: many DNA sites and many binding proteins combine into one net decision on a gene\u2019s transcription. It is why expression regulation benefits from a whole-genome (omics) perspective.'},
+    {id:'lec13-30', term:'Transcriptomics', def:'The study of RNA expression levels across the genome, making comparisons both within the genome (between genes) and between samples (with different phenotypes). A holistic approach: GWAS case/control logic applied to RNA.'}
+  ];
+  FLASH13.forEach(function(c){ c.lecture='lec13'; FLASH.push(c); });
+  var POLLS13=[
+    { skill:'meta', img:'lec13p1', cap:'Lecture slide \u2022 Thu Nov 5, 2026, Poll 1 (the Nov 3 question, answered today)',
+      q:'Which scientist will have to generate the most sequencing reads to answer their research question?',
+      opts:['Scientist A wants to find out how many different bacterial species are present on surfaces in the hospital where she works.','Scientist B is interested in the bacterial genus Prevotella and wants to know if people with different diets have different distributions of Prevotella species in their guts.','Scientist C wants to understand the metabolic pathways and biochemical reactions that allow bacteria to break down organic matter in his compost bin.'], answer:2,
+      explain:'C) Scientist C. First ask whether the question can be answered with targeted sequencing (one roughly 1,000 bp marker chunk) or needs whole genome sequencing. A and B only need to know who is there and how much, so targeted 16S amplicon sequencing suffices, and they need about the same amount of data. C wants metabolic pathways and biochemical reactions, community function, which requires whole genome metagenomics with enough coverage to represent all functions across all species: the most reads. This question was withheld on Nov 3 and confirmed in this lecture. Her rule: if it requires whole genome metagenomics to answer, it is going to require more sequencing.' },
+    { skill:'richness', img:'lec13p2', cap:'Lecture slide \u2022 Thu Nov 5, 2026, Poll 2',
+      q:'A scientist takes a 1 mL sample of pond water, filters out non-microbial organisms, carries out metagenomic sequencing, and identifies 560,000 species. Did the scientist figure out the microbial species richness of the lake?',
+      opts:['Yes, the species richness is 560,000','No, a 1 mL sample is too small, the scientist should look at a bigger volume','No, they need to look at plants and animals in the lake, too','No, they need to do metagenomics on a bigger number of samples'], answer:3,
+      explain:'D) More samples. One milliliter is a tiny, position-dependent sample: surface, middle, and bottom differ, and shore differs from center. Taking more samples from more places beats taking a bigger volume (option B), because multiple discrete samples also reveal how close the estimate is to the true total: that is the rarefaction logic. Option C is the reading trap she named in class: the question asks about MICROBIAL species richness, so plants and animals do not count.' },
+    { skill:'chart13', img:'lec13p3', cap:'Lecture slide \u2022 Thu Nov 5, 2026, Poll 3',
+      q:'What is a possible hypothesis for why giant pandas can survive while eating primarily bamboo?',
+      opts:['they eat a ton of bamboo to compensate for the fact that they can\u2019t get much from it','the cellulose digestion enzymes they DO have are very efficient','they conserve their limited energy by resting a lot','all of the above are possible'], answer:3,
+      explain:'D) All of the above are possible. The targeted study found the gut communities, and the whole genome follow-up found cellulase genes only at low abundance, so no single explanation is established. Her teaching point: omics approaches often do not hand you the solved answer; they generate data that suggests future research directions, like taking those cellulases into a lab and testing whether they are unusually efficient.' },
+    { skill:'chart13', img:'lec13p4', cap:'Lecture slide \u2022 Thu Nov 5, 2026, Poll 4',
+      q:'Gut microbiome of children in Burkina Faso (BF, high fiber diet) vs Europe (EU, high protein/sugar/starch/fat diet). Which of the following is an accurate interpretation of the chart?',
+      opts:['BF microbiomes are dominated by Firmicutes phylum','EU microbiomes are dominated by Bacteroidetes phylum','EU microbiomes have more types of microbes','Bacteroidetes phylum may be associated with a high-fiber diet'], answer:3,
+      explain:'D) Bacteroidetes may be associated with a high-fiber diet. A and B are the swapped-phylum traps: BF is dominated by Bacteroidetes (Firmicutes is only a small slice), and EU is dominated by Firmicutes (Bacteroidetes is the small slice). C fails because counting pie wedges gives 6 types for BF vs 7 for EU, but the cream wedge is \u201Cothers,\u201D a mix of lots of unspecified species, so the number of types cannot be assessed from this chart.' },
+    { skill:'regfx', img:'lec13p5', cap:'Lecture slide \u2022 Thu Nov 5, 2026, Poll 5',
+      q:'The green protein is a repressor. What will happen to the RNA levels for this gene if the green protein is degraded by another protein?',
+      opts:['RNA transcription will decrease','RNA transcription will increase','RNA transcription will stay the same'], answer:1,
+      explain:'B) RNA transcription will increase. While the repressor is present there is less transcription, because it blocks assembly of the transcription complex or recruitment of RNA polymerase. Degrade (remove) the repressor and the block is released, so transcription goes up.' }
+  ];
+  POLLS13.forEach(function(c){ c.lecture='lec13'; POLLS.push(c); });
+  var NUMBERS13=[
+    {label:'Ocean water abundance', value:'~1,000,000 bacterial cells per mL', note:'From the slide, with about 20,000 species in the same milliliter.', interpret:'Ocean water is dense with microbes: one milliliter is a whole community, not a handful of cells.'},
+    {label:'Ocean water richness', value:'~20,000 species per mL', note:'Both ocean numbers vary by location.', interpret:'Richness is a count of distinct species, and even one milliliter holds thousands.'},
+    {label:'Soil abundance', value:'10^8 to 10^9 cells per gram', note:'A gram is about a paperclip\u2019s weight.', interpret:'Per unit volume, soil carries orders of magnitude more cells than ocean water.'},
+    {label:'Soil richness', value:'4,000 to 50,000 species per gram', note:'The wide range is location, not error.', interpret:'Estimates this wide are why rarefaction matters: keep sampling until the curve flattens.'},
+    {label:'Cells in a human', value:'30 trillion human cells, 39 trillion bacterial cells', note:'Slide numbers. Speaking, she gave only the 30 trillion and \u201Cthat much and more\u201D for bacteria.', interpret:'By cell count, a human carries more bacterial cells than human cells.'},
+    {label:'Shared between two people', value:'Genomes 99.5 to 99.9% shared; microbiomes 60 to 80% shared', note:'She verbally discounted the 0.5: \u201CIt\u2019s 99.9%.\u201D Know the slide range.', interpret:'Genomes are nearly identical between people; microbiomes are not. Some phenotypic differences may live in the microbes.'},
+    {label:'OTU split rules', value:'>3% different: different species; >6%: different genus', note:'Difference in the 16S sequence. The 6% genus rule was spoken only; the 3% rule is on the slide.', interpret:'Two cutoffs, applied in order: cross 3 for species, cross 6 for genus.'},
+    {label:'Rarefaction cartoon', value:'Running totals 5, then 8, then 9, then +0', note:'Sample 1 held 6 cells, but two were the same species, so it added 5, not 6.', interpret:'Richness counts distinct species: a repeat adds zero, and the flattening curve is the stop signal.'},
+    {label:'Promoter boxes, as printed', value:'-35 box 5\u2032 TTGACG; -10 box 5\u2032 TATAAT', note:'Her slide prints TTGACG, not the TTGACA found in many textbooks.', interpret:'For her exams, the slide string counts. Sigma factor binds these boxes and recruits RNA polymerase.'}
+  ];
+  NUMBERS13.forEach(function(c){ c.lecture='lec13'; NUMBERS.push(c); });
+  var EXAMPLES13=[
+    { title:'Example 1: Rarefaction counting (her cartoon)', q:'A scientist samples a lake four times. Sample 1 has 6 cells, but two are the same species. Sample 2 adds 3 brand-new species, sample 3 adds 1, and sample 4 adds none. What is the richness, and is sampling done?', steps:['Count distinct species only: sample 1 gives 5 species, not 6, because two cells are the same species.','Running totals: 5, then 5 + 3 = 8, then 8 + 1 = 9, then 9 + 0 = 9.','Plug back: total new species = 5 + 3 + 1 + 0 = 9. Checks.','Sample 4 added nothing, so the curve has flattened: richness is 9 and sampling can stop.'] },
+    { title:'Example 2: OTU threshold calls', q:'Three pairs of 16S sequences differ by 2%, 4%, and 8%. Call each pair: same or different species? Same or different genus?', steps:['Apply the cutoffs in order: more than 3% different splits species; more than 6% splits genus.','2%: under both cutoffs: same species, same genus.','4%: over 3, under 6: different species, same genus.','8%: over both: different species, different genus.'] },
+    { title:'Example 3: Relative abundance from a targeted study', q:'A targeted gut sample gives 120 Streptococcus reads out of 480 total reads. What is the Streptococcus relative abundance, and what does it mean?', steps:['Share = focal reads / total reads = 120 / 480 = 0.25.','As a percent: 25% relative abundance.','Plug back: 0.25 x 480 = 120 reads. Checks.','It does NOT mean 120 Streptococcus cells were in the gut: targeted data gives proportions of reads, never absolute counts of organisms.'] },
+    { title:'Example 4: Reading the Poll 4 pie charts', q:'Pie charts show gut microbiomes of Burkina Faso (BF) and European (EU) children. A classmate says: \u201CEU has 7 wedges and BF has 6, so EU microbiomes have more types.\u201D What is wrong, and which group is dominated by which phylum?', steps:['One wedge in each pie is \u201Cothers,\u201D an unspecified mix of many species, so wedges cannot be counted as types.','Dominance: BF (high fiber) is dominated by Bacteroidetes; Firmicutes is only a small slice.','EU (high protein/sugar/starch/fat) is dominated by Firmicutes; Bacteroidetes is the small slice.','The accurate association statement: Bacteroidetes may be associated with a high-fiber diet.'] }
+  ];
+  EXAMPLES13.forEach(function(c){ c.lecture='lec13'; EXAMPLES.push(c); });
   var FLASH14=[
     {id:'lec14-1', term:'Phenotypic plasticity', def:'Her slide definition: different phenotype in different settings. The same genotype produces a different phenotype in a different environment.'},
     {id:'lec14-2', term:'Direct response', def:'Her slide definition: cell phenotype changes as a direct result of environmental trigger. The trigger acts on what is already in the cell, with no change in gene expression first. Her own category for this class.'},
@@ -1190,22 +1277,24 @@
   ];
   EXAMPLES14.forEach(function(c){ c.lecture='lec14'; EXAMPLES.push(c); });
   // ---------- skills per lecture (Khan style, quiet mastery tags) ----------
-  var SKILL_LABELS={maf:'Reading a dbSNP card & MAF',freq:'Allele counts ↔ frequencies',codon:'Codon classification',coverage:'Coverage counting',odds:'Odds from counts',orclass:'Odds ratios: risk / protective / none',risk:'OR → actual carrier risk',gwstats:'p values, Manhattan plots & Bonferroni',chip:'SNP chip reading (the complement rule)',impute:'Imputation & haplotype bias',gelcount:'Counting alleles from gel bands',gelfreq:'Gel counts → allele frequencies',fst:'FST: between vs within differences',diversity:'How diversity is distributed / race vs structure',terms:'Terms & main facts',relabund:'Relative abundance: proportions, not counts',erosion:'Genetic erosion, bottlenecks and inbreeding',marker:'Marker genes by group',meta:'Targeted vs whole genome metagenomics',response:'Direct vs gene-mediated responses',rpk:'RPK & RPKM normalization',housekeep:'Housekeeping gene comparisons',meanctr:'Mean-centered expression',heatmap:'Heat maps & log2 legends'};
+  var SKILL_LABELS={maf:'Reading a dbSNP card & MAF',freq:'Allele counts ↔ frequencies',codon:'Codon classification',coverage:'Coverage counting',odds:'Odds from counts',orclass:'Odds ratios: risk / protective / none',risk:'OR → actual carrier risk',gwstats:'p values, Manhattan plots & Bonferroni',chip:'SNP chip reading (the complement rule)',impute:'Imputation & haplotype bias',gelcount:'Counting alleles from gel bands',gelfreq:'Gel counts → allele frequencies',fst:'FST: between vs within differences',diversity:'How diversity is distributed / race vs structure',terms:'Terms & main facts',relabund:'Relative abundance: proportions, not counts',erosion:'Genetic erosion, bottlenecks and inbreeding',marker:'Marker genes by group',meta:'Targeted vs whole genome metagenomics',response:'Direct vs gene-mediated responses',rpk:'RPK & RPKM normalization',housekeep:'Housekeeping gene comparisons',meanctr:'Mean-centered expression',heatmap:'Heat maps & log2 legends',richness:'Species richness and rarefaction',otu:'OTUs and the 3% / 6% split rules',chart13:'Reading microbiome charts',regvocab:'Regulation vocabulary: proteins vs DNA sites',regfx:'Regulation effects: repressors, promoters, microRNAs'};
   var SKILLS8=['maf','freq','codon','coverage','terms'];
   var SKILLS27=['odds','orclass','risk','gwstats','chip','terms'];
   var SKILLS29=['impute','gelcount','gelfreq','fst','diversity','terms'];
   var SKILLS12=['relabund','erosion','marker','meta','terms'];
+  var SKILLS13=['meta','richness','otu','chart13','regvocab','regfx','terms'];
   var SKILLS14=['response','rpk','housekeep','meanctr','heatmap','terms'];
   function currentSkills(){
-    var ids = activeLecture==='lec27' ? SKILLS27 : (activeLecture==='lec29' ? SKILLS29 : (activeLecture==='lec12' ? SKILLS12 : (activeLecture==='lec14' ? SKILLS14 : (activeLecture==='all' ? ['maf','freq','codon','coverage','odds','orclass','risk','gwstats','chip','impute','gelcount','gelfreq','fst','diversity','terms','relabund','erosion','marker','meta','response','rpk','housekeep','meanctr','heatmap'] : SKILLS8))));
+    var ids = activeLecture==='lec27' ? SKILLS27 : (activeLecture==='lec29' ? SKILLS29 : (activeLecture==='lec12' ? SKILLS12 : (activeLecture==='lec13' ? SKILLS13 : (activeLecture==='lec14' ? SKILLS14 : (activeLecture==='all' ? ['maf','freq','codon','coverage','odds','orclass','risk','gwstats','chip','impute','gelcount','gelfreq','fst','diversity','terms','relabund','erosion','marker','meta','response','rpk','housekeep','meanctr','heatmap','richness','otu','chart13','regvocab','regfx'] : SKILLS8)))));
     return ids.map(function(id){ return {id:id, label:SKILL_LABELS[id]}; });
   }
   function currentExamFamilies(){
     if(activeLecture==='lec27') return ['orinterp','orrisk','manhattan','chip','tf27','fill27','mcor','mcbonf','checkall27','showwork27'];
     if(activeLecture==='lec29') return ['gelcount','gelfreq','fst','impute','diversity','tf29','fill29','mcfst','mcgel','checkall29','showwork29'];
     if(activeLecture==='lec12') return ['relabund','marker','metachoice','erosion','tf12','fill12','mcrelabund','checkall12','showwork12'];
+    if(activeLecture==='lec13') return ['richness','otu','regvocab','regfx','chart13','tf13','fill13','mc13','checkall13','showwork13'];
     if(activeLecture==='lec14') return ['response','rpkcalc','housekeep','meanctr','heatmap','tf14','fill14','mcrpkm14','checkall14','showwork14'];
-    if(activeLecture==='all') return ['codon','coverage','dbsnp','conv','three','orinterp','orrisk','manhattan','chip','gelcount','gelfreq','fst','impute','diversity','tf8','fill8','mccalc8','checkall8','showwork8','tf27','fill27','mcor','mcbonf','checkall27','showwork27','tf29','fill29','mcfst','mcgel','checkall29','showwork29','relabund','marker','metachoice','erosion','tf12','fill12','mcrelabund','checkall12','showwork12','response','rpkcalc','housekeep','meanctr','heatmap','tf14','fill14','mcrpkm14','checkall14','showwork14'];
+    if(activeLecture==='all') return ['codon','coverage','dbsnp','conv','three','orinterp','orrisk','manhattan','chip','gelcount','gelfreq','fst','impute','diversity','tf8','fill8','mccalc8','checkall8','showwork8','tf27','fill27','mcor','mcbonf','checkall27','showwork27','tf29','fill29','mcfst','mcgel','checkall29','showwork29','relabund','marker','metachoice','erosion','tf12','fill12','mcrelabund','checkall12','showwork12','response','rpkcalc','housekeep','meanctr','heatmap','tf14','fill14','mcrpkm14','checkall14','showwork14','richness','otu','regvocab','regfx','chart13','tf13','fill13','mc13','checkall13','showwork13'];
     return ['codon','coverage','dbsnp','conv','three','tf8','fill8','mccalc8','checkall8','showwork8'];
   }
   // ---------- per lecture panel chrome: intros, drill moves, reference blocks ----------
@@ -1214,40 +1303,48 @@
     if(!mi||!mm) return;
     if(!renderChrome.orig) renderChrome.orig={mi:mi.innerHTML, mm:mm.innerHTML, qi:qi?qi.innerHTML:'', ei:ei?ei.innerHTML:''};
     var o=renderChrome.orig;
-    var r8=document.getElementById('lec8Ref'), r27=document.getElementById('lec27Ref'), r29=document.getElementById('lec29Ref'), r12=document.getElementById('lec12Ref'), r14=document.getElementById('lec14Ref');
+    var r8=document.getElementById('lec8Ref'), r27=document.getElementById('lec27Ref'), r29=document.getElementById('lec29Ref'), r12=document.getElementById('lec12Ref'), r13=document.getElementById('lec13Ref'), r14=document.getElementById('lec14Ref');
     if(activeLecture==='lec12'){
       mi.innerHTML='Three moves, step by step: relative abundance from read counts. Every drill shows its <b>read counts</b> first. A share of reads is a proportion, never a count of individuals: doubling the reads and the total leaves the share unchanged. Type your answer for instant feedback, tap <b>Hint</b> for one step at a time, and open the full worked solution after you answer.';
       mm.innerHTML='<div class="move"><b>Move 1</b><br><code>share = focal reads ÷ total reads</code><br><span class="muted">Part over total, for one sample.</span></div><div class="move"><b>Move 2</b><br><code>percent = share × 100</code><br><span class="muted">Decimal or percent, both count.</span></div><div class="move"><b>Move 3</b><br><code>reads are not individuals</code><br><span class="muted">23 reads of 100 is 23%, not 23 spiders.</span></div>';
       if(qi) qi.innerHTML='The four Nov 3 polls, each with <b>the actual slide from class</b>: read the cartoon genomes, the frog tree, the marker options, or the three scientists right off it. Poll 2 has no single right answer by design and is not scored. Poll 4 was withheld on Nov 3 and answered in class on Nov 5: Scientist C, and it is scored like the others. Tap any slide to zoom.';
       if(ei) ei.innerHTML='Lecture 12, remixed: write out true or false trap items, a fill in the blank set from a word pool, multiple choice with calculation inside, marker gene and metagenomic approach questions, genetic erosion questions, check all that apply, and show your work problems. Questions rotate through relative abundance, marker genes, targeted vs whole genome metagenomics, and genetic erosion, shuffled so you never get a long run of one kind, with fresh counts and scenarios each time. Stuck? Tap <b>Hint</b> for one step at a time; the full worked solution appears after you answer.';
-      if(r8) r8.style.display='none'; if(r27) r27.style.display='none'; if(r29) r29.style.display='none'; if(r12) r12.style.display='';
+      if(r8) r8.style.display='none'; if(r27) r27.style.display='none'; if(r29) r29.style.display='none'; if(r12) r12.style.display=''; if(r13) r13.style.display='none'; if(r14) r14.style.display='none';
+    } else if(activeLecture==='lec13'){
+      mi.innerHTML='Three moves, step by step: richness, OTU calls, and relative abundance. Every drill shows its <b>counts first</b>: the species counts per sample, the percent difference between two 16S sequences, or the read counts on the card.';
+      mm.innerHTML='<div class="move"><b>Move 1</b><br><code>running total = add only NEW species</code><br><span class="muted">A species seen again adds 0. The rarefaction curve flattens when new samples stop adding species: sampling is done.</span></div>'
+        +'<div class="move"><b>Move 2</b><br><code>&gt;3% different: split species &bull; &gt;6%: split genus</code><br><span class="muted">The OTU rules for 16S sequences, applied in order: species first, then genus.</span></div>'
+        +'<div class="move"><b>Move 3</b><br><code>share = focal reads &divide; total reads</code><br><span class="muted">Targeted data gives proportions, never absolute counts of organisms. Report the share as a percent.</span></div>';
+      if(qi) qi.innerHTML='The five Nov 5 polls, each with <b>the actual slide from class</b>: the scientists question (withheld Tuesday, answered today), the lake richness trap, the panda hypotheses, the Burkina Faso vs Europe chart, and the repressor diagram. Tap any slide to zoom.';
+      if(ei) ei.innerHTML='Lecture 13, remixed: rarefaction and sampling logic, OTU threshold calls, microbiome chart reading, regulation vocabulary and effects, one-word-swap traps, a word-pool fill-in, check-all-that-apply, and a rarefaction show-your-work. Stuck? Tap <b>Hint</b> for one step at a time; the full worked solution appears after you answer.';
+      if(r8) r8.style.display='none'; if(r27) r27.style.display='none'; if(r29) r29.style.display='none'; if(r12) r12.style.display='none'; if(r13) r13.style.display=''; if(r14) r14.style.display='none';
     } else if(activeLecture==='lec14'){
       mi.innerHTML='Three moves, step by step: the RNA-seq normalization routine from class. Every drill shows its <b>data first</b>: reads and a gene length, an RPK and a sample size, or winter and summer reads. Raw counts lie twice over: once when gene lengths differ, and once when samples yield different totals. Correct first, then compare. Type your answer for instant feedback, tap <b>Hint</b> for one step at a time, and open the full worked solution after you answer.';
       mm.innerHTML='<div class="move"><b>Move 1</b><br><code>RPK = reads ÷ length (bp) × 1000</code><br><span class="muted">Corrects for gene length.</span></div><div class="move"><b>Move 2</b><br><code>RPKM = RPK ÷ total reads (in M)</code><br><span class="muted">Corrects for length and sample size.</span></div><div class="move"><b>Move 3</b><br><code>mean-centered = value ÷ gene\u2019s own mean</code><br><span class="muted">Each gene against its own average.</span></div>';
       if(qi) qi.innerHTML='The nine Nov 10 polls, each with <b>the actual slide from class</b>: read the coat color diagrams, the read counts under each gene, and the heat map right off the slide. Every poll was answered in class. Watch the three traps: raw counts across different gene lengths (Poll 4), raw counts across different sample totals (Poll 5), and raw counts against a housekeeping gene (Poll 6). Tap any slide to zoom.';
       if(ei) ei.innerHTML='Lecture 14, remixed: write out true or false trap items, a fill in the blank set from a word pool, multiple choice with calculation inside (RPK comparisons, housekeeping ratios, mean-centered values, full RPKM), heat map and log2 legend reading, direct vs gene-mediated scenarios, check all that apply, and show your work problems. Questions rotate through every family, shuffled so you never get a long run of one kind, with fresh numbers each time. Stuck? Tap <b>Hint</b> for one step at a time; the full worked solution appears after you answer.';
-      if(r8) r8.style.display='none'; if(r27) r27.style.display='none'; if(r29) r29.style.display='none'; if(r12) r12.style.display='none'; if(r14) r14.style.display='';
+      if(r8) r8.style.display='none'; if(r27) r27.style.display='none'; if(r29) r29.style.display='none'; if(r12) r12.style.display='none'; if(r13) r13.style.display='none'; if(r14) r14.style.display='';
     } else if(activeLecture==='lec29'){
       mi.innerHTML='Three moves, step by step: the gel counting routine from class. Every drill shows its <b>gel diagram or difference counts</b> first. Remember: a single band counts as 2 copies, two bands as 1 each, and total alleles = people × 2. Type your answer for instant feedback, tap <b>Hint</b> for one step at a time, and open the full worked solution after you answer.';
       mm.innerHTML='<div class="move"><b>Move 1</b><br><code>single band = 2 • two bands = 1 + 1</code><br><span class="muted">Count alleles, not bands.</span></div><div class="move"><b>Move 2</b><br><code>frequency = count ÷ (people × 2)</code><br><span class="muted">Count → frequency.</span></div><div class="move"><b>Move 3</b><br><code>FST = (between − within) ÷ between</code><br><span class="muted">Excess difference, as a fraction.</span></div>';
       if(qi) qi.innerHTML='The six Oct 29 polls, each with <b>the actual slide from class</b>: read the haplotype key, the gel, or the question right off it, exactly as it was asked. Count first, then convert. Tap any slide to zoom.';
       if(ei) ei.innerHTML='The Oct 29 polls, remixed: write out true or false trap items, a fill in the blank set from a word pool, multiple choice with calculation inside, figure reading from the gel slide, check all that apply, and show your work problems. Questions rotate through every poll family, gel counting, gel count to frequency, FST, imputation from the wrong haplotype, and how diversity is distributed, shuffled so you never get a long run of one kind, with fresh gels, counts and haplotypes each time. Stuck? Tap <b>Hint</b> for one step at a time; the full worked solution appears after you answer.';
-      if(r8) r8.style.display='none'; if(r27) r27.style.display='none'; if(r29) r29.style.display=''; if(r12) r12.style.display='none';
+      if(r8) r8.style.display='none'; if(r27) r27.style.display='none'; if(r29) r29.style.display=''; if(r12) r12.style.display='none'; if(r13) r13.style.display='none'; if(r14) r14.style.display='none';
     } else if(activeLecture==='lec27'){
       mi.innerHTML='Four moves, step by step: the odds ratio routine from class. Every drill shows its <b>case / control counts</b> first: the allele named in the question goes in the numerator, and the disease count goes on top of each odds fraction (counts, never totals). Type your answer for instant feedback, tap <b>Hint</b> for one step at a time, and open the full worked solution after you answer.';
       mm.innerHTML='<div class="move"><b>Move 1</b><br><code>odds = with ÷ without</code><br><span class="muted">Disease count on top: never the total.</span></div><div class="move"><b>Move 2</b><br><code>OR = odds(named) ÷ odds(other)</code><br><span class="muted">Named allele in the numerator.</span></div><div class="move"><b>Move 3</b><br><code>OR = 1 none • &gt;1 risk • &lt;1 protective</code><br><span class="muted">Read the ratio.</span></div><div class="move"><b>Move 4</b><br><code>risk = baseline × OR</code><br><span class="muted">From ratio to actual risk.</span></div>';
       if(qi) qi.innerHTML='Each question comes with <b>the actual slide from class</b>: read the table, the Manhattan plot, or the chip image right on it. Sanity check first, then do the math, exactly like class. Tap any slide to zoom.';
       if(ei) ei.innerHTML='The Oct 27 polls, remixed: write out true or false trap items, a fill in the blank set from a word pool, multiple choice with calculation inside, figure reading from the Manhattan plot or the SNP chip slide, check all that apply, and show your work problems. Questions rotate through every poll family, odds ratio interpretation, odds ratio risk calculation, Manhattan plot reading, and SNP chip reading, shuffled so you never get a long run of one kind, with fresh counts and diagrams each time. Every question shows its counts or its diagram first. Stuck? Tap <b>Hint</b> for one step at a time; the full worked solution appears after you answer.';
-      if(r8) r8.style.display='none'; if(r27) r27.style.display=''; if(r29) r29.style.display='none'; if(r12) r12.style.display='none';
+      if(r8) r8.style.display='none'; if(r27) r27.style.display=''; if(r29) r29.style.display='none'; if(r12) r12.style.display='none'; if(r13) r13.style.display='none'; if(r14) r14.style.display='none';
     } else if(activeLecture==='all'){
       mi.innerHTML='All four drill sets, mixed: the Lecture 8 dbSNP moves, the Oct 27 odds ratio moves, the Lecture 11 gel / FST moves, and the Lecture 12 relative abundance moves. Every drill shows its data first: a dbSNP card, the case/control counts, a gel diagram, or read counts. Type your answer for instant feedback, tap <b>Hint</b> for one step at a time, and open the full worked solution after you answer.';
       mm.innerHTML=o.mm+'<div class="move"><b>Odds</b><br><code>odds = with ÷ without</code><br><span class="muted">Disease count on top: never the total.</span></div><div class="move"><b>Odds ratio</b><br><code>OR = odds(named) ÷ odds(other)</code><br><span class="muted">1 = none • &gt;1 risk • &lt;1 protective.</span></div><div class="move"><b>Risk</b><br><code>risk = baseline × OR</code><br><span class="muted">From ratio to actual risk.</span></div>';
-      if(qi) qi.innerHTML='Every poll from all five lectures, each with its slide, data card, or diagram. Lecture 8 Question 1 also has a <b>codon chart</b> toggle under it. Lecture 12 Poll 2 has no single right answer and is not scored; every other poll is scored. Tap any slide to zoom.';
-      if(ei) ei.innerHTML='All poll families from all five lectures, mixed and shuffled: write out true or false trap items, fill in the blank sets from word pools, multiple choice with calculation inside, figure reading, check all that apply, and show your work problems. Families include codon classification, coverage, dbSNP and MAF, three allele MAF, odds ratio interpretation and risk, Manhattan plots, SNP chips, gel counting, gel frequencies, FST, imputation, how diversity is distributed, relative abundance, marker genes, metagenomic approaches, and genetic erosion, with fresh numbers and drawings each time. Stuck? Tap <b>Hint</b> for one step at a time; the full worked solution appears after you answer.';
-      if(r8) r8.style.display=''; if(r27) r27.style.display=''; if(r29) r29.style.display=''; if(r12) r12.style.display=''; if(r14) r14.style.display='';
+      if(qi) qi.innerHTML='Every poll from all six lectures, each with its slide, data card, or diagram. Lecture 8 Question 1 also has a <b>codon chart</b> toggle under it. Lecture 12 Poll 2 has no single right answer and is not scored; every other poll is scored. Tap any slide to zoom.';
+      if(ei) ei.innerHTML='All poll families from all six lectures, mixed and shuffled: write out true or false trap items, fill in the blank sets from word pools, multiple choice with calculation inside, figure reading, check all that apply, and show your work problems. Families include codon classification, coverage, dbSNP and MAF, three allele MAF, odds ratio interpretation and risk, Manhattan plots, SNP chips, gel counting, gel frequencies, FST, imputation, how diversity is distributed, relative abundance, marker genes, metagenomic approaches, and genetic erosion, with fresh numbers and drawings each time. Stuck? Tap <b>Hint</b> for one step at a time; the full worked solution appears after you answer.';
+      if(r8) r8.style.display=''; if(r27) r27.style.display=''; if(r29) r29.style.display=''; if(r12) r12.style.display=''; if(r13) r13.style.display=''; if(r14) r14.style.display='';
     } else {
       mi.innerHTML=o.mi; mm.innerHTML=o.mm; if(qi) qi.innerHTML=o.qi; if(ei) ei.innerHTML=o.ei;
-      if(r8) r8.style.display=''; if(r27) r27.style.display='none'; if(r29) r29.style.display='none'; if(r12) r12.style.display='none';
+      if(r8) r8.style.display=''; if(r27) r27.style.display='none'; if(r29) r29.style.display='none'; if(r12) r12.style.display='none'; if(r13) r13.style.display='none'; if(r14) r14.style.display='none';
     }
   }
 
@@ -1387,16 +1484,17 @@
   function setLecture(id){
     activeLecture=id;
     examBag=[];
-    var b8=document.getElementById('lecBtn8'), b27=document.getElementById('lecBtn27'), b29=document.getElementById('lecBtn29'), b12=document.getElementById('lecBtn12'), b14=document.getElementById('lecBtn14'), ba=document.getElementById('lecBtnAll');
+    var b8=document.getElementById('lecBtn8'), b27=document.getElementById('lecBtn27'), b29=document.getElementById('lecBtn29'), b12=document.getElementById('lecBtn12'), b13=document.getElementById('lecBtn13'), b14=document.getElementById('lecBtn14'), ba=document.getElementById('lecBtnAll');
     if(b8){ b8.classList.toggle('selected', id==='lec8'); b8.setAttribute('aria-pressed', id==='lec8'?'true':'false'); }
     if(b27){ b27.classList.toggle('selected', id==='lec27'); b27.setAttribute('aria-pressed', id==='lec27'?'true':'false'); }
     if(b29){ b29.classList.toggle('selected', id==='lec29'); b29.setAttribute('aria-pressed', id==='lec29'?'true':'false'); }
     if(b12){ b12.classList.toggle('selected', id==='lec12'); b12.setAttribute('aria-pressed', id==='lec12'?'true':'false'); }
+    if(b13){ b13.classList.toggle('selected', id==='lec13'); b13.setAttribute('aria-pressed', id==='lec13'?'true':'false'); }
     if(b14){ b14.classList.toggle('selected', id==='lec14'); b14.setAttribute('aria-pressed', id==='lec14'?'true':'false'); }
     if(ba){ ba.classList.toggle('selected', id==='all'); ba.setAttribute('aria-pressed', id==='all'?'true':'false'); }
     var bw=document.getElementById('lecBtnWs');
     if(bw){ bw.classList.remove('selected'); bw.setAttribute('aria-pressed','false'); }
-    document.querySelectorAll('.side-entry').forEach(function(el){ var on = (el.id==='lecBtn8'&&id==='lec8')||(el.id==='lecBtn27'&&id==='lec27')||(el.id==='lecBtn29'&&id==='lec29')||(el.id==='lecBtn12'&&id==='lec12')||(el.id==='lecBtn14'&&id==='lec14')||(el.id==='lecBtnAll'&&id==='all'); el.classList.toggle('selected', !!on); el.setAttribute('aria-pressed', on?'true':'false'); });
+    document.querySelectorAll('.side-entry').forEach(function(el){ var on = (el.id==='lecBtn8'&&id==='lec8')||(el.id==='lecBtn27'&&id==='lec27')||(el.id==='lecBtn29'&&id==='lec29')||(el.id==='lecBtn12'&&id==='lec12')||(el.id==='lecBtn13'&&id==='lec13')||(el.id==='lecBtn14'&&id==='lec14')||(el.id==='lecBtnAll'&&id==='all'); el.classList.toggle('selected', !!on); el.setAttribute('aria-pressed', on?'true':'false'); });
     var tc=document.getElementById('tabCount');
     if(tc) tc.textContent='('+FLASH.filter(inScope).length+')';
     rebuildOrder(); hardOnly=false;
@@ -1412,6 +1510,7 @@
   document.getElementById('lecBtn27').addEventListener('click', function(){ setLecture('lec27'); refreshScope(); showToast('Tue Oct 27, 2026: GWAS & Odds Ratios'); document.getElementById('contentTop').scrollIntoView({behavior:'smooth'}); });
   document.getElementById('lecBtn29').addEventListener('click', function(){ setLecture('lec29'); refreshScope(); showToast('Lecture 11: Thu Oct 29, 2026'); document.getElementById('contentTop').scrollIntoView({behavior:'smooth'}); });
   document.getElementById('lecBtn12').addEventListener('click', function(){ setLecture('lec12'); refreshScope(); showToast('Lecture 12: Tue Nov 3, 2026'); document.getElementById('contentTop').scrollIntoView({behavior:'smooth'}); });
+  document.getElementById('lecBtn13').addEventListener('click', function(){ setLecture('lec13'); refreshScope(); showToast('Lecture 13: Thu Nov 5, 2026'); document.getElementById('contentTop').scrollIntoView({behavior:'smooth'}); });
   document.getElementById('lecBtn14').addEventListener('click', function(){ setLecture('lec14'); refreshScope(); showToast('Lecture 14: Tue Nov 10, 2026'); document.getElementById('contentTop').scrollIntoView({behavior:'smooth'}); });
   document.getElementById('lecBtnAll').addEventListener('click', function(){ setLecture('all'); refreshScope(); showToast('All Lectures: cumulative review'); document.getElementById('contentTop').scrollIntoView({behavior:'smooth'}); });
   document.getElementById('lecBtnWs').addEventListener('click', function(){ showWorksheetsView(); document.getElementById('contentTop').scrollIntoView({behavior:'smooth'}); });
@@ -1610,6 +1709,11 @@
     lec12p2:"Lecture slide, Tue Nov 3 Poll 2: Which group of frogs is most important to protect? Map and phylogenetic tree with groups labeled A green, B orange, C red, D light blue, E purple.",
     lec12p3:"Lecture slide, Tue Nov 3 Poll 3: Why do different groups need different markers? Options A some genes are only found in one group, B we need a just right level of diversity to make confident matches, C both A and B.",
     lec12p4:"Lecture slide, Tue Nov 3 Poll 4: Which scientist will have to generate the most sequencing reads to answer their research question? Scientist A hospital surfaces, Scientist B Prevotella by diet in guts, Scientist C metabolic pathways in a compost bin.",
+    lec13p1:"Lecture slide, Thu Nov 5 Poll 1: which of three scientists must generate the most sequencing reads: hospital surfaces, Prevotella across diets, or compost metabolic pathways",
+    lec13p2:"Lecture slide, Thu Nov 5 Poll 2: a 1 mL pond sample found 560,000 species; did it measure the lake’s microbial richness, options A to D",
+    lec13p3:"Lecture slide, Thu Nov 5 Poll 3: hypotheses for how giant pandas survive on bamboo, options A to D",
+    lec13p4:"Lecture slide, Thu Nov 5 Poll 4: pie charts of Burkina Faso vs Europe children’s gut microbiomes with four interpretations, options A to D",
+    lec13p5:"Lecture slide, Thu Nov 5 Poll 5: a gene diagram with a green repressor protein; what happens to RNA levels if the repressor is degraded, options A to C",
     lec14p1:"Lecture slide, Tue Nov 10 Poll 1: What kind of response causes the coat coloration plasticity in Siamese cats? Options A mutational response, B gene-mediated response with simple control, C direct response, D splicing response, E gene-mediated response with combinatorial control.",
     lec14p2:"Lecture slide, Tue Nov 10 Poll 2: Do you think seasonal coat color in arctic animals caused by the same temperature sensitive tyrosinase as in cats? Options A YES, B NO. Hare shown white in winter and brown in summer.",
     lec14p3:"Lecture slide, Tue Nov 10 Poll 3: three genes A, B and C of the same length with read rectangles drawn under each. Which gene has the highest expression?",
@@ -2816,6 +2920,213 @@
         'Compute: '+fmt(rpk2)+' / '+c2.totM+' = '+fmt(rpkm2)+'.',
         'State the answer: RPKM = '+fmt(rpkm2)+'. Check with the long form: '+fmt(rpk2)+' / '+(c2.totM*1000000).toLocaleString()+' x 1,000,000 = '+fmt(rpkm2)+'. Same.'] };
   }
+  // ---------- Lecture 13 exam generators: richness, OTUs, charts, regulation ----------
+  function genRichness13(){
+    var variants=[
+      {q:'A scientist samples a lake for microbes. After 4 samples the rarefaction curve is still rising steeply, and every new sample adds many new species. Which conclusion is correct?',
+       correct:'Richness is not yet accurately estimated; the scientist should keep sampling',
+       opts:['Richness is not yet accurately estimated; the scientist should keep sampling','Richness has been accurately estimated at the current total','The scientist should switch to a single, much bigger sample','The community has no more species to find'],
+       why:'A rising rarefaction curve means new samples are still adding species: the community is under-sampled. Richness is accurately estimated only when the curve flattens.',
+       steps:['Read the curve: still rising steeply means still finding new species.','Flattened is the stop signal, not rising.','Answer: keep sampling; the estimate is not accurate yet.']},
+      {q:'A pond study finds 560,000 microbial species in one 1 mL sample. The scientist wants to estimate the whole lake\u2019s microbial richness. What is the best next step, in the professor\u2019s approach?',
+       correct:'Take metagenomic samples from many more places in the lake',
+       opts:['Take metagenomic samples from many more places in the lake','Take one much bigger volume from the same spot','Also count the lake\u2019s plants and animals','Report 560,000 as the lake\u2019s richness'],
+       why:'This is Poll 2. One small sample is position-dependent (depth, shore vs center), so more samples from more places beats a bigger volume from one spot. The question asks about microbial richness, so plants and animals are a reading trap.',
+       steps:['The flaw is sampling coverage, not volume.','More samples also show how close the estimate is to the true total (rarefaction).','Answer: many more samples, from many places.']},
+      {q:'Four samples add 6, then 4, then 1, then 0 new species. Which statement about this community is correct?',
+       correct:'Richness is 11, and the curve has flattened, so the estimate is accurate',
+       opts:['Richness is 11, and the curve has flattened, so the estimate is accurate','Richness is 6, the count from the first sample','Richness cannot be estimated until a sample adds 5 or more','The last sample was wasted and should be discarded'],
+       why:'Richness is the running total of distinct species: 6 + 4 + 1 + 0 = 11. A sample adding zero new species is exactly the flattening signal that sampling can stop.',
+       steps:['Add only new species: 6, 10, 11, 11.','Plug back: 6 + 4 + 1 + 0 = 11.','Zero new species means the curve flattened: the estimate is accurate.']}
+    ];
+    var v=pickA(variants);
+    var opts=shuffleArr(v.opts.slice());
+    return { kind:'Lecture 13 \u2022 Richness and rarefaction', skill:'richness', type:'mc', opts:opts, answerIdx:opts.indexOf(v.correct), answerText:v.correct, q:v.q, why:v.why, steps:v.steps };
+  }
+  function genOTU13(){
+    var cases=[
+      {pct:2, correct:'Same species, same genus'},
+      {pct:4, correct:'Different species, same genus'},
+      {pct:5, correct:'Different species, same genus'},
+      {pct:8, correct:'Different species, different genus'}
+    ];
+    var cs=pickA(cases);
+    var correct=cs.correct;
+    var distract=['Same species, same genus','Different species, same genus','Different species, different genus','Same species, different genus'].filter(function(x){ return x!==correct; });
+    return mcFromValues('Multiple choice \u2022 OTU threshold call','otu',
+      'Two bacterial 16S sequences differ by '+cs.pct+'%. Using the professor\u2019s split rules, how are the two bacteria classified?',
+      dataCardHtml('Given data: one sequence comparison',[['16S difference', cs.pct+'%'],['Species cutoff','more than 3% different'],['Genus cutoff','more than 6% different']]),
+      correct, distract,
+      ['Apply the cutoffs in order: species first (3%), then genus (6%).', cs.pct+'% vs 3%: '+(cs.pct>3?'over the species cutoff, so different species.':'under the species cutoff, so same species.'), cs.pct+'% vs 6%: '+(cs.pct>6?'over the genus cutoff, so different genus.':'under the genus cutoff, so same genus.'), 'Answer: '+correct+'.'],
+      'The split rules are thresholds on the percent difference: over 3% splits species, over 6% splits genus. At '+cs.pct+'%: '+correct.toLowerCase()+'.');
+  }
+  function genRegVocab13(){
+    var variants=[
+      {q:'Which term names a PROTEIN whose binding to DNA increases the transcription of a gene?', correct:'Activator'},
+      {q:'Which term names a PROTEIN whose binding to DNA decreases the transcription of a gene?', correct:'Repressor'},
+      {q:'Which term names a DNA SITE where protein binding increases the transcription of a gene?', correct:'Enhancer'},
+      {q:'Which term names a DNA SITE where protein binding decreases the transcription of a gene?', correct:'Silencer'}
+    ];
+    var v=pickA(variants);
+    var correct=v.correct;
+    var distract=['Activator','Repressor','Enhancer','Silencer'].filter(function(x){ return x!==correct; });
+    return mcFromValues('Multiple choice \u2022 Regulation vocabulary','regvocab', v.q, '',
+      correct, distract,
+      ['Sort by two questions: is it a protein or a DNA site, and does binding raise or lower transcription?','Proteins: activator (up) and repressor (down). DNA sites: enhancer (up) and silencer (down).','Answer: '+correct+'.'],
+      'Her vocabulary table: activator and repressor are proteins; enhancer and silencer are DNA sites. '+correct+' is the match.');
+  }
+  function genRegFx13(){
+    var variants=[
+      {q:'A gene\u2019s repressor protein is degraded by another protein. What happens to the gene\u2019s RNA levels?',
+       correct:'They increase: the block on transcription is removed',
+       opts:['They increase: the block on transcription is removed','They decrease: the activator is gone','They stay the same: repressors do not affect RNA','The gene is deleted from the genome'],
+       why:'This mirrors Poll 5. The repressor was blocking assembly of the transcription complex or recruitment of RNA polymerase. Remove it and transcription rises.',
+       steps:['Repressor present: transcription is held down.','Repressor degraded: the hold is released.','Answer: RNA levels increase.']},
+      {q:'A cell destroys the activator protein for a gene, and no other activator can bind its enhancer. What happens to the gene\u2019s transcription?',
+       correct:'It decreases: the enhancer loses its activating input',
+       opts:['It decreases: the enhancer loses its activating input','It increases: activators hold genes down','It stays the same: enhancers work without proteins','Transcription stops being regulated at all'],
+       why:'An activator is a protein whose binding at a DNA site (here, the enhancer) increases transcription. Remove the protein and that positive input is gone, so transcription falls.',
+       steps:['Activator binding raises transcription.','No activator, no binding, no boost.','Answer: transcription decreases.']},
+      {q:'A microRNA complementary to a gene\u2019s mRNA is introduced into a cell. Transcription of the gene does not change. What happens to the amount of protein the cell makes from that gene?',
+       correct:'It decreases: the mRNA is cut up faster, so less of it survives to be translated',
+       opts:['It decreases: the mRNA is cut up faster, so less of it survives to be translated','It increases: microRNAs protect mRNA','It stays the same: only transcription matters','The mRNA turns into DNA'],
+       why:'microRNAs silence genes post-transcriptionally: loaded into protein complexes, they bind complementary mRNAs and get them degraded faster than the natural rate. Steady-state mRNA falls even though transcription is unchanged.',
+       steps:['Steady state = transcription rate vs degradation rate.','microRNA raises the degradation rate.','Less mRNA survives, so less protein is made. Transcription itself never changed.']},
+      {q:'A variant in a gene\u2019s promoter weakens sigma factor binding at the -10 and -35 boxes. What happens to that gene\u2019s expression?',
+       correct:'It decreases: RNA polymerase is recruited less often, so initiation is rarer',
+       opts:['It decreases: RNA polymerase is recruited less often, so initiation is rarer','It increases: weak binding speeds the polymerase up','Nothing: promoter sequence does not affect expression','The gene\u2019s protein sequence changes'],
+       why:'Promoter strength is binding efficiency: sigma factor binds the -10 and -35 boxes and recruits RNA polymerase. Weaker binding means transcription initiates less often. The variant changes expression level, not the protein\u2019s sequence.',
+       steps:['Sigma factor binds the boxes and recruits the polymerase.','Weaker binding, fewer recruitments, fewer transcripts.','Answer: expression decreases.']}
+    ];
+    var v=pickA(variants);
+    var opts=shuffleArr(v.opts.slice());
+    return { kind:'Lecture 13 \u2022 Regulation effects', skill:'regfx', type:'mc', opts:opts, answerIdx:opts.indexOf(v.correct), answerText:v.correct, q:v.q, why:v.why, steps:v.steps };
+  }
+  function genChart13(){
+    var variants=[
+      {q:'In the De Filippo study from class, children in Burkina Faso ate a high-fiber diet and European children ate a diet high in protein, sugar, starch, and fat. Which group\u2019s gut microbiome was dominated by Bacteroidetes?',
+       correct:'The Burkina Faso children',
+       opts:['The Burkina Faso children','The European children','Both groups equally','Neither: both were dominated by Firmicutes'],
+       why:'BF (high fiber) is Bacteroidetes-dominated; EU is Firmicutes-dominated. This is the pairing Poll 4 tested, and swapping the phyla is the trap.',
+       steps:['Match diet to dominance: high fiber goes with Bacteroidetes in her chart.','EU\u2019s big wedge is Firmicutes, not Bacteroidetes.','Answer: the Burkina Faso children.']},
+      {q:'A pie chart of a gut microbiome has 7 wedges; another has 6. A student concludes the first microbiome has more types of microbes. Why is that conclusion not supported?',
+       correct:'One wedge is \u201Cothers,\u201D a mix of many unspecified species, so types cannot be counted from the wedges',
+       opts:['One wedge is \u201Cothers,\u201D a mix of many unspecified species, so types cannot be counted from the wedges','Pie charts never show relative abundance','The bigger wedge always hides extra species','Types can only be counted with whole genome sequencing'],
+       why:'The \u201Cothers\u201D wedge is a grab bag, not one type. Counting wedges treats it as a single kind, which is exactly the error in Poll 4 option C.',
+       steps:['Find the \u201Cothers\u201D wedge: it stands for an unknown number of species.','Wedge count is not type count when one wedge is a mix.','Answer: the conclusion is unsupported.']},
+      {q:'In the panda study from class, the giant pandas\u2019 gut microbiome was dominated by which group?',
+       correct:'A Streptococcus genus',
+       opts:['A Streptococcus genus','The family Clostridiaceae','A cellulose-digesting Clostridium','The phylum Firmicutes'],
+       why:'Giant pandas: dominated by a Streptococcus genus. Red pandas: dominated by Clostridiaceae, and only some red pandas carried the cellulose-digesting Clostridium. Keeping the two pandas straight is the point.',
+       steps:['Giant panda first: Streptococcus dominates.','Clostridiaceae and the Clostridium belong to the red pandas.','Answer: a Streptococcus genus.']}
+    ];
+    var v=pickA(variants);
+    var opts=shuffleArr(v.opts.slice());
+    return { kind:'Lecture 13 \u2022 Reading microbiome charts', skill:'chart13', type:'mc', opts:opts, answerIdx:opts.indexOf(v.correct), answerText:v.correct, q:v.q, why:v.why, steps:v.steps };
+  }
+  var TF13=[
+    {s:'An activator is a DNA site whose binding increases transcription.', a:false,
+     why:'False. An activator is a PROTEIN. The DNA site whose binding increases transcription is an enhancer. This is her flagship one-word swap.',
+     steps:['Activator: protein, increases transcription.','Enhancer: DNA site, increases transcription.','Answer: false. The statement hands the protein\u2019s job to a DNA site.']},
+    {s:'A silencer is a protein whose binding decreases transcription.', a:false,
+     why:'False. A silencer is a DNA SITE. The protein whose binding decreases transcription is a repressor.',
+     steps:['Silencer: DNA site, decreases transcription.','Repressor: protein, decreases transcription.','Answer: false. Site and protein are swapped.']},
+    {s:'Two bacteria whose 16S sequences are 4% different are the same genus but different species.', a:true,
+     why:'True. 4% crosses the 3% species cutoff but not the 6% genus cutoff.',
+     steps:['4% vs 3%: over, so different species.','4% vs 6%: under, so same genus.','Answer: true.']},
+    {s:'If a rarefaction curve is still rising steeply, species richness has been accurately estimated.', a:false,
+     why:'False. A rising curve means new samples are still adding species: the community is under-sampled. Richness is accurately estimated when the curve flattens.',
+     steps:['Rising means still discovering.','Flat means the total has been reached.','Answer: false. The two curve states are swapped.']},
+    {s:'microRNAs silence genes by decreasing the rate of transcription.', a:false,
+     why:'False. microRNAs act after transcription: they bind complementary mRNAs and get them degraded faster. Transcription rate is unchanged; the mRNA steady state falls.',
+     steps:['microRNA target: the mRNA, not the promoter.','Mechanism: faster degradation, post-transcriptional.','Answer: false. The step attacked is degradation, not transcription.']},
+    {s:'Removing a repressor from a gene will decrease its RNA levels.', a:false,
+     why:'False. It increases them: the repressor was blocking transcription complex assembly or polymerase recruitment. This is Poll 5 with the direction flipped.',
+     steps:['Repressor on: transcription held down.','Repressor off: hold released.','Answer: false. RNA levels go up, not down.']},
+    {s:'In a pie chart of microbiome composition, the \u201Cothers\u201D wedge counts as one type of microbe.', a:false,
+     why:'False. \u201COthers\u201D is an unspecified mix of many species. That is why types cannot be counted from the Poll 4 chart.',
+     steps:['Others = many species in one wedge.','One wedge is not one type.','Answer: false.']},
+    {s:'Species richness is a count of the different species in a community.', a:true,
+     why:'True, in her slide\u2019s words: species richness is the number of different species in a community.',
+     steps:['Richness counts distinct species.','Not reads, not cells, not wedges.','Answer: true.']},
+    {s:'Prokaryote species in this course are defined by the biological species concept.', a:false,
+     why:'False. The biological species concept needs mating and viable offspring, and most prokaryotes reproduce by binary fission. Microbial species here are 16S similarity conventions with arbitrary cutoffs.',
+     steps:['BSC: mating-based definition.','Prokaryotes: binary fission, no mating.','Answer: false. The course uses sequence similarity instead.']},
+    {s:'At the steady state, an mRNA\u2019s amount stays constant because transcription and degradation are balanced.', a:true,
+     why:'True. Steady state means the amount being made per unit time equals the amount being degraded, so the level holds constant.',
+     steps:['Made as fast as it is destroyed: constant amount.','Expression can be tuned from either side of the balance.','Answer: true.']}
+  ];
+  function genTF13(){ return genTF(TF13,'regvocab','Write out true or false \u2022 One wrong word trap'); }
+  var POOL13=['species richness','rarefaction','OTU','steady state','sigma factor','microRNA','transcriptomics','MWAS','combinatorial control','promoter','enhancer','silencer','activator','repressor'];
+  var FILL13=[
+    {pool:POOL13, blanks:[
+      {pre:'', post:' is the number of different species in a community.', answer:'species richness'},
+      {pre:'', post:' tracks the cumulative count of distinct species as more samples are taken; a flattening curve means the estimate is accurate.', answer:'rarefaction'},
+      {pre:'An ', post:' is a working taxonomic unit used when species is unknown, splitting sequences by how different they are.', answer:'OTU'},
+      {pre:'An mRNA is at ', post:' when transcription and degradation are perfectly balanced, so its amount stays constant.', answer:'steady state'},
+      {pre:'The ', post:' binds the -10 and -35 boxes and recruits RNA polymerase.', answer:'sigma factor'}]},
+    {pool:POOL13, blanks:[
+      {pre:'An ', post:' is a protein whose binding increases transcription.', answer:'activator'},
+      {pre:'A ', post:' is a protein whose binding decreases transcription.', answer:'repressor'},
+      {pre:'An ', post:' is a DNA site where binding increases transcription.', answer:'enhancer'},
+      {pre:'A ', post:' is a DNA site where binding decreases transcription.', answer:'silencer'},
+      {pre:'A ', post:' is the DNA sequence where the transcription machinery assembles; stronger ones initiate more often.', answer:'promoter'}]},
+    {pool:POOL13, blanks:[
+      {pre:'A ', post:' silences a gene post-transcriptionally by getting its complementary mRNA cut up faster.', answer:'microRNA'},
+      {pre:'', post:' is the study of RNA expression levels across the genome.', answer:'transcriptomics'},
+      {pre:'', post:' are microbiome-wide association studies: comparing microbiomes between phenotypes to find associations.', answer:'MWAS'},
+      {pre:'', post:' is the integration of many regulatory inputs into a single output on one gene.', answer:'combinatorial control'},
+      {pre:'The ', post:' sequence determines how efficiently the transcription machinery is recruited.', answer:'promoter'}]}
+  ];
+  function genFill13(){ return genFill(FILL13,'terms'); }
+  var CHECK13=[
+    {q:'Which of the following change HOW MUCH of a gene\u2019s product is made, rather than WHAT the product is?',
+     opts:[{t:'A promoter variant that weakens sigma factor binding',ok:true},{t:'An activator protein binding the gene\u2019s enhancer',ok:true},{t:'A microRNA that targets the gene\u2019s mRNA for faster degradation',ok:true},{t:'A coding SNP that changes one amino acid in the protein',ok:false}],
+     steps:['Promoter variant: fewer initiations, less product, same protein.','Activator binding: more transcription, more product, same protein.','microRNA: faster mRNA loss, less product, same protein.','The coding SNP changes the product itself (one amino acid), not the amount made. That is the poisoned option.']},
+    {q:'Which statements about microbial communities are true?',
+     opts:[{t:'Targeted metagenomics reports relative abundance: proportions of reads, not absolute counts of organisms',ok:true},{t:'An OTU is a proxy for a microbial species, split by sequence difference',ok:true},{t:'A rarefaction curve that has flattened means richness is accurately estimated',ok:true},{t:'The \u201Cothers\u201D wedge of a composition pie chart is a single species',ok:false}],
+     steps:['Targeted data is proportions: a share of reads, never a cell count.','OTUs stand in for species where species is unknown.','Flat rarefaction curve: the total has been reached.','\u201COthers\u201D is a mix of many species, never one species. That is the poisoned option.']}
+  ];
+  function genCheckAll13(){ return genCheckAll(CHECK13,'regfx'); }
+  function genMC13(){
+    var variants=[
+      {q:'A team sequences leaf litter DNA and asks: which genes does this soil community carry for breaking down a pesticide, including genes never seen in any database? Which approach, and why?',
+       correct:'Whole genome metagenomics: the question is about function (genes), not just who is present',
+       opts:['Whole genome metagenomics: the question is about function (genes), not just who is present','Targeted 16S sequencing: it is cheaper','Targeted sequencing of the pesticide gene only','Culture every species and test each one'],
+       why:'Who-is-there questions take targeted sequencing; function questions take whole genome metagenomics, and novel genes can only be found by sequencing everything (genes with no database match are the biological dark matter from Lecture 12). Under 1% of microbes can be cultured, so culturing is out.',
+       steps:['Classify the question: function, not identity.','Function requires whole genome sequencing.','Answer: whole genome metagenomics.']},
+      {q:'Why are prokaryote species defined by 16S sequence similarity instead of the biological species concept?',
+       correct:'Most prokaryotes reproduce by binary fission and do not mate, so a mating-based species definition cannot apply',
+       opts:['Most prokaryotes reproduce by binary fission and do not mate, so a mating-based species definition cannot apply','Prokaryotes are too small to observe mating','The 16S gene is the only gene bacteria carry','Species concepts are not used in microbiology'],
+       why:'The biological species concept defines species by mating and viable offspring. Binary fission makes that unusable for most prokaryotes, so the field uses sequence-similarity conventions (the OTU cutoffs) instead.',
+       steps:['BSC needs mating.','Prokaryotes: binary fission.','Answer: the definition cannot apply, so similarity cutoffs are used.']},
+      {q:'What does the Cal eDNA program use metagenomics to track across California?',
+       correct:'Species presence or absence, predicted movement under climate change, pathogens, and genetic erosion',
+       opts:['Species presence or absence, predicted movement under climate change, pathogens, and genetic erosion','Only invasive species in national parks','The exact number of individuals of every species','Fossil DNA from extinct species'],
+       why:'Cal eDNA is citizen-science environmental sampling (soil, leaf debris, traces) read by DNA instead of photographs. It tracks presence or absence and the listed change signals; it does not count exact individuals.',
+       steps:['Cal eDNA: DNA in place of photographs.','Outputs: presence/absence plus movement, pathogens, erosion.','Answer: the full list.']}
+    ];
+    var v=pickA(variants);
+    var opts=shuffleArr(v.opts.slice());
+    return { kind:'Lecture 13 \u2022 Metagenomics in the field', skill:'meta', type:'mc', opts:opts, answerIdx:opts.indexOf(v.correct), answerText:v.correct, q:v.q, why:v.why, steps:v.steps };
+  }
+  function genShowWork13(){
+    var cases=[
+      {adds:[6,4,1,0]}, {adds:[12,7,3,3]}, {adds:[4,4,1,0]}, {adds:[9,5,2,0]}
+    ];
+    var cs=pickA(cases);
+    var total=cs.adds.reduce(function(a,b){ return a+b; }, 0);
+    var run=[]; var acc=0;
+    cs.adds.forEach(function(n){ acc+=n; run.push(acc); });
+    return { kind:'Show your work \u2022 Name it, formula, numbers, answer', skill:'richness', type:'num', mode:'raw', answer:total, tol:0.1, answerText:total+' species',
+      visual:dataCardHtml('Given data: new species added per sample',[['Sample 1','+'+cs.adds[0]+' new'],['Sample 2','+'+cs.adds[1]+' new'],['Sample 3','+'+cs.adds[2]+' new'],['Sample 4','+'+cs.adds[3]+' new']]),
+      q:'Work this in full, on paper or in your head, then type the final number. Four samples of a community add '+cs.adds.join(', ')+' new species in order. What is the community\u2019s species richness after all four samples?',
+      steps:['Name what is being found: species richness, the running total of distinct species.',
+        'Formula in words: richness = sum of the NEW species each sample adds; repeats add 0.',
+        'Running totals: '+run.join(', then ')+'.',
+        'Compute: '+cs.adds.join(' + ')+' = '+total+'.',
+        'State the answer: richness = '+total+' species. Plug back: '+total+' total species, and the per-sample adds sum to the same number. Checks.'] };
+  }
   function checkExamTF(){
     if(exam.answered||!exam.q) return;
     var inp=document.getElementById('examTF'); if(!inp) return;
@@ -2906,6 +3217,16 @@
     if(fam==='fill14') return genFill14();
     if(fam==='mcrpkm14') return genMCRPKM14();
     if(fam==='checkall14') return genCheckAll14();
+    if(fam==='richness') return genRichness13();
+    if(fam==='otu') return genOTU13();
+    if(fam==='regvocab') return genRegVocab13();
+    if(fam==='regfx') return genRegFx13();
+    if(fam==='chart13') return genChart13();
+    if(fam==='tf13') return genTF13();
+    if(fam==='fill13') return genFill13();
+    if(fam==='mc13') return genMC13();
+    if(fam==='checkall13') return genCheckAll13();
+    if(fam==='showwork13') return genShowWork13();
     if(fam==='showwork14') return genShowWork14();
     if(fam==='dbsnp'){ dbFlip=!dbFlip; return dbFlip?genMajor():genDbCount(); }
     convFlip=!convFlip; return convFlip?genCount():genFreq();
@@ -3151,11 +3472,60 @@
     var st=document.getElementById('drillSteps'); st.classList.remove('show'); st.innerHTML='';
     document.getElementById('showSteps').disabled=false;
   }
+  // ---------- Lecture 13 math drills: rarefaction totals, new-species counts, relative abundance ----------
+  function genDrillRare13(){
+    var cases=[
+      {adds:[5,3,1,0], k:3}, {adds:[6,4,2,1], k:2}, {adds:[12,7,3,3], k:4}, {adds:[4,4,1,0], k:3}, {adds:[9,5,2,0], k:1}
+    ];
+    var cs=pickA(cases);
+    var acc=0; for(var i=0;i<cs.k;i++){ acc+=cs.adds[i]; }
+    var rows=cs.adds.map(function(n,i){ return ['Sample '+(i+1), '+'+n+' new species']; });
+    return { type:'Move 1 \u2022 Rarefaction: running totals', skill:'richness', skillLabel:'Skill: Species richness and rarefaction', mode:'raw', tol:0.1, answer:acc, answerText:acc+' species',
+      visual:dataCardHtml('Given data: new species added per sample', rows),
+      q:'Samples add '+cs.adds.join(', ')+' new species in order. What is the running total richness after sample '+cs.k+'?',
+      steps:['Add only the new species, in order, up to sample '+cs.k+'.','Running total after sample '+cs.k+' = '+acc+'.','Plug back: the first '+cs.k+' adds sum to '+acc+'. Checks.','Answer: '+acc+' species.'] };
+  }
+  function genDrillNew13(){
+    var cases=[
+      {totals:[5,8,9,9], k:3}, {totals:[6,10,12,13], k:2}, {totals:[12,19,22,25], k:4}, {totals:[9,14,16,16], k:3}
+    ];
+    var cs=pickA(cases);
+    var added=cs.totals[cs.k-1]-(cs.k>1?cs.totals[cs.k-2]:0);
+    var rows=cs.totals.map(function(n,i){ return ['After sample '+(i+1), n+' species']; });
+    return { type:'Move 1 \u2022 Rarefaction: new species per sample', skill:'richness', skillLabel:'Skill: Species richness and rarefaction', mode:'raw', tol:0.1, answer:added, answerText:added+' new species',
+      visual:dataCardHtml('Given data: running richness totals', rows),
+      q:'The running richness totals after each sample are '+cs.totals.join(', ')+'. How many NEW species did sample '+cs.k+' add?',
+      steps:['New species in a sample = its total minus the previous sample\u2019s total.','Sample '+cs.k+': '+cs.totals[cs.k-1]+' - '+(cs.k>1?cs.totals[cs.k-2]:0)+' = '+added+'.','Plug back: '+(cs.k>1?cs.totals[cs.k-2]:0)+' + '+added+' = '+cs.totals[cs.k-1]+'. Checks.','Answer: '+added+' new species.'] };
+  }
+  function genDrillRelAb13(){
+    var pairs=[{f:120, t:480},{f:46, t:200},{f:90, t:300},{f:35, t:140},{f:64, t:160},{f:51, t:170}];
+    var pr=pickA(pairs);
+    var pct=pr.f/pr.t*100;
+    return { type:'Move 3 \u2022 Relative abundance: share of reads, as a percent', skill:'relabund', skillLabel:'Skill: Relative abundance: proportions, not counts', mode:'raw', tol:0.6, answer:pct, answerText:pct+'%',
+      visual:dataCardHtml('Given data: read counts',[['Focal group reads', pr.f],['Total reads', pr.t]]),
+      q:'A targeted sample has '+pr.f+' reads for one group out of '+pr.t+' total reads. What is that group\u2019s relative abundance, as a percent?',
+      steps:['Share = focal reads / total reads = '+pr.f+' / '+pr.t+' = '+(pr.f/pr.t)+'.','As a percent: '+(pr.f/pr.t)+' x 100 = '+pct+'%.','Plug back: '+pct+'% of '+pr.t+' = '+pr.f+' reads. Checks.','Answer: '+pct+'%. A proportion of reads, not a count of organisms.'] };
+  }
+  function newDrill13(){
+    var gens=[genDrillRare13, genDrillNew13, genDrillRelAb13];
+    curDrill=pickA(gens)();
+    drillHintIdx=0; drillAnswered=false;
+    document.getElementById('drillType').textContent=curDrill.type;
+    document.getElementById('drillSkillLabel').textContent=curDrill.skillLabel;
+    document.getElementById('drillQ').textContent=curDrill.q;
+    document.getElementById('drillVisual').innerHTML=curDrill.visual||'';
+    var inp=document.getElementById('drillNum'); inp.value='';
+    var fb=document.getElementById('drillFeedback'); fb.className='feedback'; fb.textContent='';
+    var hb=document.getElementById('drillHints'); hb.classList.remove('show'); hb.innerHTML='';
+    var st=document.getElementById('drillSteps'); st.classList.remove('show'); st.innerHTML='';
+    document.getElementById('showSteps').disabled=false;
+  }
   function newDrill(){
+    if(activeLecture==='lec13'){ newDrill13(); return; }
     if(activeLecture==='lec14'){ newDrill14(); return; }
     if(activeLecture==='lec12'){ newDrill12(); return; }
     if(activeLecture==='lec29'){ newDrill29(); return; }
-    if(activeLecture==='all'){ var r=Math.random(); if(r<0.2){ newDrill12(); return; } if(r<0.4){ newDrill29(); return; } if(r<0.6){ newDrill27(); return; } if(r<0.8){ newDrill14(); return; } newDrill8(); return; }
+    if(activeLecture==='all'){ var r=Math.random(); if(r<0.17){ newDrill12(); return; } if(r<0.34){ newDrill13(); return; } if(r<0.5){ newDrill29(); return; } if(r<0.67){ newDrill27(); return; } if(r<0.84){ newDrill14(); return; } newDrill8(); return; }
     if(activeLecture==='lec27'){ newDrill27(); return; }
     newDrill8();
   }
@@ -3218,6 +3588,13 @@
     {q:'explain how metagenomics is used to study communities in close association with other organisms', a:'Sample a host and the community living on or in it, and analyze all the DNA together. Lecture examples: a plant with bugs on it, a parasitic flower growing on it, and bacteria associated with the plant and soil; and coral with its symbiotic photosynthetic algae, where losing the algae is bleaching. The same two approaches apply: targeted sequencing for who is there, whole genome sequencing for genes and function, including organisms never cultured or sequenced before.'}
   ];
   var OBJECTIVES_ANNOUNCE12='The week 6 quiz opens Sunday and closes Monday at the usual time. Section this week is an inclusive science communication activity, due Friday at 9 PM, and it will not be quizzed. Budget at least an hour and start before 8 PM on Friday.';
+  var OBJECTIVES13=[
+    {q:'describe metagenomic approaches to study communities', a:'Extract environmental DNA from a sample, then choose: targeted sequencing (PCR one marker region, sequence it, match the reads to databases) or whole genome sequencing (fragment and sequence everything, assemble the pieces, annotate the genes).'},
+    {q:'explain how metagenomics is used to study communities in the free environment', a:'Programs like Cal eDNA survey whole ecosystems from environmental DNA collected by citizen scientists: which species are present or absent, predicted movement as the climate changes, pathogens, and genetic erosion.'},
+    {q:'explain how metagenomics is used to study communities in close association with other organisms', a:'Host-associated microbiomes (the panda gut, the human gut) are profiled to ask which microbes are present, in what proportions, and what they might be doing for the host\u2019s phenotype.'},
+    {q:'describe the basic ways expression can be regulated, and why omics approaches are helpful', a:'Promoter strength and sigma factor binding; transcription factors (activators, repressors) binding DNA sites (enhancers, silencers); and microRNAs tuning mRNA degradation. Regulation is combinatorial, many inputs integrated into one output, so a whole-genome view beats zooming in on a single element.'}
+  ];
+  var OBJECTIVES_ANNOUNCE13='This week\u2019s quiz opens <b>Sunday</b> and closes <b>Monday 9 PM</b>, covering everything reached this week, this lecture included. Section bonus: attend <b>5 of the ~7 sections</b> for the full 1% bump, prorated below that (4 = 0.8%, 3 = 0.6%, 2 = 0.4%, 1 = 0.2%), processed at the end of the quarter. Grade rounding is standard: 89.5 rounds up, 89.49 does not. Clicker frequency <b>BD</b>.';
   var OBJECTIVES14=[
     {q:'contrast direct vs gene-mediated responses to environmental stimuli', a:'<b>Direct response:</b> the cell phenotype changes as a direct result of an environmental trigger, acting on what is already in the cell, like a mechanosensitive channel opening under membrane tension or the Siamese cat\u2019s already-expressed tyrosinase denaturing in heat. <b>Gene-mediated response:</b> the phenotype changes only after the trigger turns a gene on or off: expression changes first, usually under combinatorial control from activators on enhancers and repressors on silencers.'},
     {q:'use RNA expression data to determine which genes are \u2018on\u2019', a:'Extract RNA, synthesize <b>cDNA</b> off the poly-A tails, fragment it, sequence it, align reads to the reference genome, and <b>count reads per gene</b>: more reads means more mRNA, means the gene was expressed more. With equal gene lengths the counts compare directly (Poll 3: gene A had the most reads).'},
@@ -3268,6 +3645,9 @@
     } else if(activeLecture==='lec12'){
       if(ann) ann.innerHTML='<div class="announce">📣 '+OBJECTIVES_ANNOUNCE12+'</div>';
       addGroup('Lecture 12: Tuesday, November 3, 2026', OBJECTIVES12);
+    } else if(activeLecture==='lec13'){
+      if(ann) ann.innerHTML='<div class="announce">📣 '+OBJECTIVES_ANNOUNCE13+'</div>';
+      addGroup('Lecture 13: Thursday, November 5, 2026', OBJECTIVES13);
     } else if(activeLecture==='lec14'){
       if(ann) ann.innerHTML='<div class="announce">📣 '+OBJECTIVES_ANNOUNCE14+'</div>';
       addGroup('Lecture 14: Tuesday, November 10, 2026', OBJECTIVES14);
@@ -3278,6 +3658,8 @@
       addGroup('Lecture 11: Thursday, October 29, 2026', OBJECTIVES29);
       if(ann) ann.innerHTML+='<div class="announce" style="margin-top:10px">📣 '+OBJECTIVES_ANNOUNCE12+'</div>';
       addGroup('Lecture 12: Tuesday, November 3, 2026', OBJECTIVES12);
+      if(ann) ann.innerHTML+='<div class="announce" style="margin-top:10px">📣 '+OBJECTIVES_ANNOUNCE13+'</div>';
+      addGroup('Lecture 13: Thursday, November 5, 2026', OBJECTIVES13);
       if(ann) ann.innerHTML+='<div class="announce" style="margin-top:10px">📣 '+OBJECTIVES_ANNOUNCE14+'</div>';
       addGroup('Lecture 14: Tuesday, November 10, 2026', OBJECTIVES14);
     }
